@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbOrderDAO">
+
+    <resultMap id="tbOrderMap" type="online.kyralo.amall.dao.dataobject.TbOrderDO">
+        <id property="id" column="id"/>
+        <result property="num" column="num"/>
+        <result property="userId" column="user_id"/>
+        <result property="skuId" column="sku_id"/>
+        <result property="payFee" column="pay_fee"/>
+        <result property="payScale" column="pay_scale"/>
+        <result property="paymentType" column="payment_type"/>
+        <result property="postage" column="postage"/>
+        <result property="status" column="status"/>
+        <result property="paymentTime" column="payment_time"/>
+        <result property="sendTime" column="send_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="closeTime" column="close_time"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
+        FROM tb_order
+    </sql>
+
+    <!--通过ID查询单个订单-->
+    <select id="findById" resultMap="tbOrderMap">
+        SELECT
+        id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
+        FROM tb_order
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询订单-->
+    <select id="findByPage" resultMap="tbOrderMap">
+        SELECT
+        id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
+        FROM tb_order
+    </select>
+
+    <!--新增订单-->
+    <insert id="insert">
+        INSERT INTO
+        tb_order(id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time)
+        VALUES
+        (#{id},#{num},#{userId},#{skuId},#{payFee},#{payScale},#{paymentType},#{postage},#{status},#{paymentTime},#{sendTime},#{endTime},#{closeTime},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改订单-->
+    <update id="update">
+        UPDATE tb_order SET
+        num=#{num},user_id=#{userId},sku_id=#{skuId},pay_fee=#{payFee},pay_scale=#{payScale},payment_type=#{paymentType},postage=#{postage},status=#{status},payment_time=#{paymentTime},send_time=#{sendTime},end_time=#{endTime},close_time=#{closeTime},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个订单-->
+    <delete id="deleteById">
+        DELETE FROM tb_order
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

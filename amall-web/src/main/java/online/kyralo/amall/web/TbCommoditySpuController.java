@@ -1,0 +1,67 @@
+package online.kyralo.amall.web;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import online.kyralo.amall.api.TbCommoditySpuService;
+import online.kyralo.amall.api.model.TbCommoditySpuModel;
+import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.validator.Create;
+import online.kyralo.amall.common.validator.Update;
+import online.kyralo.amall.web.vo.TbCommoditySpuVO;
+import org.springframework.beans.BeanUtils;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import javax.validation.constraints.*;
+
+/**
+ * 商品spu表
+ */
+@RestController
+@RequestMapping("/api/v1/commodity_spus")
+@Api(tags = "商品spu表")
+@Validated
+public class TbCommoditySpuController {
+
+    @Resource
+    private TbCommoditySpuService tbCommoditySpuService;
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "通过ID查询单个商品spu表", response = TbCommoditySpuVO.class)
+    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+                           @NotNull(message = "id内容不能为空") String id) {
+        return tbCommoditySpuService.findById(id);
+    }
+
+    @GetMapping
+    @ApiOperation(value = "分页查询商品spu表", response = TbCommoditySpuVO.class)
+    public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
+                             @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
+        return tbCommoditySpuService.findByPage(pageNum, pageSize);
+    }
+
+    @PostMapping
+    @ApiOperation(value = "新增商品spu表", response = TbCommoditySpuVO.class)
+    public Res<?> insert(@RequestBody @Validated(Create.class) TbCommoditySpuVO tbCommoditySpu) {
+        TbCommoditySpuModel tbCommoditySpuModel = new TbCommoditySpuModel();
+        BeanUtils.copyProperties(tbCommoditySpu, tbCommoditySpuModel);
+        return tbCommoditySpuService.insert(tbCommoditySpuModel);
+    }
+
+    @PutMapping
+    @ApiOperation(value = "修改商品spu表", response = TbCommoditySpuVO.class)
+    public Res<?> update(@RequestBody @Validated(Update.class) TbCommoditySpuVO tbCommoditySpu) {
+        TbCommoditySpuModel tbCommoditySpuModel = new TbCommoditySpuModel();
+        BeanUtils.copyProperties(tbCommoditySpu, tbCommoditySpuModel);
+        return tbCommoditySpuService.update(tbCommoditySpuModel);
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation(value = "通过ID删除单个商品spu表", response = TbCommoditySpuVO.class)
+    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+                             @NotNull(message = "id内容不能为空") String id) {
+        return tbCommoditySpuService.deleteById(id);
+    }
+}

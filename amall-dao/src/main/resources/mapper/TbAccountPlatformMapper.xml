@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbAccountPlatformDAO">
+
+    <resultMap id="tbAccountPlatformMap" type="online.kyralo.amall.dao.dataobject.TbAccountPlatformDO">
+        <id property="id" column="id"/>
+        <result property="uid" column="uid"/>
+        <result property="platformId" column="platform_id"/>
+        <result property="platformToken" column="platform_token"/>
+        <result property="type" column="type"/>
+        <result property="nickname" column="nickname"/>
+        <result property="avatar" column="avatar"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,uid,platform_id,platform_token,type,nickname,avatar,create_time,update_time FROM tb_account_platform
+    </sql>
+
+    <!--通过ID查询单个第三方用户信息-->
+    <select id="findById" resultMap="tbAccountPlatformMap">
+        SELECT id,uid,platform_id,platform_token,type,nickname,avatar,create_time,update_time FROM tb_account_platform
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询第三方用户信息-->
+    <select id="findByPage" resultMap="tbAccountPlatformMap">
+        SELECT id,uid,platform_id,platform_token,type,nickname,avatar,create_time,update_time FROM tb_account_platform
+    </select>
+
+    <!--新增第三方用户信息-->
+    <insert id="insert">
+        INSERT INTO tb_account_platform(id,uid,platform_id,platform_token,type,nickname,avatar,create_time,update_time)
+        VALUES (#{id},#{uid},#{platformId},#{platformToken},#{type},#{nickname},#{avatar},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改第三方用户信息-->
+    <update id="update">
+        UPDATE tb_account_platform SET
+        uid=#{uid},platform_id=#{platformId},platform_token=#{platformToken},type=#{type},nickname=#{nickname},avatar=#{avatar},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个第三方用户信息-->
+    <delete id="deleteById">
+        DELETE FROM tb_account_platform
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbUserCollectionDAO">
+
+    <resultMap id="tbUserCollectionMap" type="online.kyralo.amall.dao.dataobject.TbUserCollectionDO">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="skuId" column="sku_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,user_id,sku_id,create_time,update_time FROM tb_user_collection
+    </sql>
+
+    <!--通过ID查询单个用户收藏-->
+    <select id="findById" resultMap="tbUserCollectionMap">
+        SELECT id,user_id,sku_id,create_time,update_time FROM tb_user_collection
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询用户收藏-->
+    <select id="findByPage" resultMap="tbUserCollectionMap">
+        SELECT id,user_id,sku_id,create_time,update_time FROM tb_user_collection
+    </select>
+
+    <!--新增用户收藏-->
+    <insert id="insert">
+        INSERT INTO tb_user_collection(id,user_id,sku_id,create_time,update_time)
+        VALUES (#{id},#{userId},#{skuId},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改用户收藏-->
+    <update id="update">
+        UPDATE tb_user_collection SET
+        user_id=#{userId},sku_id=#{skuId},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个用户收藏-->
+    <delete id="deleteById">
+        DELETE FROM tb_user_collection
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

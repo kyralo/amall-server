@@ -21,6 +21,7 @@
         <druid.version>1.1.20</druid.version>
         <mybatis.version>2.1.2</mybatis.version>
         <hutool.version>5.2.3</hutool.version>
+        <guaua.version>29.0-jre</guaua.version>
         <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
         <pagehelper.version>1.2.13</pagehelper.version>
         <tk-mybatis.version>2.1.5</tk-mybatis.version>
@@ -95,6 +96,11 @@
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
 
@@ -223,6 +229,12 @@
                 <version>${hutool.version}</version>
             </dependency>
 
+            <!-- guaua -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guaua.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

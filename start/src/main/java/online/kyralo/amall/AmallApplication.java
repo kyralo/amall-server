@@ -11,9 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan("online.kyralo.amall.dao.mapper")
 @SpringBootApplication
 public class AmallApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AmallApplication.class, args);
     }
-
 }

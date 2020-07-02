@@ -1,0 +1,89 @@
+package online.kyralo.amall.service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import online.kyralo.amall.api.TbUserService;
+import online.kyralo.amall.api.model.TbUserModel;
+import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.api.ResCode;
+import online.kyralo.amall.common.exceptions.business.UserException;
+import online.kyralo.amall.common.utils.ResUtil;
+import online.kyralo.amall.dao.dataobject.TbUserDO;
+import online.kyralo.amall.dao.mapper.TbUserDAO;
+import org.springframework.cglib.beans.BeanCopier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+
+@Service
+@Transactional(rollbackFor = Exception.class)
+public class TbUserServiceImpl implements TbUserService {
+
+    @Resource
+    private TbUserDAO tbUserDAO;
+
+    private final BeanCopier copier = BeanCopier.create(TbUserModel.class, TbUserDO.class, false);
+
+    @Transactional(readOnly = true)
+    @Override
+    public Res<?> findById(String id) {
+        TbUserDO tbUserDO = tbUserDAO.findById(id);
+
+        if (tbUserDO != null) {
+            TbUserModel tbUser = new TbUserModel();
+            copier.copy(tbUserDO, tbUser, null);
+            return ResUtil.success(tbUser);
+        }
+
+        throw new UserException(ResCode.FAILED);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Res<?> findByPage(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        return ResUtil.success(PageInfo.of(tbUserDAO.findByPage()));
+    }
+
+    @Override
+    public Res<?> insert(TbUserModel tbUserModel) {
+
+        TbUserDO tbUserDO = new TbUserDO();
+        copier.copy(tbUserModel, tbUserDO, null);
+
+        int i = tbUserDAO.insert(tbUserDO);
+        if (i == 1) {
+            return ResUtil.success("新增成功");
+        }
+
+        throw new UserException(ResCode.FAILED);
+    }
+
+    @Override
+    public Res<?> update(TbUserModel tbUserModel) {
+
+        TbUserDO tbUserDO = new TbUserDO();
+        copier.copy(tbUserModel, tbUserDO, null);
+
+        int i = tbUserDAO.update(tbUserDO);
+
+        if (i == 1) {
+            return ResUtil.success("更新成功");
+        }
+
+        throw new UserException(ResCode.FAILED);
+    }
+
+    @Override
+    public Res<?> deleteById(String id) {
+        int i = tbUserDAO.deleteById(id);
+
+        if (i == 1) {
+            return ResUtil.success("删除成功");
+        }
+
+        throw new UserException(ResCode.FAILED);
+    }
+
+}

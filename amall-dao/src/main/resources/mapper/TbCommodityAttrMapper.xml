@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbCommodityAttrDAO">
+
+    <resultMap id="tbCommodityAttrMap" type="online.kyralo.amall.dao.dataobject.TbCommodityAttrDO">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="attrDesc" column="attr_desc"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,name,attr_desc,status,create_time,update_time FROM tb_commodity_attr
+    </sql>
+
+    <!--通过ID查询单个销售属性表 (产品参数)-->
+    <select id="findById" resultMap="tbCommodityAttrMap">
+        SELECT id,name,attr_desc,status,create_time,update_time FROM tb_commodity_attr
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询销售属性表 (产品参数)-->
+    <select id="findByPage" resultMap="tbCommodityAttrMap">
+        SELECT id,name,attr_desc,status,create_time,update_time FROM tb_commodity_attr
+    </select>
+
+    <!--新增销售属性表 (产品参数)-->
+    <insert id="insert">
+        INSERT INTO tb_commodity_attr(id,name,attr_desc,status,create_time,update_time)
+        VALUES (#{id},#{name},#{attrDesc},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改销售属性表 (产品参数)-->
+    <update id="update">
+        UPDATE tb_commodity_attr SET
+        name=#{name},desc=#{attrDesc},status=#{status},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个销售属性表 (产品参数)-->
+    <delete id="deleteById">
+        DELETE FROM tb_commodity_attr
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

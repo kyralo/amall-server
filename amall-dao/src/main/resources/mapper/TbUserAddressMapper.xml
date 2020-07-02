@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbUserAddressDAO">
+
+    <resultMap id="tbUserAddressMap" type="online.kyralo.amall.dao.dataobject.TbUserAddressDO">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="district" column="district"/>
+        <result property="zipCode" column="zip_code"/>
+        <result property="location" column="location"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,user_id,province,city,district,zip_code,location,create_time,update_time FROM tb_user_address
+    </sql>
+
+    <!--通过ID查询单个用户地址-->
+    <select id="findById" resultMap="tbUserAddressMap">
+        SELECT id,user_id,province,city,district,zip_code,location,create_time,update_time FROM tb_user_address
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询用户地址-->
+    <select id="findByPage" resultMap="tbUserAddressMap">
+        SELECT id,user_id,province,city,district,zip_code,location,create_time,update_time FROM tb_user_address
+    </select>
+
+    <!--新增用户地址-->
+    <insert id="insert">
+        INSERT INTO tb_user_address(id,user_id,province,city,district,zip_code,location,create_time,update_time)
+        VALUES (#{id},#{userId},#{province},#{city},#{district},#{zipCode},#{location},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改用户地址-->
+    <update id="update">
+        UPDATE tb_user_address SET
+        user_id=#{userId},province=#{province},city=#{city},district=#{district},zip_code=#{zipCode},location=#{location},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个用户地址-->
+    <delete id="deleteById">
+        DELETE FROM tb_user_address
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

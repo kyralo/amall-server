@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbAdminDAO">
+
+    <resultMap id="tbAdminMap" type="online.kyralo.amall.dao.dataobject.TbAdminDO">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="mail" column="mail"/>
+        <result property="password" column="password"/>
+        <result property="telephone" column="telephone"/>
+        <result property="sex" column="sex"/>
+        <result property="avatarUrl" column="avatar_url"/>
+        <result property="superKey" column="super_key"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,name,mail,password,telephone,sex,avatar_url,super_key,status,create_time,update_time FROM tb_admin
+    </sql>
+
+    <!--通过ID查询单个管理员-->
+    <select id="findById" resultMap="tbAdminMap">
+        SELECT id,name,mail,password,telephone,sex,avatar_url,super_key,status,create_time,update_time FROM tb_admin
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询管理员-->
+    <select id="findByPage" resultMap="tbAdminMap">
+        SELECT id,name,mail,password,telephone,sex,avatar_url,super_key,status,create_time,update_time FROM tb_admin
+    </select>
+
+    <!--新增管理员-->
+    <insert id="insert">
+        INSERT INTO tb_admin(id,name,mail,password,telephone,sex,avatar_url,super_key,status,create_time,update_time)
+        VALUES
+        (#{id},#{name},#{mail},#{password},#{telephone},#{sex},#{avatarUrl},#{superKey},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改管理员-->
+    <update id="update">
+        UPDATE tb_admin SET
+        name=#{name},mail=#{mail},password=#{password},telephone=#{telephone},sex=#{sex},avatar_url=#{avatarUrl},super_key=#{superKey},status=#{status},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个管理员-->
+    <delete id="deleteById">
+        DELETE FROM tb_admin
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbCommoditySpuDAO">
+
+    <resultMap id="tbCommoditySpuMap" type="online.kyralo.amall.dao.dataobject.TbCommoditySpuDO">
+        <id property="id" column="id"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="name" column="name"/>
+        <result property="spuDesc" column="spu_desc"/>
+        <result property="sellingPoint" column="selling_point"/>
+        <result property="unit" column="unit"/>
+        <result property="bannerUrl" column="banner_url"/>
+        <result property="mainUrl" column="main_url"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,brand_id,category_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
+        tb_commodity_spu
+    </sql>
+
+    <!--通过ID查询单个商品spu表-->
+    <select id="findById" resultMap="tbCommoditySpuMap">
+        SELECT
+        id,brand_id,category_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
+        tb_commodity_spu
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询商品spu表-->
+    <select id="findByPage" resultMap="tbCommoditySpuMap">
+        SELECT
+        id,brand_id,category_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
+        tb_commodity_spu
+    </select>
+
+    <!--新增商品spu表-->
+    <insert id="insert">
+        INSERT INTO
+        tb_commodity_spu(id,brand_id,category_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time)
+        VALUES
+        (#{id},#{brandId},#{categoryId},#{name},#{spuDesc},#{sellingPoint},#{unit},#{bannerUrl},#{mainUrl},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改商品spu表-->
+    <update id="update">
+        UPDATE tb_commodity_spu SET
+        brand_id=#{brandId},category_id=#{categoryId},name=#{name},spu_desc=#{spuDesc},selling_point=#{sellingPoint},unit=#{unit},banner_url=#{bannerUrl},main_url=#{mainUrl},status=#{status},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个商品spu表-->
+    <delete id="deleteById">
+        DELETE FROM tb_commodity_spu
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

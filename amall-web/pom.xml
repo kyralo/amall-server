@@ -21,9 +21,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>online.kyralo</groupId>
+            <artifactId>amall-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
+
     </dependencies>
 
 

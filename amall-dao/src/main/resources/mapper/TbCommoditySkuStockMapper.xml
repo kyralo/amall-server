@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbCommoditySkuStockDAO">
+
+    <resultMap id="tbCommoditySkuStockMap" type="online.kyralo.amall.dao.dataobject.TbCommoditySkuStockDO">
+        <id property="id" column="id"/>
+        <result property="skuId" column="sku_id"/>
+        <result property="skuColor" column="sku_color"/>
+        <result property="skuSizeName" column="sku_size_name"/>
+        <result property="quantity" column="quantity"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,sku_id,sku_color,sku_size_name,quantity,status,create_time,update_time FROM tb_commodity_sku_stock
+    </sql>
+
+    <!--通过ID查询单个sku库存表-->
+    <select id="findById" resultMap="tbCommoditySkuStockMap">
+        SELECT id,sku_id,sku_color,sku_size_name,quantity,status,create_time,update_time FROM tb_commodity_sku_stock
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询sku库存表-->
+    <select id="findByPage" resultMap="tbCommoditySkuStockMap">
+        SELECT id,sku_id,sku_color,sku_size_name,quantity,status,create_time,update_time FROM tb_commodity_sku_stock
+    </select>
+
+    <!--新增sku库存表-->
+    <insert id="insert">
+        INSERT INTO tb_commodity_sku_stock(id,sku_id,sku_color,sku_size_name,quantity,status,create_time,update_time)
+        VALUES (#{id},#{skuId},#{skuColor},#{skuSizeName},#{quantity},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改sku库存表-->
+    <update id="update">
+        UPDATE tb_commodity_sku_stock SET
+        sku_id=#{skuId},sku_color=#{skuColor},sku_size_name=#{skuSizeName},quantity=#{quantity},status=#{status},create_time=#{createTime},update_time=#{updateTime}
+        WHERE id=#{id}
+    </update>
+
+    <!--通过ID删除单个sku库存表-->
+    <delete id="deleteById">
+        DELETE FROM tb_commodity_sku_stock
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

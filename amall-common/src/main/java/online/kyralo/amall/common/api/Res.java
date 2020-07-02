@@ -1,6 +1,8 @@
 package online.kyralo.amall.common.api;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * \* Created with Intellij IDEA.
@@ -11,7 +13,9 @@ import lombok.Data;
  * \
  */
 
-@Data
+@Setter
+@Getter
+@ToString
 public class Res<T> {
 
     private long code;
