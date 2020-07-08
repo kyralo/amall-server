@@ -1,18 +1,18 @@
-version: '3'
-
-services:
-  mongo01:
-    # 镜像
-    image: mongo:latest
-    restart: always
-    container_name: mongo01
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: Kyralo991010
-    volumes:
-      - "/data/mongo/db01:/data/db"
+#version: '3'
+#
+#services:
+#  mongo01:
+#    # 镜像
+#    image: mongo:latest
+#    restart: always
+#    container_name: mongo01
+#    ports:
+#      - "27017:27017"
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: Kyralo991010
+#    volumes:
+#      - "/data/mongo/db01:/data/db"
 
 #  内存占用太大
 #  es01:
@@ -46,3 +46,9 @@ services:
 #      - /data/logstash/lg01/pipeline:/usr/share/logstash/pipeline
 #    environment:
 #      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+#      networks:
+#        - amall
+#
+#networks:
+#  amall:
+#    external: true

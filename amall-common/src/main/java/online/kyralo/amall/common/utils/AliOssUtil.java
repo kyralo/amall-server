@@ -7,6 +7,8 @@ import com.aliyun.oss.model.CreateBucketRequest;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
 import lombok.extern.slf4j.Slf4j;
+import online.kyralo.amall.common.constants.ResCodeConstant;
+import online.kyralo.amall.common.exceptions.business.AliOSSException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -63,7 +65,7 @@ public class AliOssUtil {
     public static String upload(MultipartFile file, String fileUrl) {
 
         if (null == file) {
-            return null;
+            throw new AliOSSException(ResCodeConstant.FAILED, "文件不能为空!");
         }
 
         try {
@@ -92,12 +94,9 @@ public class AliOssUtil {
             }
         } catch (OSSException | IOException oe) {
             log.error("文件上传失败! -- " + new Date().toString());
+            throw new AliOSSException(ResCodeConstant.FAILED, "文件上传失败!");
         }
-//        finally {
-//            if(ossClient!=null){
-//                ossClient.shutdown()
-//            }
-//        }
+
         return null;
     }
 

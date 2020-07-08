@@ -58,6 +58,19 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * 文件上传
+     * 文件上传模块异常
+     *
+     * @param ex 异常
+     * @return 响应结果
+     */
+    @ExceptionHandler(AliOSSException.class)
+    public Res<String> handlerAliOssException(AliOSSException ex) {
+        log.info("文件上传模块异常: {} \n", ex.getCause().toString());
+        return ResUtil.error(ex.getCode(), ex.getMessage());
+    }
+
+    /**
      * 用户
      * 用户模块异常
      *
