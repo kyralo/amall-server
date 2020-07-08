@@ -3,7 +3,6 @@ package online.kyralo.amall.dao.mapper;
 import com.github.pagehelper.Page;
 import online.kyralo.amall.common.base.BaseDao;
 import online.kyralo.amall.dao.dataobject.TbUserDO;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 /**

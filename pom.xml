@@ -32,7 +32,6 @@
         <module>amall-service</module>
         <module>amall-web</module>
         <module>amall-common</module>
-        <module>amall-auth</module>
         <module>start</module>
     </modules>
 

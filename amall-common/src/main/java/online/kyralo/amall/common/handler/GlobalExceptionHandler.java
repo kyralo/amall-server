@@ -5,7 +5,6 @@ import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.constants.ResCodeConstant;
 import online.kyralo.amall.common.exceptions.business.*;
 import online.kyralo.amall.common.utils.ResUtil;
-import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

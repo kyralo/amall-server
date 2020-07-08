@@ -7,7 +7,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 /**
  * @author wangchen
  */
-
 @MapperScan("online.kyralo.amall.dao.mapper")
 @SpringBootApplication
 public class AmallApplication {

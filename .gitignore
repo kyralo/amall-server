@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### CUSTOM ###
+*.sh
+amall-auth/pom.xml

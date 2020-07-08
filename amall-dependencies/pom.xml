@@ -20,6 +20,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <druid.version>1.1.20</druid.version>
         <mybatis.version>2.1.2</mybatis.version>
+        <alioss.version>3.1.0</alioss.version>
         <hutool.version>5.2.3</hutool.version>
         <guaua.version>29.0-jre</guaua.version>
         <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
@@ -29,6 +30,7 @@
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <jjwt.version>0.10.5</jjwt.version>
         <commons-pool2.version>2.6.2</commons-pool2.version>
+        <commons-io.version>2.6</commons-io.version>
         <es.version>6.8.5</es.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
     </properties>
@@ -78,12 +80,25 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- OSS SDK 相关依赖 -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${alioss.version}</version>
+            </dependency>
 
             <!-- redis依赖 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
                 <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <!--邮件发送依赖包-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
             </dependency>
 
             <!-- jwt -->
