@@ -60,7 +60,7 @@ public class TbCommodityCategoryDO {
      * 0表示一级类型, 1表示其他类型(二级类型), 默认为0
      */
     @Column(name = "is_primary")
-    private boolean primary;
+    private Boolean primary;
 
     /**
      * 状态 1:ENABLE, 0:DISABLE, -1:DELETED

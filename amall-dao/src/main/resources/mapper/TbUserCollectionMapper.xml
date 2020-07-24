@@ -5,36 +5,36 @@
     <resultMap id="tbUserCollectionMap" type="online.kyralo.amall.dao.dataobject.TbUserCollectionDO">
         <id property="id" column="id"/>
         <result property="userId" column="user_id"/>
-        <result property="skuId" column="sku_id"/>
+        <result property="merchantId" column="merchant_id"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
     <sql id="columns">
-        id,user_id,sku_id,create_time,update_time FROM tb_user_collection
+        id,user_id,merchant_id,create_time,update_time FROM tb_user_collection
     </sql>
 
     <!--通过ID查询单个用户收藏-->
     <select id="findById" resultMap="tbUserCollectionMap">
-        SELECT id,user_id,sku_id,create_time,update_time FROM tb_user_collection
+        SELECT id,user_id,merchant_id,create_time,update_time FROM tb_user_collection
         WHERE id=#{id}
     </select>
 
     <!--分页查询用户收藏-->
     <select id="findByPage" resultMap="tbUserCollectionMap">
-        SELECT id,user_id,sku_id,create_time,update_time FROM tb_user_collection
+        SELECT id,user_id,merchant_id,create_time,update_time FROM tb_user_collection
     </select>
 
     <!--新增用户收藏-->
     <insert id="insert">
-        INSERT INTO tb_user_collection(id,user_id,sku_id,create_time,update_time)
-        VALUES (#{id},#{userId},#{skuId},#{createTime},#{updateTime})
+        INSERT INTO tb_user_collection(id,user_id,merchant_id,create_time,update_time)
+        VALUES (#{id},#{userId},#{merchantId},#{createTime},#{updateTime})
     </insert>
 
     <!--修改用户收藏-->
     <update id="update">
         UPDATE tb_user_collection SET
-        user_id=#{userId},sku_id=#{skuId},create_time=#{createTime},update_time=#{updateTime}
+        user_id=#{userId},merchant_id=#{merchantId},create_time=#{createTime},update_time=#{updateTime}
         WHERE id=#{id}
     </update>
 

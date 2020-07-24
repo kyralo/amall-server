@@ -33,10 +33,10 @@ public class TbUserCollectionVO {
     private String userId;
 
     /**
-     * SKU ID
+     * 商家 ID
      */
-    @ApiModelProperty("SKU ID")
-    private String skuId;
+    @ApiModelProperty("商家ID")
+    private String merchantId;
 
     /**
      * 创建时间

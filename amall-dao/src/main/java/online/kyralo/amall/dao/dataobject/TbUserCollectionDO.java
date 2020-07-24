@@ -33,10 +33,10 @@ public class TbUserCollectionDO {
     private String userId;
 
     /**
-     * SKU ID
+     * 商家 ID
      */
-    @Column(name = "sku_id")
-    private String skuId;
+    @Column(name = "merchant_id")
+    private String merchantId;
 
     /**
      * 创建时间

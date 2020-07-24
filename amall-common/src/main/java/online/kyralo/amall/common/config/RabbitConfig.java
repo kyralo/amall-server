@@ -1,4 +1,4 @@
-package online.kyralo.amall.common.config;//package com.zzb.common.config;
+//package online.kyralo.amall.common.config;//package com.zzb.common.config;
 //
 //import org.springframework.amqp.core.*;
 //import org.springframework.amqp.rabbit.annotation.EnableRabbit;
@@ -11,9 +11,6 @@ package online.kyralo.amall.common.config;//package com.zzb.common.config;
 ///**
 // * \* Created with IntelliJ IDEA.
 // * \* @author: WangChen
-// * \* Date: 19-9-22
-// * \* Time: 下午3:25
-// * \
 // */
 //@EnableRabbit
 //@Configuration
@@ -22,29 +19,11 @@ package online.kyralo.amall.common.config;//package com.zzb.common.config;
 //    //持有化构建
 //    /**
 //     * 持有化
-//     * 管理员queue
+//     * 订单queue
 //     */
-//    @Bean("ADMIN")
-//    public Queue adminQueue(){
+//    @Bean("ORDER")
+//    public Queue orderQueue(){
 //        return QueueBuilder.durable("Topic.ADMIN").build();
-//    }
-//
-//    /**
-//     * 持有化
-//     * 用户queue
-//     */
-//    @Bean("USER")
-//    public Queue userQueue(){
-//        return QueueBuilder.durable("Topic.USER").build();
-//    }
-//
-//    /**
-//     * 持有化
-//     * 农户queue
-//     */
-//    @Bean("FARMER")
-//    public Queue farmerQueue(){
-//        return QueueBuilder.durable("Topic.FARMER").build();
 //    }
 //
 //
@@ -57,28 +36,13 @@ package online.kyralo.amall.common.config;//package com.zzb.common.config;
 //    }
 //
 //    /**
-//     * 把adminQueue绑定到TopicExchange
+//     * 把orderQueue绑定到TopicExchange
 //     */
-//    @Bean("AdminBinding")
-//    public Binding adminBinding(@Qualifier("ADMIN") Queue queue,@Qualifier("TopicExchange") TopicExchange topicExchange){
-//        return BindingBuilder.bind(queue).to(topicExchange).with("*.ADMIN");
+//    @Bean("orderBinding")
+//    public Binding orderBinding(@Qualifier("ORDER") Queue queue,@Qualifier("TopicExchange") TopicExchange topicExchange){
+//        return BindingBuilder.bind(queue).to(topicExchange).with("*.ORDER");
 //    }
 //
-//    /**
-//     * 把userQueue绑定到TopicUserExchange
-//     */
-//    @Bean("UserBinding")
-//    public Binding userBinding(@Qualifier("USER") Queue queue,@Qualifier("TopicExchange") TopicExchange topicExchange){
-//        return BindingBuilder.bind(queue).to(topicExchange).with("*.USER");
-//    }
-//
-//    /**
-//     * 把farmerQueue绑定到TopicFarmerExchange
-//     */
-//    @Bean("FarmerBinding")
-//    public Binding farmerBinding(@Qualifier("FARMER") Queue queue,@Qualifier("TopicExchange") TopicExchange topicExchange){
-//        return BindingBuilder.bind(queue).to(topicExchange).with("*.FARMER");
-//    }
 //
 //    /**
 //     * 更改消息队列的默认序列化方式

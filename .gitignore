@@ -32,3 +32,4 @@ build/
 
 ### CUSTOM ###
 *.sh
+amall-docker-compose/

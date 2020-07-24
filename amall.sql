@@ -4,23 +4,13 @@
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
  SET NAMES utf8mb4 ;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `tb_account_platform`
 --
 
 DROP TABLE IF EXISTS `tb_account_platform`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_account_platform` (
   `id` char(32) NOT NULL COMMENT '自增id',
@@ -36,15 +26,9 @@ CREATE TABLE `tb_account_platform` (
   KEY `idx_account_platform_uid` (`uid`) USING BTREE,
   KEY `idx_account_platform_platform_id` (`platform_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='第三方用户信息';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_account_platform`
---
 
 LOCK TABLES `tb_account_platform` WRITE;
-/*!40000 ALTER TABLE `tb_account_platform` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_account_platform` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -52,7 +36,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_admin`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_admin` (
   `id` char(32) NOT NULL COMMENT '管理员ID',
@@ -71,15 +54,9 @@ CREATE TABLE `tb_admin` (
   UNIQUE KEY `uk_tb_admin_telephone` (`telephone`),
   UNIQUE KEY `uk_tb_admin_mail` (`mail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='管理员';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_admin`
---
 
 LOCK TABLES `tb_admin` WRITE;
-/*!40000 ALTER TABLE `tb_admin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -87,7 +64,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_commodity_attr`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_attr` (
   `id` char(32) NOT NULL COMMENT '销售属性ID',
@@ -98,15 +74,9 @@ CREATE TABLE `tb_commodity_attr` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='销售属性表 (产品参数)';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_attr`
---
 
 LOCK TABLES `tb_commodity_attr` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_attr` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_commodity_attr` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -114,7 +84,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_commodity_attr_value`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_attr_value` (
   `id` char(32) NOT NULL COMMENT '销售属性值ID',
@@ -126,15 +95,9 @@ CREATE TABLE `tb_commodity_attr_value` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='销售属性值';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_attr_value`
---
 
 LOCK TABLES `tb_commodity_attr_value` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_attr_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_commodity_attr_value` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -142,7 +105,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_commodity_brands`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_brands` (
   `id` char(32) NOT NULL COMMENT '品牌ID',
@@ -154,15 +116,9 @@ CREATE TABLE `tb_commodity_brands` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='品牌表';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_brands`
---
 
 LOCK TABLES `tb_commodity_brands` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_brands` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_commodity_brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -170,7 +126,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_commodity_category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_category` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '商品类型ID',
@@ -186,15 +141,9 @@ CREATE TABLE `tb_commodity_category` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_tb_commodity_type_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品类型';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_category`
---
 
 LOCK TABLES `tb_commodity_category` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_category` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_commodity_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -202,7 +151,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_commodity_size`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_size` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '商品尺码自增ID',
@@ -214,15 +162,9 @@ CREATE TABLE `tb_commodity_size` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='sku表';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_size`
---
 
 LOCK TABLES `tb_commodity_size` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_size` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_commodity_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -230,7 +172,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_commodity_sku`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_sku` (
   `id` char(32) NOT NULL COMMENT 'SKU ID',
@@ -252,15 +193,9 @@ CREATE TABLE `tb_commodity_sku` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='sku表';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_sku`
---
 
 LOCK TABLES `tb_commodity_sku` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_sku` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_commodity_sku` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -268,7 +203,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_commodity_sku_stock`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_sku_stock` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
@@ -281,23 +215,13 @@ CREATE TABLE `tb_commodity_sku_stock` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='sku库存表';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_sku_stock`
---
 
 LOCK TABLES `tb_commodity_sku_stock` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_sku_stock` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_commodity_sku_stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `tb_commodity_spu`
---
 
 DROP TABLE IF EXISTS `tb_commodity_spu`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_spu` (
   `id` char(32) NOT NULL COMMENT 'SPU ID',
@@ -314,16 +238,10 @@ CREATE TABLE `tb_commodity_spu` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品spu表';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_commodity_spu`
---
 
 LOCK TABLES `tb_commodity_spu` WRITE;
-/*!40000 ALTER TABLE `tb_commodity_spu` DISABLE KEYS */;
 INSERT INTO `tb_commodity_spu` VALUES ('7ca2b33ce2664bb18f6b35d2674ab015','1',1,'1','1','','1','1','1',1,NULL,NULL);
-/*!40000 ALTER TABLE `tb_commodity_spu` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -331,7 +249,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_merchant`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_merchant` (
   `id` char(32) NOT NULL COMMENT '商家ID',
@@ -353,15 +270,9 @@ CREATE TABLE `tb_merchant` (
   UNIQUE KEY `uk_tb_merchant_telephone` (`telephone`),
   KEY `idx_tb_merchant_store_name` (`store_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商家';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_merchant`
---
 
 LOCK TABLES `tb_merchant` WRITE;
-/*!40000 ALTER TABLE `tb_merchant` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_merchant` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -369,7 +280,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_order` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '订单id',
@@ -390,15 +300,9 @@ CREATE TABLE `tb_order` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_tb_order_num` (`num`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_order`
---
 
 LOCK TABLES `tb_order` WRITE;
-/*!40000 ALTER TABLE `tb_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -406,7 +310,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_user` (
   `id` char(32) NOT NULL COMMENT '用户ID',
@@ -425,15 +328,9 @@ CREATE TABLE `tb_user` (
   UNIQUE KEY `uk_tb_user_mail` (`mail`),
   UNIQUE KEY `uk_tb_user_telephone` (`telephone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_user`
---
 
 LOCK TABLES `tb_user` WRITE;
-/*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -441,7 +338,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_user_address`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_user_address` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '用户地址ID',
@@ -455,15 +351,9 @@ CREATE TABLE `tb_user_address` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户地址';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_user_address`
---
 
 LOCK TABLES `tb_user_address` WRITE;
-/*!40000 ALTER TABLE `tb_user_address` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_user_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -471,7 +361,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `tb_user_collection`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_user_collection` (
   `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '用户地址ID',
@@ -481,24 +370,10 @@ CREATE TABLE `tb_user_collection` (
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户收藏';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tb_user_collection`
---
 
 LOCK TABLES `tb_user_collection` WRITE;
-/*!40000 ALTER TABLE `tb_user_collection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_user_collection` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-07-08 19:43:10

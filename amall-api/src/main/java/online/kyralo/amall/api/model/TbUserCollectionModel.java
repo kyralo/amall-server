@@ -28,9 +28,9 @@ public class TbUserCollectionModel {
     private String userId;
 
     /**
-     * SKU ID
+     * 商家 ID
      */
-    private String skuId;
+    private String merchantId;
 
     /**
      * 创建时间

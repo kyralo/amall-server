@@ -1,0 +1,102 @@
+version: '3'
+
+services:
+  # mysql
+#  mysql:
+#    # 镜像
+#    image: mysql/mysql-server:latest
+#    restart: always
+#    container_name: mysql
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - /usr/local/docker/mysql/conf:/etc/mysql
+#      - /usr/local/docker/mysql/logs:/var/log/mysql
+#      - /usr/local/docker/mysql/data:/var/lib/mysql
+#    environment:
+#      - TZ=Asia/Shanghai
+#      - MYSQL_ROOT_PASSWORD=123456
+#    networks:
+#      - b-amall
+
+  # redis
+  redis01:
+    # 镜像
+    image: redis:latest
+    restart: always
+    container_name: redis01
+    ports:
+      - "6379:6379"
+    volumes:
+      - /usr/local/docker/redis/redis01/conf/redis.conf:/etc/redis/redis.conf:rw
+      - /usr/local/docker/redis/redis01/data:/data:rw
+    environment:
+      - appendonly=yes
+      - requirepass=Kyralo991010
+    networks:
+      - b-amall
+
+  # rabbit
+  rabbitmq:
+    restart: always
+    image: rabbitmq:management-alpine
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    networks:
+      - b-amall
+
+  # elasticsearch
+  es01:
+    # 镜像
+    image: elasticsearch:7.5.1
+    restart: always
+    container_name: es01
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - cluster.name=amall-es01
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - /usr/local/docker/es/es01/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:rw
+      - /usr/local/docker/es/es01/zip:/usr/share/elasticsearch/zip
+    networks:
+      - b-amall
+
+  # canal
+  canal-server:
+    image: canal/canal-server:latest
+    container_name: canal-server
+    ports:
+      - "11111:11111"
+    volumes:
+      - /usr/local/docker/canal/canal.properties:/home/admin/canal-server/conf/canal.properties:rw
+      - /usr/local/docker/canal/canal-server-logs/:/home/admin/canal-server/logs/
+    environment:
+      - TZ=Asia/Shanghai
+      - canal.instance.master.address=ce.kyralo.online:3333
+      - canal.instance.dbUsername=canal
+      - canal.instance.dbPassword=canal991010
+      - canal.instance.defaultDatabaseName=amall
+      - canal.instance.connectionCharset=UTF-8
+      - canal.instance.tsdb.enable=true
+      - canal.instance.gtidon=false
+      - canal.instance.filter.regex=amall.*
+    networks:
+      - b-amall
+
+networks:
+  b-amall:
+    external: true
