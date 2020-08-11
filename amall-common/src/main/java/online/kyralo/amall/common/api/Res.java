@@ -6,7 +6,7 @@ import lombok.ToString;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/19
  * \* Time: 10:14
  * \* Description: http响应封装

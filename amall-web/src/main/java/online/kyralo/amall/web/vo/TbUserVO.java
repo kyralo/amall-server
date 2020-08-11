@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
 
@@ -18,7 +19,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "TbUserVO", description = "用户模型")
-public class TbUserVO {
+public class TbUserVO extends Base {
 
     /**
      * 用户ID

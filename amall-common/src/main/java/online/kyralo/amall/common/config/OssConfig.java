@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020-05-14
  * \* Time: 20:28
  * \* Description:

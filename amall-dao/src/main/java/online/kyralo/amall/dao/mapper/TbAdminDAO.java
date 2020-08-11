@@ -37,14 +37,6 @@ public interface TbAdminDAO extends BaseDao<TbAdminDO> {
     int insert(TbAdminDO tbAdminDO);
 
     /**
-     * 更新管理员
-     *
-     * @param tbAdminDO 管理员
-     * @return 是否更新成功
-     */
-    int update(TbAdminDO tbAdminDO);
-
-    /**
      * 通过ID删除单个管理员
      *
      * @param id ID

@@ -37,14 +37,6 @@ public interface TbUserCollectionDAO extends BaseDao<TbUserCollectionDO> {
     int insert(TbUserCollectionDO tbUserCollectionDO);
 
     /**
-     * 更新用户收藏
-     *
-     * @param tbUserCollectionDO 用户收藏
-     * @return 是否更新成功
-     */
-    int update(TbUserCollectionDO tbUserCollectionDO);
-
-    /**
      * 通过ID删除单个用户收藏
      *
      * @param id ID

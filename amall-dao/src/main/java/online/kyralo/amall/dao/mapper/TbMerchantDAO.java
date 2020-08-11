@@ -37,14 +37,6 @@ public interface TbMerchantDAO extends BaseDao<TbMerchantDO> {
     int insert(TbMerchantDO tbMerchantDO);
 
     /**
-     * 更新商家
-     *
-     * @param tbMerchantDO 商家
-     * @return 是否更新成功
-     */
-    int update(TbMerchantDO tbMerchantDO);
-
-    /**
      * 通过ID删除单个商家
      *
      * @param id ID

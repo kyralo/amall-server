@@ -10,7 +10,7 @@
 //
 ///**
 // * \* Created with IntelliJ IDEA.
-// * \* @author: WangChen
+// * \* Author: WangChen
 // */
 //@EnableRabbit
 //@Configuration

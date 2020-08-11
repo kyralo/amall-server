@@ -37,14 +37,6 @@ public interface TbAccountPlatformDAO extends BaseDao<TbAccountPlatformDO> {
     int insert(TbAccountPlatformDO tbAccountPlatformDO);
 
     /**
-     * 更新第三方用户信息
-     *
-     * @param tbAccountPlatformDO 第三方用户信息
-     * @return 是否更新成功
-     */
-    int update(TbAccountPlatformDO tbAccountPlatformDO);
-
-    /**
      * 通过ID删除单个第三方用户信息
      *
      * @param id ID

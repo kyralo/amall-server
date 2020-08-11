@@ -41,13 +41,6 @@
         (#{id},#{parentCategoryId},#{name},#{info},#{iconUrl},#{picUrl},#{primary},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改商品类型-->
-    <update id="update">
-        UPDATE tb_commodity_category SET
-        parent_category_id=#{parentCategoryId},name=#{name},info=#{info},icon_url=#{iconUrl},pic_url=#{picUrl},is_primary=#{primary},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个商品类型-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_category

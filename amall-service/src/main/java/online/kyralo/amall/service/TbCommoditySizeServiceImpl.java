@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+/**
+ * @author wangchen
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class TbCommoditySizeServiceImpl implements TbCommoditySizeService {
@@ -66,7 +69,7 @@ public class TbCommoditySizeServiceImpl implements TbCommoditySizeService {
         TbCommoditySizeDO tbCommoditySizeDO = new TbCommoditySizeDO();
         copier.copy(tbCommoditySizeModel, tbCommoditySizeDO, null);
 
-        int i = tbCommoditySizeDAO.update(tbCommoditySizeDO);
+        int i = tbCommoditySizeDAO.updateByPrimaryKey(tbCommoditySizeDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+/**
+ * @author wangchen
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class TbAccountPlatformServiceImpl implements TbAccountPlatformService {
@@ -66,7 +69,7 @@ public class TbAccountPlatformServiceImpl implements TbAccountPlatformService {
         TbAccountPlatformDO tbAccountPlatformDO = new TbAccountPlatformDO();
         copier.copy(tbAccountPlatformModel, tbAccountPlatformDO, null);
 
-        int i = tbAccountPlatformDAO.update(tbAccountPlatformDO);
+        int i = tbAccountPlatformDAO.updateByPrimaryKey(tbAccountPlatformDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

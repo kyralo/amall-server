@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/20
  * \* Time: 7:45
  * \* Description:

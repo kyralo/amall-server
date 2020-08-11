@@ -37,14 +37,6 @@ public interface TbCommoditySizeDAO extends BaseDao<TbCommoditySizeDO> {
     int insert(TbCommoditySizeDO tbCommoditySizeDO);
 
     /**
-     * 更新sku表
-     *
-     * @param tbCommoditySizeDO sku表
-     * @return 是否更新成功
-     */
-    int update(TbCommoditySizeDO tbCommoditySizeDO);
-
-    /**
      * 通过ID删除单个sku表
      *
      * @param id ID

@@ -34,13 +34,6 @@
         VALUES (#{id},#{skuId},#{skuColor},#{skuSizeName},#{quantity},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改sku库存表-->
-    <update id="update">
-        UPDATE tb_commodity_sku_stock SET
-        sku_id=#{skuId},sku_color=#{skuColor},sku_size_name=#{skuSizeName},quantity=#{quantity},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个sku库存表-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_sku_stock

@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+/**
+ * @author wangchen
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class TbCommodityCategoryServiceImpl implements TbCommodityCategoryService {
@@ -66,7 +69,7 @@ public class TbCommodityCategoryServiceImpl implements TbCommodityCategoryServic
         TbCommodityCategoryDO tbCommodityCategoryDO = new TbCommodityCategoryDO();
         copier.copy(tbCommodityCategoryModel, tbCommodityCategoryDO, null);
 
-        int i = tbCommodityCategoryDAO.update(tbCommodityCategoryDO);
+        int i = tbCommodityCategoryDAO.updateByPrimaryKey(tbCommodityCategoryDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

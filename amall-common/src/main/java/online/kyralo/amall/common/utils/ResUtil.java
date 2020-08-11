@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/19
  * \* Time: 10:40
  * \* Description: Rest响应结果工具类

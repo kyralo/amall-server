@@ -37,14 +37,6 @@ public interface TbCommodityAttrDAO extends BaseDao<TbCommodityAttrDO> {
     int insert(TbCommodityAttrDO tbCommodityAttrDO);
 
     /**
-     * 更新销售属性表 (产品参数)
-     *
-     * @param tbCommodityAttrDO 销售属性表 (产品参数)
-     * @return 是否更新成功
-     */
-    int update(TbCommodityAttrDO tbCommodityAttrDO);
-
-    /**
      * 通过ID删除单个销售属性表 (产品参数)
      *
      * @param id ID

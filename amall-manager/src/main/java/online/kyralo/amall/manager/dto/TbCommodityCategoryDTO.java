@@ -2,6 +2,7 @@ package online.kyralo.amall.manager.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbCommodityCategoryDTO {
+public class TbCommodityCategoryDTO extends Base {
 
     /**
      * 商品类型ID

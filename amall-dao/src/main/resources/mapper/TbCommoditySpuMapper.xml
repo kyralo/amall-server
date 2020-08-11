@@ -45,13 +45,6 @@
         (#{id},#{brandId},#{categoryId},#{name},#{spuDesc},#{sellingPoint},#{unit},#{bannerUrl},#{mainUrl},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改商品spu表-->
-    <update id="update">
-        UPDATE tb_commodity_spu SET
-        brand_id=#{brandId},category_id=#{categoryId},name=#{name},spu_desc=#{spuDesc},selling_point=#{sellingPoint},unit=#{unit},banner_url=#{bannerUrl},main_url=#{mainUrl},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个商品spu表-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_spu

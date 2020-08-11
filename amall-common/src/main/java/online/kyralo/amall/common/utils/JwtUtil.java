@@ -24,7 +24,7 @@ import static online.kyralo.amall.common.constants.SecurityConstant.TOKEN_PREFIX
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/20
  * \* Time: 14:51
  * \* Description: jwt

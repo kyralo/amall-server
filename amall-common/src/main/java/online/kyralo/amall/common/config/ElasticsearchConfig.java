@@ -22,7 +22,7 @@
 //
 ///**
 // * \* Created with Intellij IDEA.
-// * \* @author: wangchen
+// * \* Author: wangchen
 // * \* Date: 2020/6/28
 // * \* Time: 8:54
 // * \* Description:

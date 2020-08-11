@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+/**
+ * @author wangchen
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class TbMerchantServiceImpl implements TbMerchantService {
@@ -66,7 +69,7 @@ public class TbMerchantServiceImpl implements TbMerchantService {
         TbMerchantDO tbMerchantDO = new TbMerchantDO();
         copier.copy(tbMerchantModel, tbMerchantDO, null);
 
-        int i = tbMerchantDAO.update(tbMerchantDO);
+        int i = tbMerchantDAO.updateByPrimaryKey(tbMerchantDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

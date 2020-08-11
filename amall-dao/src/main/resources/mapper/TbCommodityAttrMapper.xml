@@ -32,13 +32,6 @@
         VALUES (#{id},#{name},#{attrDesc},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改销售属性表 (产品参数)-->
-    <update id="update">
-        UPDATE tb_commodity_attr SET
-        name=#{name},desc=#{attrDesc},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个销售属性表 (产品参数)-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_attr

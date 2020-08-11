@@ -21,7 +21,7 @@ import java.time.Duration;
 
 /**
  * \* Created with IntelliJ IDEA.
- * \* @author: WangChen
+ * \* Author: WangChen
  * \* Date: 19-4-21
  * \* Time: 下午3:58
  * \* Description:

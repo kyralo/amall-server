@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="online.kyralo.amall.dao.mapper.TbUserCommentDAO">
+
+    <resultMap id="tbUserCommentMap" type="online.kyralo.amall.dao.dataobject.TbUserCommentDO">
+        <id property="id" column="id"/>
+        <result property="skuId" column="sku_id"/>
+        <result property="sendId" column="send_id"/>
+        <result property="answerCommentId" column="answer_comment_id"/>
+        <result property="content" column="content"/>
+        <result property="picUrls" column="pic_urls"/>
+        <result property="mark" column="mark"/>
+        <result property="ancestryId" column="ancestry_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,sku_id,send_id,answer_comment_id,content,pic_urls,mark,ancestry_id,create_time,update_time FROM
+        tb_user_comment
+    </sql>
+
+    <!--通过ID查询单个用户评论-->
+    <select id="findById" resultMap="tbUserCommentMap">
+        SELECT id,sku_id,send_id,answer_comment_id,content,pic_urls,ancestry_id,create_time,update_time,mark FROM
+        tb_user_comment
+        WHERE id=#{id}
+    </select>
+
+    <!--分页查询用户评论-->
+    <select id="findByPage" resultMap="tbUserCommentMap">
+        SELECT id,sku_id,send_id,answer_comment_id,content,pic_urls,ancestry_id,create_time,update_time,mark FROM
+        tb_user_comment
+    </select>
+
+    <!--新增用户评论-->
+    <insert id="insert">
+        INSERT INTO
+        tb_user_comment(id,sku_id,send_id,answer_comment_id,content,pic_urls,ancestry_id,create_time,update_time,mark)
+        VALUES
+        (#{id},#{skuId},#{sendId},#{answerCommentId},#{content},#{picUrls},#{ancestryId},#{createTime},#{updateTime},#{mark})
+    </insert>
+
+    <!--通过ID删除单个用户评论-->
+    <delete id="deleteById">
+        DELETE FROM tb_user_comment
+        WHERE id=#{id}
+    </delete>
+
+
+</mapper>

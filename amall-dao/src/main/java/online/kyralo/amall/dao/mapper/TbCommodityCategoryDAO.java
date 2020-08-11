@@ -37,14 +37,6 @@ public interface TbCommodityCategoryDAO extends BaseDao<TbCommodityCategoryDO> {
     int insert(TbCommodityCategoryDO tbCommodityCategoryDO);
 
     /**
-     * 更新商品类型
-     *
-     * @param tbCommodityCategoryDO 商品类型
-     * @return 是否更新成功
-     */
-    int update(TbCommodityCategoryDO tbCommodityCategoryDO);
-
-    /**
      * 通过ID删除单个商品类型
      *
      * @param id ID

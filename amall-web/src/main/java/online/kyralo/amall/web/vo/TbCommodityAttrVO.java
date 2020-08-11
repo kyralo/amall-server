@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
 
@@ -18,7 +19,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(value = "TbCommodityAttrVO", description = "销售属性表 (产品参数)模型")
-public class TbCommodityAttrVO {
+public class TbCommodityAttrVO extends Base {
 
     /**
      * 销售属性ID

@@ -6,7 +6,7 @@ import online.kyralo.amall.common.exceptions.BusinessException;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/19
  * \* Time: 11:14
  * \* Description: User

@@ -33,13 +33,6 @@
         VALUES (#{id},#{attrId},#{value},#{attrValueDesc},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改销售属性值-->
-    <update id="update">
-        UPDATE tb_commodity_attr_value SET
-        attr_id=#{attrId},value=#{value},attr_value_desc=#{attrValueDesc},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个销售属性值-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_attr_value

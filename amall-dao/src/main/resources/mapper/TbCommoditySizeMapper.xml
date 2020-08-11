@@ -33,13 +33,6 @@
         VALUES (#{id},#{skuId},#{sizeName},#{sizeDesc},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改sku表-->
-    <update id="update">
-        UPDATE tb_commodity_size SET
-        sku_id=#{skuId},size_name=#{sizeName},size_desc=#{sizeDesc},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个sku表-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_size

@@ -37,14 +37,6 @@ public interface TbCommodityBrandsDAO extends BaseDao<TbCommodityBrandsDO> {
     int insert(TbCommodityBrandsDO tbCommodityBrandsDO);
 
     /**
-     * 更新品牌表
-     *
-     * @param tbCommodityBrandsDO 品牌表
-     * @return 是否更新成功
-     */
-    int update(TbCommodityBrandsDO tbCommodityBrandsDO);
-
-    /**
      * 通过ID删除单个品牌表
      *
      * @param id ID

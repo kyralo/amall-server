@@ -50,13 +50,6 @@
         (#{id},#{spuId},#{merchantId},#{skuDesc},#{bannerUrl},#{mainUrl},#{commodityParameters},#{commodityGraphicDetails},#{commodityInEffect},#{commoditySizeSpecification},#{priceFee},#{priceScale},#{marketPriceFee},#{marketPriceScale},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改sku表-->
-    <update id="update">
-        UPDATE tb_commodity_sku SET
-        spu_id=#{spuId},merchant_id=#{merchantId},sku_desc=#{skuDesc},banner_url=#{bannerUrl},main_url=#{mainUrl},commodity_parameters=#{commodityParameters},commodity_graphic_details=#{commodityGraphicDetails},commodity_in_effect=#{commodityInEffect},commodity_size_specification=#{commoditySizeSpecification},price_fee=#{priceFee},price_scale=#{priceScale},market_price_fee=#{marketPriceFee},market_price_scale=#{marketPriceScale},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个sku表-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_sku

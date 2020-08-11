@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+/**
+ * @author wangchen
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class TbOrderServiceImpl implements TbOrderService {
@@ -65,7 +68,7 @@ public class TbOrderServiceImpl implements TbOrderService {
         TbOrderDO tbOrderDO = new TbOrderDO();
         copier.copy(tbOrderModel, tbOrderDO, null);
 
-        int i = tbOrderDAO.update(tbOrderDO);
+        int i = tbOrderDAO.updateByPrimaryKey(tbOrderDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

@@ -37,14 +37,6 @@ public interface TbOrderDAO extends BaseDao<TbOrderDO> {
     int insert(TbOrderDO tbOrderDO);
 
     /**
-     * 更新订单
-     *
-     * @param tbOrderDO 订单
-     * @return 是否更新成功
-     */
-    int update(TbOrderDO tbOrderDO);
-
-    /**
      * 通过ID删除单个订单
      *
      * @param id ID

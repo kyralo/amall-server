@@ -37,14 +37,6 @@ public interface TbUserAddressDAO extends BaseDao<TbUserAddressDO> {
     int insert(TbUserAddressDO tbUserAddressDO);
 
     /**
-     * 更新用户地址
-     *
-     * @param tbUserAddressDO 用户地址
-     * @return 是否更新成功
-     */
-    int update(TbUserAddressDO tbUserAddressDO);
-
-    /**
      * 通过ID删除单个用户地址
      *
      * @param id ID

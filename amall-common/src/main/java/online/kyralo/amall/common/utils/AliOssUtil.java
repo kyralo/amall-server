@@ -25,7 +25,7 @@ import java.util.UUID;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020-05-14
  * \* Time: 21:28
  * \* Description:

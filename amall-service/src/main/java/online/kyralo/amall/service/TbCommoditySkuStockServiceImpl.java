@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
+/**
+ * @author wangchen
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class TbCommoditySkuStockServiceImpl implements TbCommoditySkuStockService {
@@ -66,7 +69,7 @@ public class TbCommoditySkuStockServiceImpl implements TbCommoditySkuStockServic
         TbCommoditySkuStockDO tbCommoditySkuStockDO = new TbCommoditySkuStockDO();
         copier.copy(tbCommoditySkuStockModel, tbCommoditySkuStockDO, null);
 
-        int i = tbCommoditySkuStockDAO.update(tbCommoditySkuStockDO);
+        int i = tbCommoditySkuStockDAO.updateByPrimaryKey(tbCommoditySkuStockDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

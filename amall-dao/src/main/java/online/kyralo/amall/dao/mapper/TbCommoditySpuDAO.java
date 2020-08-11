@@ -37,14 +37,6 @@ public interface TbCommoditySpuDAO extends BaseDao<TbCommoditySpuDO> {
     int insert(TbCommoditySpuDO tbCommoditySpuDO);
 
     /**
-     * 更新商品spu表
-     *
-     * @param tbCommoditySpuDO 商品spu表
-     * @return 是否更新成功
-     */
-    int update(TbCommoditySpuDO tbCommoditySpuDO);
-
-    /**
      * 通过ID删除单个商品spu表
      *
      * @param id ID

@@ -48,13 +48,6 @@
         (#{id},#{num},#{userId},#{skuId},#{payFee},#{payScale},#{paymentType},#{postage},#{status},#{paymentTime},#{sendTime},#{endTime},#{closeTime},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改订单-->
-    <update id="update">
-        UPDATE tb_order SET
-        num=#{num},user_id=#{userId},sku_id=#{skuId},pay_fee=#{payFee},pay_scale=#{payScale},payment_type=#{paymentType},postage=#{postage},status=#{status},payment_time=#{paymentTime},send_time=#{sendTime},end_time=#{endTime},close_time=#{closeTime},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个订单-->
     <delete id="deleteById">
         DELETE FROM tb_order

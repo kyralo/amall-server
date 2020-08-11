@@ -37,14 +37,6 @@ public interface TbCommoditySkuDAO extends BaseDao<TbCommoditySkuDO> {
     int insert(TbCommoditySkuDO tbCommoditySkuDO);
 
     /**
-     * 更新sku表
-     *
-     * @param tbCommoditySkuDO sku表
-     * @return 是否更新成功
-     */
-    int update(TbCommoditySkuDO tbCommoditySkuDO);
-
-    /**
      * 通过ID删除单个sku表
      *
      * @param id ID

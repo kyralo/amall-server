@@ -44,13 +44,6 @@
         (#{id},#{name},#{mail},#{password},#{storeName},#{telephone},#{info},#{address},#{sex},#{avatarUrl},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改商家-->
-    <update id="update">
-        UPDATE tb_merchant SET
-        name=#{name},mail=#{mail},password=#{password},store_name=#{storeName},telephone=#{telephone},info=#{info},address=#{address},sex=#{sex},avatar_url=#{avatarUrl},status=#{status},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个商家-->
     <delete id="deleteById">
         DELETE FROM tb_merchant

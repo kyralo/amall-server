@@ -2,7 +2,7 @@ package online.kyralo.amall.common.constants;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/19
  * \* Time: 14:09
  * \* Description: 响应码

@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/30
  * \* Time: 22:25
  * \* Description: Amall 项目中使用到的一些通用方法

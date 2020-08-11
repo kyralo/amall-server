@@ -6,7 +6,7 @@ import online.kyralo.amall.common.exceptions.BusinessException;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/7/8
  * \* Time: 21:02
  * \* Description: 文件上传异常

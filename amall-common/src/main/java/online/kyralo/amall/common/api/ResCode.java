@@ -5,7 +5,7 @@ import online.kyralo.amall.common.constants.ResCodeConstant;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/19
  * \* Time: 9:22
  * \* Description: 业务响应码code

@@ -35,13 +35,6 @@
         VALUES (#{id},#{userId},#{province},#{city},#{district},#{zipCode},#{location},#{createTime},#{updateTime})
     </insert>
 
-    <!--修改用户地址-->
-    <update id="update">
-        UPDATE tb_user_address SET
-        user_id=#{userId},province=#{province},city=#{city},district=#{district},zip_code=#{zipCode},location=#{location},create_time=#{createTime},update_time=#{updateTime}
-        WHERE id=#{id}
-    </update>
-
     <!--通过ID删除单个用户地址-->
     <delete id="deleteById">
         DELETE FROM tb_user_address

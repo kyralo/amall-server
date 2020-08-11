@@ -37,14 +37,6 @@ public interface TbCommoditySkuStockDAO extends BaseDao<TbCommoditySkuStockDO> {
     int insert(TbCommoditySkuStockDO tbCommoditySkuStockDO);
 
     /**
-     * 更新sku库存表
-     *
-     * @param tbCommoditySkuStockDO sku库存表
-     * @return 是否更新成功
-     */
-    int update(TbCommoditySkuStockDO tbCommoditySkuStockDO);
-
-    /**
      * 通过ID删除单个sku库存表
      *
      * @param id ID
