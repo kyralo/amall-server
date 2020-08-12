@@ -9,7 +9,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 商家
+ * 商家 todo 加入图片属性说明
  */
 
 @Builder

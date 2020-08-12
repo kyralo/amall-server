@@ -21,4 +21,5 @@ import online.kyralo.amall.common.base.domain.Base;
 @AllArgsConstructor
 @ApiModel(value = "PUserVO", description = "用户页面模型")
 public class PUserVO extends Base {
+
 }

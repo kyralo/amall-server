@@ -140,6 +140,12 @@ public class PCommodityVO extends Base {
     public static class Commodity {
 
         /**
+         * 商品ID
+         */
+        @ApiModelProperty("商品ID")
+        private String id;
+
+        /**
          * 商品预览图 列表
          */
         @ApiModelProperty("商品预览图 列表")

@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/6/30
  * \* Time: 22:07
  * \* Description: 通用测试
@@ -24,7 +24,6 @@ public class CommonTest {
 
     @Test
     public void excTest() {
-
     }
 
     @Test
