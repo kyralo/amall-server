@@ -31,7 +31,7 @@ public class PHomeVO extends Base {
     @ToString
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class CommodityKind {
+    public static class CommodityKind extends Base {
         /**
          * 一级类型
          */
@@ -98,7 +98,7 @@ public class PHomeVO extends Base {
     @ToString
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ShowModule {
+    public static class ShowModule extends Base {
 
         /**
          * 展示图

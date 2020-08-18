@@ -32,7 +32,7 @@ public class PCommodityVO extends Base {
     @ToString
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Parameter<T> {
+    public static class Parameter<T> extends Base {
         /**
          * 商品参数名
          */
@@ -51,7 +51,7 @@ public class PCommodityVO extends Base {
     @ToString
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class SalesValue {
+    public static class SalesValue extends Base {
 
         /**
          * 商品颜色名
@@ -91,7 +91,7 @@ public class PCommodityVO extends Base {
     @ToString
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Combo {
+    public static class Combo extends Base {
 
         /**
          * 套餐名
@@ -137,7 +137,7 @@ public class PCommodityVO extends Base {
     @ToString
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Commodity {
+    public static class Commodity extends Base {
 
         /**
          * 商品ID
@@ -156,6 +156,12 @@ public class PCommodityVO extends Base {
          */
         @ApiModelProperty("商品名称")
         private String name;
+
+        /**
+         * 商品品牌名称
+         */
+        @ApiModelProperty("商品品牌名称")
+        private String brandName;
 
         /**
          * 商品销售属性
@@ -223,7 +229,7 @@ public class PCommodityVO extends Base {
     @ApiModelProperty("尺码说明")
     private List<Parameter<Array>> commoditySizeSpec;
 
-    public static class Merchant {
+    public static class Merchant extends Base {
 
         /**
          * 商家id

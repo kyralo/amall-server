@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -56,7 +57,7 @@ public class PCartVO extends Base {
     @ToString
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class Parameter<T> {
+    public static class Parameter<T> extends Base {
         /**
          * 商品参数名
          */

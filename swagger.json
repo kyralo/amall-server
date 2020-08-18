@@ -1,0 +1,4953 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "有个商城api文档",
+    "version": "1.0",
+    "title": "有个商城API文档",
+    "termsOfService": "#",
+    "contact": {
+      "name": "kyralo",
+      "url": "https://amall.kyralo.online",
+      "email": "kyralo721@gmail.com"
+    },
+    "license": {
+      "url": "#",
+      "name": ""
+    }
+  },
+  "host": "localhost:8888",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "PC端页面 主页",
+      "description": "P Home Controller"
+    },
+    {
+      "name": "PC端页面 秒杀",
+      "description": "P Seckill Controller"
+    },
+    {
+      "name": "PC端页面 购物车",
+      "description": "P Cart Controller"
+    },
+    {
+      "name": "basic-error-controller",
+      "description": "Basic Error Controller"
+    },
+    {
+      "name": "品牌表",
+      "description": "Tb Commodity Brands Controller"
+    },
+    {
+      "name": "商品sku表",
+      "description": "Tb Commodity Sku Controller"
+    },
+    {
+      "name": "商品spu表",
+      "description": "Tb Commodity Spu Controller"
+    },
+    {
+      "name": "商品尺寸表",
+      "description": "Tb Commodity Size Controller"
+    },
+    {
+      "name": "商品库存表",
+      "description": "Tb Commodity Sku Stock Controller"
+    },
+    {
+      "name": "商品类型",
+      "description": "Tb Commodity Category Controller"
+    },
+    {
+      "name": "商家",
+      "description": "Tb Merchant Controller"
+    },
+    {
+      "name": "用户",
+      "description": "Tb User Controller"
+    },
+    {
+      "name": "用户地址",
+      "description": "Tb User Address Controller"
+    },
+    {
+      "name": "用户收藏",
+      "description": "Tb User Collection Controller"
+    },
+    {
+      "name": "用户评论",
+      "description": "Tb User Comment Controller"
+    },
+    {
+      "name": "第三方用户信息",
+      "description": "Tb Account Platform Controller"
+    },
+    {
+      "name": "管理员",
+      "description": "Tb Admin Controller"
+    },
+    {
+      "name": "订单",
+      "description": "Tb Order Controller"
+    },
+    {
+      "name": "销售属性值",
+      "description": "Tb Commodity Attr Value Controller"
+    },
+    {
+      "name": "销售属性表 (产品参数)",
+      "description": "Tb Commodity Attr Controller"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/account_platforms": {
+      "get": {
+        "tags": [
+          "第三方用户信息"
+        ],
+        "summary": "分页查询第三方用户信息",
+        "operationId": "findByPageUsingGET",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAccountPlatformVO",
+              "$ref": "#/definitions/TbAccountPlatformVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "第三方用户信息"
+        ],
+        "summary": "新增第三方用户信息",
+        "operationId": "insertUsingPOST",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbAccountPlatform",
+            "description": "tbAccountPlatform",
+            "required": true,
+            "schema": {
+              "originalRef": "TbAccountPlatformVO",
+              "$ref": "#/definitions/TbAccountPlatformVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAccountPlatformVO",
+              "$ref": "#/definitions/TbAccountPlatformVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "第三方用户信息"
+        ],
+        "summary": "修改第三方用户信息",
+        "operationId": "updateUsingPUT",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbAccountPlatform",
+            "description": "tbAccountPlatform",
+            "required": true,
+            "schema": {
+              "originalRef": "TbAccountPlatformVO",
+              "$ref": "#/definitions/TbAccountPlatformVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAccountPlatformVO",
+              "$ref": "#/definitions/TbAccountPlatformVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/account_platforms/{id}": {
+      "get": {
+        "tags": [
+          "第三方用户信息"
+        ],
+        "summary": "通过ID查询单个第三方用户信息",
+        "operationId": "findByIdUsingGET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAccountPlatformVO",
+              "$ref": "#/definitions/TbAccountPlatformVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "第三方用户信息"
+        ],
+        "summary": "通过ID删除单个第三方用户信息",
+        "operationId": "deleteByIdUsingDELETE",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAccountPlatformVO",
+              "$ref": "#/definitions/TbAccountPlatformVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/admins": {
+      "get": {
+        "tags": [
+          "管理员"
+        ],
+        "summary": "分页查询管理员",
+        "operationId": "findByPageUsingGET_1",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAdminVO",
+              "$ref": "#/definitions/TbAdminVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "管理员"
+        ],
+        "summary": "新增管理员",
+        "operationId": "insertUsingPOST_1",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbAdmin",
+            "description": "tbAdmin",
+            "required": true,
+            "schema": {
+              "originalRef": "TbAdminVO",
+              "$ref": "#/definitions/TbAdminVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAdminVO",
+              "$ref": "#/definitions/TbAdminVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "管理员"
+        ],
+        "summary": "修改管理员",
+        "operationId": "updateUsingPUT_1",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbAdmin",
+            "description": "tbAdmin",
+            "required": true,
+            "schema": {
+              "originalRef": "TbAdminVO",
+              "$ref": "#/definitions/TbAdminVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAdminVO",
+              "$ref": "#/definitions/TbAdminVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/admins/{id}": {
+      "get": {
+        "tags": [
+          "管理员"
+        ],
+        "summary": "通过ID查询单个管理员",
+        "operationId": "findByIdUsingGET_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAdminVO",
+              "$ref": "#/definitions/TbAdminVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "管理员"
+        ],
+        "summary": "通过ID删除单个管理员",
+        "operationId": "deleteByIdUsingDELETE_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbAdminVO",
+              "$ref": "#/definitions/TbAdminVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/cart": {
+      "get": {
+        "tags": [
+          "PC端页面 购物车"
+        ],
+        "summary": "查询 购物车页 信息",
+        "operationId": "getPageInfoUsingGET",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "PCartVO",
+              "$ref": "#/definitions/PCartVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_attr_values": {
+      "get": {
+        "tags": [
+          "销售属性值"
+        ],
+        "summary": "分页查询销售属性值",
+        "operationId": "findByPageUsingGET_3",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrValueVO",
+              "$ref": "#/definitions/TbCommodityAttrValueVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "销售属性值"
+        ],
+        "summary": "新增销售属性值",
+        "operationId": "insertUsingPOST_3",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityAttrValue",
+            "description": "tbCommodityAttrValue",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityAttrValueVO",
+              "$ref": "#/definitions/TbCommodityAttrValueVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrValueVO",
+              "$ref": "#/definitions/TbCommodityAttrValueVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "销售属性值"
+        ],
+        "summary": "修改销售属性值",
+        "operationId": "updateUsingPUT_3",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityAttrValue",
+            "description": "tbCommodityAttrValue",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityAttrValueVO",
+              "$ref": "#/definitions/TbCommodityAttrValueVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrValueVO",
+              "$ref": "#/definitions/TbCommodityAttrValueVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_attr_values/{id}": {
+      "get": {
+        "tags": [
+          "销售属性值"
+        ],
+        "summary": "通过ID查询单个销售属性值",
+        "operationId": "findByIdUsingGET_3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrValueVO",
+              "$ref": "#/definitions/TbCommodityAttrValueVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "销售属性值"
+        ],
+        "summary": "通过ID删除单个销售属性值",
+        "operationId": "deleteByIdUsingDELETE_3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrValueVO",
+              "$ref": "#/definitions/TbCommodityAttrValueVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_attrs": {
+      "get": {
+        "tags": [
+          "销售属性表 (产品参数)"
+        ],
+        "summary": "分页查询销售属性表 (产品参数)",
+        "operationId": "findByPageUsingGET_2",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrVO",
+              "$ref": "#/definitions/TbCommodityAttrVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "销售属性表 (产品参数)"
+        ],
+        "summary": "新增销售属性表 (产品参数)",
+        "operationId": "insertUsingPOST_2",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityAttr",
+            "description": "tbCommodityAttr",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityAttrVO",
+              "$ref": "#/definitions/TbCommodityAttrVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrVO",
+              "$ref": "#/definitions/TbCommodityAttrVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "销售属性表 (产品参数)"
+        ],
+        "summary": "修改销售属性表 (产品参数)",
+        "operationId": "updateUsingPUT_2",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityAttr",
+            "description": "tbCommodityAttr",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityAttrVO",
+              "$ref": "#/definitions/TbCommodityAttrVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrVO",
+              "$ref": "#/definitions/TbCommodityAttrVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_attrs/{id}": {
+      "get": {
+        "tags": [
+          "销售属性表 (产品参数)"
+        ],
+        "summary": "通过ID查询单个销售属性表 (产品参数)",
+        "operationId": "findByIdUsingGET_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrVO",
+              "$ref": "#/definitions/TbCommodityAttrVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "销售属性表 (产品参数)"
+        ],
+        "summary": "通过ID删除单个销售属性表 (产品参数)",
+        "operationId": "deleteByIdUsingDELETE_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityAttrVO",
+              "$ref": "#/definitions/TbCommodityAttrVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_brands": {
+      "get": {
+        "tags": [
+          "品牌表"
+        ],
+        "summary": "分页查询品牌表",
+        "operationId": "findByPageUsingGET_4",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityBrandsVO",
+              "$ref": "#/definitions/TbCommodityBrandsVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "品牌表"
+        ],
+        "summary": "新增品牌表",
+        "operationId": "insertUsingPOST_4",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityBrands",
+            "description": "tbCommodityBrands",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityBrandsVO",
+              "$ref": "#/definitions/TbCommodityBrandsVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityBrandsVO",
+              "$ref": "#/definitions/TbCommodityBrandsVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "品牌表"
+        ],
+        "summary": "修改品牌表",
+        "operationId": "updateUsingPUT_4",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityBrands",
+            "description": "tbCommodityBrands",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityBrandsVO",
+              "$ref": "#/definitions/TbCommodityBrandsVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityBrandsVO",
+              "$ref": "#/definitions/TbCommodityBrandsVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_brands/{id}": {
+      "get": {
+        "tags": [
+          "品牌表"
+        ],
+        "summary": "通过ID查询单个品牌表",
+        "operationId": "findByIdUsingGET_4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityBrandsVO",
+              "$ref": "#/definitions/TbCommodityBrandsVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "品牌表"
+        ],
+        "summary": "通过ID删除单个品牌表",
+        "operationId": "deleteByIdUsingDELETE_4",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityBrandsVO",
+              "$ref": "#/definitions/TbCommodityBrandsVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_sizes": {
+      "get": {
+        "tags": [
+          "商品尺寸表"
+        ],
+        "summary": "分页查询sku表",
+        "operationId": "findByPageUsingGET_6",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySizeVO",
+              "$ref": "#/definitions/TbCommoditySizeVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "商品尺寸表"
+        ],
+        "summary": "新增sku表",
+        "operationId": "insertUsingPOST_6",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySize",
+            "description": "tbCommoditySize",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySizeVO",
+              "$ref": "#/definitions/TbCommoditySizeVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySizeVO",
+              "$ref": "#/definitions/TbCommoditySizeVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "商品尺寸表"
+        ],
+        "summary": "修改sku表",
+        "operationId": "updateUsingPUT_6",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySize",
+            "description": "tbCommoditySize",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySizeVO",
+              "$ref": "#/definitions/TbCommoditySizeVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySizeVO",
+              "$ref": "#/definitions/TbCommoditySizeVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_sizes/{id}": {
+      "get": {
+        "tags": [
+          "商品尺寸表"
+        ],
+        "summary": "通过ID查询单个sku表",
+        "operationId": "findByIdUsingGET_6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySizeVO",
+              "$ref": "#/definitions/TbCommoditySizeVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "商品尺寸表"
+        ],
+        "summary": "通过ID删除单个sku表",
+        "operationId": "deleteByIdUsingDELETE_6",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySizeVO",
+              "$ref": "#/definitions/TbCommoditySizeVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_sku_stocks": {
+      "get": {
+        "tags": [
+          "商品库存表"
+        ],
+        "summary": "分页查询sku库存表",
+        "operationId": "findByPageUsingGET_8",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuStockVO",
+              "$ref": "#/definitions/TbCommoditySkuStockVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "商品库存表"
+        ],
+        "summary": "新增sku库存表",
+        "operationId": "insertUsingPOST_8",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySkuStock",
+            "description": "tbCommoditySkuStock",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySkuStockVO",
+              "$ref": "#/definitions/TbCommoditySkuStockVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuStockVO",
+              "$ref": "#/definitions/TbCommoditySkuStockVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "商品库存表"
+        ],
+        "summary": "修改sku库存表",
+        "operationId": "updateUsingPUT_8",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySkuStock",
+            "description": "tbCommoditySkuStock",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySkuStockVO",
+              "$ref": "#/definitions/TbCommoditySkuStockVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuStockVO",
+              "$ref": "#/definitions/TbCommoditySkuStockVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_sku_stocks/{id}": {
+      "get": {
+        "tags": [
+          "商品库存表"
+        ],
+        "summary": "通过ID查询单个sku库存表",
+        "operationId": "findByIdUsingGET_8",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuStockVO",
+              "$ref": "#/definitions/TbCommoditySkuStockVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "商品库存表"
+        ],
+        "summary": "通过ID删除单个sku库存表",
+        "operationId": "deleteByIdUsingDELETE_8",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuStockVO",
+              "$ref": "#/definitions/TbCommoditySkuStockVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_skus": {
+      "get": {
+        "tags": [
+          "商品sku表"
+        ],
+        "summary": "分页查询sku表",
+        "operationId": "findByPageUsingGET_7",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuVO",
+              "$ref": "#/definitions/TbCommoditySkuVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "商品sku表"
+        ],
+        "summary": "新增sku表",
+        "operationId": "insertUsingPOST_7",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySku",
+            "description": "tbCommoditySku",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySkuVO",
+              "$ref": "#/definitions/TbCommoditySkuVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuVO",
+              "$ref": "#/definitions/TbCommoditySkuVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "商品sku表"
+        ],
+        "summary": "修改sku表",
+        "operationId": "updateUsingPUT_7",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySku",
+            "description": "tbCommoditySku",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySkuVO",
+              "$ref": "#/definitions/TbCommoditySkuVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuVO",
+              "$ref": "#/definitions/TbCommoditySkuVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_skus/{id}": {
+      "get": {
+        "tags": [
+          "商品sku表"
+        ],
+        "summary": "通过ID查询单个sku表",
+        "operationId": "findByIdUsingGET_7",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuVO",
+              "$ref": "#/definitions/TbCommoditySkuVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "商品sku表"
+        ],
+        "summary": "通过ID删除单个sku表",
+        "operationId": "deleteByIdUsingDELETE_7",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySkuVO",
+              "$ref": "#/definitions/TbCommoditySkuVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_spus": {
+      "get": {
+        "tags": [
+          "商品spu表"
+        ],
+        "summary": "分页查询商品spu表",
+        "operationId": "findByPageUsingGET_9",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySpuVO",
+              "$ref": "#/definitions/TbCommoditySpuVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "商品spu表"
+        ],
+        "summary": "新增商品spu表",
+        "operationId": "insertUsingPOST_9",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySpu",
+            "description": "tbCommoditySpu",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySpuVO",
+              "$ref": "#/definitions/TbCommoditySpuVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySpuVO",
+              "$ref": "#/definitions/TbCommoditySpuVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "商品spu表"
+        ],
+        "summary": "修改商品spu表",
+        "operationId": "updateUsingPUT_9",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommoditySpu",
+            "description": "tbCommoditySpu",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommoditySpuVO",
+              "$ref": "#/definitions/TbCommoditySpuVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySpuVO",
+              "$ref": "#/definitions/TbCommoditySpuVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/commodity_spus/{id}": {
+      "get": {
+        "tags": [
+          "商品spu表"
+        ],
+        "summary": "通过ID查询单个商品spu表",
+        "operationId": "findByIdUsingGET_9",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySpuVO",
+              "$ref": "#/definitions/TbCommoditySpuVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "商品spu表"
+        ],
+        "summary": "通过ID删除单个商品spu表",
+        "operationId": "deleteByIdUsingDELETE_9",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommoditySpuVO",
+              "$ref": "#/definitions/TbCommoditySpuVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/home": {
+      "get": {
+        "tags": [
+          "PC端页面 主页"
+        ],
+        "summary": "查询主页信息",
+        "operationId": "getPageInfoUsingGET_1",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "PHomeVO",
+              "$ref": "#/definitions/PHomeVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/merchants": {
+      "get": {
+        "tags": [
+          "商家"
+        ],
+        "summary": "分页查询商家",
+        "operationId": "findByPageUsingGET_10",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbMerchantVO",
+              "$ref": "#/definitions/TbMerchantVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "商家"
+        ],
+        "summary": "新增商家",
+        "operationId": "insertUsingPOST_10",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbMerchant",
+            "description": "tbMerchant",
+            "required": true,
+            "schema": {
+              "originalRef": "TbMerchantVO",
+              "$ref": "#/definitions/TbMerchantVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbMerchantVO",
+              "$ref": "#/definitions/TbMerchantVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "商家"
+        ],
+        "summary": "修改商家",
+        "operationId": "updateUsingPUT_10",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbMerchant",
+            "description": "tbMerchant",
+            "required": true,
+            "schema": {
+              "originalRef": "TbMerchantVO",
+              "$ref": "#/definitions/TbMerchantVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbMerchantVO",
+              "$ref": "#/definitions/TbMerchantVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/merchants/{id}": {
+      "get": {
+        "tags": [
+          "商家"
+        ],
+        "summary": "通过ID查询单个商家",
+        "operationId": "findByIdUsingGET_10",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbMerchantVO",
+              "$ref": "#/definitions/TbMerchantVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "商家"
+        ],
+        "summary": "通过ID删除单个商家",
+        "operationId": "deleteByIdUsingDELETE_10",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbMerchantVO",
+              "$ref": "#/definitions/TbMerchantVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/orders": {
+      "get": {
+        "tags": [
+          "订单"
+        ],
+        "summary": "分页查询订单",
+        "operationId": "findByPageUsingGET_11",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbOrderVO",
+              "$ref": "#/definitions/TbOrderVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "订单"
+        ],
+        "summary": "新增订单",
+        "operationId": "insertUsingPOST_11",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbOrder",
+            "description": "tbOrder",
+            "required": true,
+            "schema": {
+              "originalRef": "TbOrderVO",
+              "$ref": "#/definitions/TbOrderVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbOrderVO",
+              "$ref": "#/definitions/TbOrderVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "订单"
+        ],
+        "summary": "修改订单",
+        "operationId": "updateUsingPUT_11",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbOrder",
+            "description": "tbOrder",
+            "required": true,
+            "schema": {
+              "originalRef": "TbOrderVO",
+              "$ref": "#/definitions/TbOrderVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbOrderVO",
+              "$ref": "#/definitions/TbOrderVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/orders/{id}": {
+      "get": {
+        "tags": [
+          "订单"
+        ],
+        "summary": "通过ID查询单个订单",
+        "operationId": "findByIdUsingGET_11",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbOrderVO",
+              "$ref": "#/definitions/TbOrderVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "订单"
+        ],
+        "summary": "通过ID删除单个订单",
+        "operationId": "deleteByIdUsingDELETE_11",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbOrderVO",
+              "$ref": "#/definitions/TbOrderVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/seckill": {
+      "get": {
+        "tags": [
+          "PC端页面 秒杀"
+        ],
+        "summary": "查询 秒杀页 信息",
+        "operationId": "getPageInfoUsingGET_2",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "PSeckillVO",
+              "$ref": "#/definitions/PSeckillVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/user_addresss": {
+      "get": {
+        "tags": [
+          "用户地址"
+        ],
+        "summary": "分页查询用户地址",
+        "operationId": "findByPageUsingGET_12",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserAddressVO",
+              "$ref": "#/definitions/TbUserAddressVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "用户地址"
+        ],
+        "summary": "新增用户地址",
+        "operationId": "insertUsingPOST_12",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUserAddress",
+            "description": "tbUserAddress",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserAddressVO",
+              "$ref": "#/definitions/TbUserAddressVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserAddressVO",
+              "$ref": "#/definitions/TbUserAddressVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "用户地址"
+        ],
+        "summary": "修改用户地址",
+        "operationId": "updateUsingPUT_12",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUserAddress",
+            "description": "tbUserAddress",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserAddressVO",
+              "$ref": "#/definitions/TbUserAddressVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserAddressVO",
+              "$ref": "#/definitions/TbUserAddressVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/user_addresss/{id}": {
+      "get": {
+        "tags": [
+          "用户地址"
+        ],
+        "summary": "通过ID查询单个用户地址",
+        "operationId": "findByIdUsingGET_12",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserAddressVO",
+              "$ref": "#/definitions/TbUserAddressVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "用户地址"
+        ],
+        "summary": "通过ID删除单个用户地址",
+        "operationId": "deleteByIdUsingDELETE_12",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserAddressVO",
+              "$ref": "#/definitions/TbUserAddressVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/user_collections": {
+      "get": {
+        "tags": [
+          "用户收藏"
+        ],
+        "summary": "分页查询用户收藏",
+        "operationId": "findByPageUsingGET_13",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCollectionVO",
+              "$ref": "#/definitions/TbUserCollectionVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "用户收藏"
+        ],
+        "summary": "新增用户收藏",
+        "operationId": "insertUsingPOST_13",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUserCollection",
+            "description": "tbUserCollection",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserCollectionVO",
+              "$ref": "#/definitions/TbUserCollectionVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCollectionVO",
+              "$ref": "#/definitions/TbUserCollectionVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "用户收藏"
+        ],
+        "summary": "修改用户收藏",
+        "operationId": "updateUsingPUT_13",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUserCollection",
+            "description": "tbUserCollection",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserCollectionVO",
+              "$ref": "#/definitions/TbUserCollectionVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCollectionVO",
+              "$ref": "#/definitions/TbUserCollectionVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/user_collections/{id}": {
+      "get": {
+        "tags": [
+          "用户收藏"
+        ],
+        "summary": "通过ID查询单个用户收藏",
+        "operationId": "findByIdUsingGET_13",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCollectionVO",
+              "$ref": "#/definitions/TbUserCollectionVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "用户收藏"
+        ],
+        "summary": "通过ID删除单个用户收藏",
+        "operationId": "deleteByIdUsingDELETE_13",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCollectionVO",
+              "$ref": "#/definitions/TbUserCollectionVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "tags": [
+          "用户"
+        ],
+        "summary": "分页查询用户",
+        "operationId": "findByPageUsingGET_15",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserVO",
+              "$ref": "#/definitions/TbUserVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "用户"
+        ],
+        "summary": "新增用户",
+        "operationId": "insertUsingPOST_15",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUser",
+            "description": "tbUser",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserVO",
+              "$ref": "#/definitions/TbUserVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserVO",
+              "$ref": "#/definitions/TbUserVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "用户"
+        ],
+        "summary": "修改用户",
+        "operationId": "updateUsingPUT_15",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUser",
+            "description": "tbUser",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserVO",
+              "$ref": "#/definitions/TbUserVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserVO",
+              "$ref": "#/definitions/TbUserVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "tags": [
+          "用户"
+        ],
+        "summary": "通过ID查询单个用户",
+        "operationId": "findByIdUsingGET_15",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserVO",
+              "$ref": "#/definitions/TbUserVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "用户"
+        ],
+        "summary": "通过ID删除单个用户",
+        "operationId": "deleteByIdUsingDELETE_15",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserVO",
+              "$ref": "#/definitions/TbUserVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/commodity_categorys": {
+      "get": {
+        "tags": [
+          "商品类型"
+        ],
+        "summary": "分页查询商品类型",
+        "operationId": "findByPageUsingGET_5",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityCategoryVO",
+              "$ref": "#/definitions/TbCommodityCategoryVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "商品类型"
+        ],
+        "summary": "新增商品类型",
+        "operationId": "insertUsingPOST_5",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityCategory",
+            "description": "tbCommodityCategory",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityCategoryVO",
+              "$ref": "#/definitions/TbCommodityCategoryVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityCategoryVO",
+              "$ref": "#/definitions/TbCommodityCategoryVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "商品类型"
+        ],
+        "summary": "修改商品类型",
+        "operationId": "updateUsingPUT_5",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbCommodityCategory",
+            "description": "tbCommodityCategory",
+            "required": true,
+            "schema": {
+              "originalRef": "TbCommodityCategoryVO",
+              "$ref": "#/definitions/TbCommodityCategoryVO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityCategoryVO",
+              "$ref": "#/definitions/TbCommodityCategoryVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/commodity_categorys/{id}": {
+      "get": {
+        "tags": [
+          "商品类型"
+        ],
+        "summary": "通过ID查询单个商品类型",
+        "operationId": "findByIdUsingGET_5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityCategoryVO",
+              "$ref": "#/definitions/TbCommodityCategoryVO"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "商品类型"
+        ],
+        "summary": "通过ID删除单个商品类型",
+        "operationId": "deleteByIdUsingDELETE_5",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbCommodityCategoryVO",
+              "$ref": "#/definitions/TbCommodityCategoryVO"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/error": {
+      "get": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingGET",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "head": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingHEAD",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingPOST",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingPUT",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingDELETE",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      },
+      "options": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingOPTIONS",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "tags": [
+          "basic-error-controller"
+        ],
+        "summary": "error",
+        "operationId": "errorUsingPATCH",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/tbUserComments": {
+      "get": {
+        "tags": [
+          "用户评论"
+        ],
+        "summary": "分页查询用户评论",
+        "operationId": "findByPageUsingGET_14",
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页号",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCommentModel",
+              "$ref": "#/definitions/TbUserCommentModel"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "用户评论"
+        ],
+        "summary": "新增用户评论",
+        "operationId": "insertUsingPOST_14",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUserComment",
+            "description": "tbUserComment",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserCommentModel",
+              "$ref": "#/definitions/TbUserCommentModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCommentModel",
+              "$ref": "#/definitions/TbUserCommentModel"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "用户评论"
+        ],
+        "summary": "修改用户评论",
+        "operationId": "updateUsingPUT_14",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "tbUserComment",
+            "description": "tbUserComment",
+            "required": true,
+            "schema": {
+              "originalRef": "TbUserCommentModel",
+              "$ref": "#/definitions/TbUserCommentModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCommentModel",
+              "$ref": "#/definitions/TbUserCommentModel"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/tbUserComments/{id}": {
+      "get": {
+        "tags": [
+          "用户评论"
+        ],
+        "summary": "通过ID查询单个用户评论",
+        "operationId": "findByIdUsingGET_14",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCommentModel",
+              "$ref": "#/definitions/TbUserCommentModel"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "用户评论"
+        ],
+        "summary": "通过ID删除单个用户评论",
+        "operationId": "deleteByIdUsingDELETE_14",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TbUserCommentModel",
+              "$ref": "#/definitions/TbUserCommentModel"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "Commodity": {
+      "type": "object",
+      "properties": {
+        "brandName": {
+          "type": "string",
+          "description": "商品品牌名称"
+        },
+        "discount": {
+          "type": "number",
+          "format": "float",
+          "description": "折扣"
+        },
+        "id": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "preImgUrl": {
+          "type": "string",
+          "description": "商品预览图"
+        },
+        "preStock": {
+          "type": "integer",
+          "format": "int32",
+          "description": "商品秒杀前存货"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "商品原价"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int32",
+          "description": "存货"
+        }
+      },
+      "title": "Commodity"
+    },
+    "CommodityKind": {
+      "type": "object",
+      "properties": {
+        "primaryCategory": {
+          "description": "一级类型",
+          "originalRef": "TbCommodityCategoryVO",
+          "$ref": "#/definitions/TbCommodityCategoryVO"
+        },
+        "secondCategories": {
+          "type": "array",
+          "description": "二级类型 列表",
+          "items": {
+            "originalRef": "TbCommodityCategoryVO",
+            "$ref": "#/definitions/TbCommodityCategoryVO"
+          }
+        }
+      },
+      "title": "CommodityKind"
+    },
+    "ModelAndView": {
+      "type": "object",
+      "properties": {
+        "empty": {
+          "type": "boolean"
+        },
+        "model": {
+          "type": "object"
+        },
+        "modelMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "reference": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "100 CONTINUE",
+            "101 SWITCHING_PROTOCOLS",
+            "102 PROCESSING",
+            "103 CHECKPOINT",
+            "200 OK",
+            "201 CREATED",
+            "202 ACCEPTED",
+            "203 NON_AUTHORITATIVE_INFORMATION",
+            "204 NO_CONTENT",
+            "205 RESET_CONTENT",
+            "206 PARTIAL_CONTENT",
+            "207 MULTI_STATUS",
+            "208 ALREADY_REPORTED",
+            "226 IM_USED",
+            "300 MULTIPLE_CHOICES",
+            "301 MOVED_PERMANENTLY",
+            "302 FOUND",
+            "302 MOVED_TEMPORARILY",
+            "303 SEE_OTHER",
+            "304 NOT_MODIFIED",
+            "305 USE_PROXY",
+            "307 TEMPORARY_REDIRECT",
+            "308 PERMANENT_REDIRECT",
+            "400 BAD_REQUEST",
+            "401 UNAUTHORIZED",
+            "402 PAYMENT_REQUIRED",
+            "403 FORBIDDEN",
+            "404 NOT_FOUND",
+            "405 METHOD_NOT_ALLOWED",
+            "406 NOT_ACCEPTABLE",
+            "407 PROXY_AUTHENTICATION_REQUIRED",
+            "408 REQUEST_TIMEOUT",
+            "409 CONFLICT",
+            "410 GONE",
+            "411 LENGTH_REQUIRED",
+            "412 PRECONDITION_FAILED",
+            "413 PAYLOAD_TOO_LARGE",
+            "413 REQUEST_ENTITY_TOO_LARGE",
+            "414 URI_TOO_LONG",
+            "414 REQUEST_URI_TOO_LONG",
+            "415 UNSUPPORTED_MEDIA_TYPE",
+            "416 REQUESTED_RANGE_NOT_SATISFIABLE",
+            "417 EXPECTATION_FAILED",
+            "418 I_AM_A_TEAPOT",
+            "419 INSUFFICIENT_SPACE_ON_RESOURCE",
+            "420 METHOD_FAILURE",
+            "421 DESTINATION_LOCKED",
+            "422 UNPROCESSABLE_ENTITY",
+            "423 LOCKED",
+            "424 FAILED_DEPENDENCY",
+            "425 TOO_EARLY",
+            "426 UPGRADE_REQUIRED",
+            "428 PRECONDITION_REQUIRED",
+            "429 TOO_MANY_REQUESTS",
+            "431 REQUEST_HEADER_FIELDS_TOO_LARGE",
+            "451 UNAVAILABLE_FOR_LEGAL_REASONS",
+            "500 INTERNAL_SERVER_ERROR",
+            "501 NOT_IMPLEMENTED",
+            "502 BAD_GATEWAY",
+            "503 SERVICE_UNAVAILABLE",
+            "504 GATEWAY_TIMEOUT",
+            "505 HTTP_VERSION_NOT_SUPPORTED",
+            "506 VARIANT_ALSO_NEGOTIATES",
+            "507 INSUFFICIENT_STORAGE",
+            "508 LOOP_DETECTED",
+            "509 BANDWIDTH_LIMIT_EXCEEDED",
+            "510 NOT_EXTENDED",
+            "511 NETWORK_AUTHENTICATION_REQUIRED"
+          ]
+        },
+        "view": {
+          "originalRef": "View",
+          "$ref": "#/definitions/View"
+        },
+        "viewName": {
+          "type": "string"
+        }
+      },
+      "title": "ModelAndView"
+    },
+    "PAdvertisingVO": {
+      "type": "object",
+      "properties": {
+        "destinationId": {
+          "type": "string",
+          "description": "秒杀 广告"
+        },
+        "id": {
+          "type": "string",
+          "description": "广告ID"
+        },
+        "imgUrl": {
+          "type": "string",
+          "description": "广告封面图"
+        },
+        "type": {
+          "type": "string",
+          "description": "广告类型"
+        }
+      },
+      "title": "PAdvertisingVO"
+    },
+    "PCartVO": {
+      "type": "object",
+      "properties": {
+        "commodityBrandName": {
+          "type": "string",
+          "description": "商品品牌"
+        },
+        "commodityId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "commodityImgUrl": {
+          "type": "string",
+          "description": "商品缩略图"
+        },
+        "commodityName": {
+          "type": "string",
+          "description": "商品名"
+        },
+        "commodityParameters": {
+          "type": "array",
+          "description": "商品参数 列表",
+          "items": {
+            "originalRef": "Parameter«string»",
+            "$ref": "#/definitions/Parameter«string»"
+          }
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "商品数量"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "商品单价"
+        }
+      },
+      "title": "PCartVO",
+      "description": "购物车页面模型"
+    },
+    "PHomeVO": {
+      "type": "object",
+      "properties": {
+        "activities": {
+          "type": "array",
+          "description": "活动 列表",
+          "items": {
+            "originalRef": "TbActivityVO",
+            "$ref": "#/definitions/TbActivityVO"
+          }
+        },
+        "cartCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "购物车 数量"
+        },
+        "collectionCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "收藏夹 数量"
+        },
+        "kinds": {
+          "type": "array",
+          "description": "类型 列表",
+          "items": {
+            "originalRef": "CommodityKind",
+            "$ref": "#/definitions/CommodityKind"
+          }
+        },
+        "orderCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "待付订单 数量"
+        },
+        "recommendCommodities": {
+          "type": "array",
+          "description": "推荐商品 列表",
+          "items": {
+            "originalRef": "TbCommodityVO",
+            "$ref": "#/definitions/TbCommodityVO"
+          }
+        },
+        "seckillClock": {
+          "type": "string",
+          "description": "正在执行的 整点场 秒杀"
+        },
+        "seckillCommodities": {
+          "type": "array",
+          "description": "秒杀的商品 前五名",
+          "items": {
+            "originalRef": "TbCommodityVO",
+            "$ref": "#/definitions/TbCommodityVO"
+          }
+        },
+        "showModules": {
+          "type": "array",
+          "description": "商品首页展示模块 列表",
+          "items": {
+            "originalRef": "ShowModule",
+            "$ref": "#/definitions/ShowModule"
+          }
+        }
+      },
+      "title": "PHomeVO",
+      "description": "主页页面模型"
+    },
+    "PSeckillVO": {
+      "type": "object",
+      "properties": {
+        "ad": {
+          "description": "秒杀 广告",
+          "originalRef": "PAdvertisingVO",
+          "$ref": "#/definitions/PAdvertisingVO"
+        },
+        "categories": {
+          "type": "array",
+          "description": "商品 一级类型 列表",
+          "items": {
+            "originalRef": "TbCommodityCategoryVO",
+            "$ref": "#/definitions/TbCommodityCategoryVO"
+          }
+        },
+        "commodities": {
+          "type": "array",
+          "description": "商品 列表",
+          "items": {
+            "originalRef": "Commodity",
+            "$ref": "#/definitions/Commodity"
+          }
+        }
+      },
+      "title": "PSeckillVO",
+      "description": "秒杀页面模型"
+    },
+    "Parameter«string»": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "商品参数名"
+        },
+        "value": {
+          "type": "string",
+          "description": "商品参数值"
+        }
+      },
+      "title": "Parameter«string»"
+    },
+    "Res«object»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "data": {
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Res«object»"
+    },
+    "ShowModule": {
+      "type": "object",
+      "properties": {
+        "commodities": {
+          "type": "array",
+          "description": "商品 列表",
+          "items": {
+            "originalRef": "TbCommodityVO",
+            "$ref": "#/definitions/TbCommodityVO"
+          }
+        },
+        "hotCommodities": {
+          "type": "array",
+          "description": "热销商品 列表",
+          "items": {
+            "originalRef": "TbCommodityVO",
+            "$ref": "#/definitions/TbCommodityVO"
+          }
+        },
+        "picUrl": {
+          "type": "string",
+          "description": "展示图"
+        },
+        "showModuleKind": {
+          "description": "类型",
+          "originalRef": "CommodityKind",
+          "$ref": "#/definitions/CommodityKind"
+        }
+      },
+      "title": "ShowModule"
+    },
+    "TbAccountPlatformVO": {
+      "type": "object",
+      "properties": {
+        "avatar": {
+          "type": "string",
+          "description": "头像"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "自增id"
+        },
+        "nickname": {
+          "type": "string",
+          "description": "昵称"
+        },
+        "platformId": {
+          "type": "string",
+          "description": "平台id"
+        },
+        "platformToken": {
+          "type": "string",
+          "description": "平台access_token"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter"
+        },
+        "uid": {
+          "type": "string",
+          "description": "账号id"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbAccountPlatformVO",
+      "description": "第三方用户信息模型"
+    },
+    "TbActivityVO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "活动ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "活动名"
+        },
+        "picUrl": {
+          "type": "string",
+          "description": "活动大图"
+        },
+        "type": {
+          "type": "string",
+          "description": "活动类型"
+        }
+      },
+      "title": "TbActivityVO",
+      "description": "活动模型"
+    },
+    "TbAdminVO": {
+      "type": "object",
+      "properties": {
+        "avatarUrl": {
+          "type": "string",
+          "description": "管理员头像 (默认路径 “/avatar/boy.jpg”)"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "管理员ID"
+        },
+        "mail": {
+          "type": "string",
+          "description": "管理员邮箱"
+        },
+        "name": {
+          "type": "string",
+          "description": "管理员用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "管理员密码"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "0表示男, 1表示女, 2表示未知"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "superKey": {
+          "type": "integer",
+          "format": "int32",
+          "description": "超级管理员标识 (0,普通管理员  1,超级管理员)"
+        },
+        "telephone": {
+          "type": "string",
+          "description": "管理员电话"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbAdminVO",
+      "description": "管理员模型"
+    },
+    "TbCommodityAttrVO": {
+      "type": "object",
+      "properties": {
+        "attrDesc": {
+          "type": "string",
+          "description": "销售属性描述"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "销售属性ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "销售属性名称"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbCommodityAttrVO",
+      "description": "销售属性表 (产品参数)模型"
+    },
+    "TbCommodityAttrValueVO": {
+      "type": "object",
+      "properties": {
+        "attrId": {
+          "type": "string",
+          "description": "销售属性ID"
+        },
+        "attrValueDesc": {
+          "type": "string",
+          "description": "销售属性值描述"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "销售属性值ID"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        },
+        "value": {
+          "type": "string",
+          "description": "销售属性值"
+        }
+      },
+      "title": "TbCommodityAttrValueVO",
+      "description": "销售属性值模型"
+    },
+    "TbCommodityBrandsVO": {
+      "type": "object",
+      "properties": {
+        "brandsDesc": {
+          "type": "string",
+          "description": "品牌描述"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "品牌ID"
+        },
+        "logoUrl": {
+          "type": "string",
+          "description": "品牌logo图片"
+        },
+        "name": {
+          "type": "string",
+          "description": "品牌名称"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbCommodityBrandsVO",
+      "description": "品牌表模型"
+    },
+    "TbCommodityCategoryVO": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "iconUrl": {
+          "type": "string",
+          "description": "商品类型 图标"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "商品类型ID"
+        },
+        "info": {
+          "type": "string",
+          "description": "商品类型 类型说明"
+        },
+        "name": {
+          "type": "string",
+          "description": "商品类型 名称"
+        },
+        "parentCategoryId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "父级商品类型ID 默认为 -1 表示当前商品类型无父类型"
+        },
+        "picUrl": {
+          "type": "string",
+          "description": "商品类型 大图"
+        },
+        "primary": {
+          "type": "boolean",
+          "description": "0表示一级类型, 1表示其他类型(二级类型), 默认为0"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:ENABLE, 0:DISABLE, -1:DELETED"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbCommodityCategoryVO",
+      "description": "商品类型模型"
+    },
+    "TbCommoditySizeVO": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "商品尺码自增ID"
+        },
+        "sizeDesc": {
+          "type": "string",
+          "description": "sku描述(商家对产品的描述) json存储 e.g: [{ name : 腰围 ,  value : 62-72 },{ name : 裤长 ,  value : 92 }]"
+        },
+        "sizeName": {
+          "type": "string",
+          "description": "商品尺码名"
+        },
+        "skuId": {
+          "type": "string",
+          "description": "SKU ID"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbCommoditySizeVO",
+      "description": "sku表模型"
+    },
+    "TbCommoditySkuStockVO": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "自增ID"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "库存量"
+        },
+        "skuColor": {
+          "type": "string",
+          "description": "SKU color"
+        },
+        "skuId": {
+          "type": "string",
+          "description": "SKU ID"
+        },
+        "skuSizeName": {
+          "type": "string",
+          "description": "SKU 商品尺码名"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbCommoditySkuStockVO",
+      "description": "sku库存表模型"
+    },
+    "TbCommoditySkuVO": {
+      "type": "object",
+      "properties": {
+        "bannerUrl": {
+          "type": "string",
+          "description": "banner图片 多个图片逗号分隔"
+        },
+        "commodityGraphicDetails": {
+          "type": "string",
+          "description": "图文详情 图片url 多个图片逗号分隔"
+        },
+        "commodityInEffect": {
+          "type": "string",
+          "description": "穿着效果 图片url 多个图片逗号分隔"
+        },
+        "commodityParameters": {
+          "type": "string",
+          "description": "商品参数 {attr_value_id} 多个销售属性值逗号分隔 固定加上 颜色, 尺码属性"
+        },
+        "commoditySizeSpecification": {
+          "type": "string",
+          "description": "尺码说明 {attr_value_id} (map保存尺码名) 多个销售属性值逗号分隔"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "SKU ID"
+        },
+        "mainUrl": {
+          "type": "string",
+          "description": "商品介绍主图 多个图片逗号分隔"
+        },
+        "marketPriceFee": {
+          "type": "integer",
+          "format": "int32",
+          "description": "市场价，整数方式保存"
+        },
+        "marketPriceScale": {
+          "type": "integer",
+          "format": "int32",
+          "description": "市场价，金额对应的小数位数"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "商家ID"
+        },
+        "priceFee": {
+          "type": "integer",
+          "format": "int32",
+          "description": "售价，整数方式保存"
+        },
+        "priceScale": {
+          "type": "integer",
+          "format": "int32",
+          "description": "售价，金额对应的小数位数"
+        },
+        "skuDesc": {
+          "type": "string",
+          "description": "sku描述(商家对产品的描述)"
+        },
+        "spuId": {
+          "type": "string",
+          "description": "SPU ID"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbCommoditySkuVO",
+      "description": "sku表模型"
+    },
+    "TbCommoditySpuVO": {
+      "type": "object",
+      "properties": {
+        "bannerUrl": {
+          "type": "string",
+          "description": "banner图片 多个图片逗号分隔"
+        },
+        "brandId": {
+          "type": "string",
+          "description": "品牌ID"
+        },
+        "categoryId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "分类ID"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "SPU ID"
+        },
+        "mainUrl": {
+          "type": "string",
+          "description": "商品介绍主图 多个图片逗号分隔"
+        },
+        "name": {
+          "type": "string",
+          "description": "spu名称"
+        },
+        "sellingPoint": {
+          "type": "string",
+          "description": "卖点"
+        },
+        "spuDesc": {
+          "type": "string",
+          "description": "spu描述"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "unit": {
+          "type": "string",
+          "description": "spu单位"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbCommoditySpuVO",
+      "description": "商品spu表模型"
+    },
+    "TbCommodityVO": {
+      "type": "object",
+      "properties": {
+        "discount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "折扣"
+        },
+        "id": {
+          "type": "string",
+          "description": "SKU ID"
+        },
+        "mainPicUrl": {
+          "type": "string",
+          "description": "商品介绍主图"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "商家ID"
+        },
+        "monthlySales": {
+          "type": "integer",
+          "format": "int32",
+          "description": "商品月销售"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "商品售价"
+        },
+        "skuDesc": {
+          "type": "string",
+          "description": "sku描述(商家对产品的描述)"
+        }
+      },
+      "title": "TbCommodityVO",
+      "description": "商品表模型"
+    },
+    "TbMerchantVO": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "商家地址"
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "管理员头像 (默认路径 “/avatar/boy.jpg”)"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "商家ID"
+        },
+        "info": {
+          "type": "string",
+          "description": "商家业务经营说明"
+        },
+        "mail": {
+          "type": "string",
+          "description": "商家邮箱"
+        },
+        "name": {
+          "type": "string",
+          "description": "商家用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "商家密码"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "0表示男, 1表示女, 2表示未知"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "storeName": {
+          "type": "string",
+          "description": "商家店名"
+        },
+        "telephone": {
+          "type": "string",
+          "description": "商家负责人电话"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "TbMerchantVO",
+      "description": "商家模型"
+    },
+    "TbOrderVO": {
+      "type": "object",
+      "properties": {
+        "closeTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "交易关闭时间"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "交易完成时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "订单id"
+        },
+        "num": {
+          "type": "string",
+          "description": "订单号 日期加id"
+        },
+        "payFee": {
+          "type": "integer",
+          "format": "int32",
+          "description": "付款，整数方式保存"
+        },
+        "payScale": {
+          "type": "integer",
+          "format": "int32",
+          "description": "付款，金额对应的小数位数"
+        },
+        "paymentTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "支付时间"
+        },
+        "paymentType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "支付类型,1-在线支付"
+        },
+        "postage": {
+          "type": "integer",
+          "format": "int32",
+          "description": "运费,单位是元"
+        },
+        "sendTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "发货时间"
+        },
+        "skuId": {
+          "type": "string",
+          "description": "SKU id"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "订单状态:0-已取消-10-未付款，20-已付款，40-已发货，50-交易成功，60-交易关闭"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        },
+        "userId": {
+          "type": "string",
+          "description": "用户id"
+        }
+      },
+      "title": "TbOrderVO",
+      "description": "订单模型"
+    },
+    "TbUserAddressVO": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "城市"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "district": {
+          "type": "string",
+          "description": "区/县"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户地址ID"
+        },
+        "location": {
+          "type": "string",
+          "description": "详细地址"
+        },
+        "province": {
+          "type": "string",
+          "description": "省份"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        },
+        "userId": {
+          "type": "string",
+          "description": "用户ID"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "邮编"
+        }
+      },
+      "title": "TbUserAddressVO",
+      "description": "用户地址模型"
+    },
+    "TbUserCollectionVO": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户地址ID"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "商家ID"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        },
+        "userId": {
+          "type": "string",
+          "description": "用户ID"
+        }
+      },
+      "title": "TbUserCollectionVO",
+      "description": "用户收藏模型"
+    },
+    "TbUserCommentModel": {
+      "type": "object",
+      "properties": {
+        "ancestryId": {
+          "type": "string"
+        },
+        "answerCommentId": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mark": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "picUrls": {
+          "type": "string"
+        },
+        "sendId": {
+          "type": "string"
+        },
+        "skuId": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "title": "TbUserCommentModel"
+    },
+    "TbUserVO": {
+      "type": "object",
+      "properties": {
+        "avatarUrl": {
+          "type": "string",
+          "description": "用户头像 (默认路径 “/avatar/boy.jpg”)"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "string",
+          "description": "用户ID"
+        },
+        "mail": {
+          "type": "string",
+          "description": "用户邮箱"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "用户密码"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "0表示男, 1表示女, 2表示未知"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "状态 1:enable, 0:disable, -1:deleted"
+        },
+        "telephone": {
+          "type": "string",
+          "description": "用户电话"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        },
+        "vip": {
+          "type": "boolean",
+          "description": "是否为vip,0表示是,1表示不是, 默认为0"
+        }
+      },
+      "title": "TbUserVO",
+      "description": "用户模型"
+    },
+    "View": {
+      "type": "object",
+      "properties": {
+        "contentType": {
+          "type": "string"
+        }
+      },
+      "title": "View"
+    }
+  }
+}

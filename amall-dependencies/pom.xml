@@ -37,7 +37,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>online.kyralo</groupId>
                 <artifactId>amall-common</artifactId>
@@ -68,7 +67,6 @@
                 <artifactId>amall-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
 
             <!-- 第三方依赖 -->
             <!-- spring-boot-dependencies -->
