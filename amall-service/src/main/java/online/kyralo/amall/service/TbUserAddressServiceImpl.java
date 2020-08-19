@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbUserAddressService;
+import online.kyralo.amall.api.bo.TbUserAddressBO;
 import online.kyralo.amall.api.model.TbUserAddressModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.UserException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserAddressDO;
 import online.kyralo.amall.dao.mapper.TbUserAddressDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbUserAddressServiceImpl implements TbUserAddressService {
         TbUserAddressDO tbUserAddressDO = tbUserAddressDAO.findById(id);
 
         if (tbUserAddressDO != null) {
-            TbUserAddressModel tbUserAddress = new TbUserAddressModel();
-            copier.copy(tbUserAddressDO, tbUserAddress, null);
+            TbUserAddressBO tbUserAddress = new TbUserAddressBO();
+            BeanUtils.copyProperties(tbUserAddressDO, tbUserAddress);
             return ResUtil.success(tbUserAddress);
         }
 

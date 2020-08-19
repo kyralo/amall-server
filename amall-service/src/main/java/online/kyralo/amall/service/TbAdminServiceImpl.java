@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbAdminService;
+import online.kyralo.amall.api.bo.TbAdminBO;
 import online.kyralo.amall.api.model.TbAdminModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.AdminException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbAdminDO;
 import online.kyralo.amall.dao.mapper.TbAdminDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbAdminServiceImpl implements TbAdminService {
         TbAdminDO tbAdminDO = tbAdminDAO.findById(id);
 
         if (tbAdminDO != null) {
-            TbAdminModel tbAdmin = new TbAdminModel();
-            copier.copy(tbAdminDO, tbAdmin, null);
+            TbAdminBO tbAdmin = new TbAdminBO();
+            BeanUtils.copyProperties(tbAdminDO, tbAdmin);
             return ResUtil.success(tbAdmin);
         }
 

@@ -3,7 +3,7 @@ package online.kyralo.amall.web;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import online.kyralo.amall.common.api.Res;
-import online.kyralo.amall.web.vo.PCartVO;
+import online.kyralo.amall.web.vo.PHomeVO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -16,18 +16,19 @@ import static online.kyralo.amall.common.constants.SecurityConstant.HEADER_STRIN
  * \* Created with Intellij IDEA.
  * \* Author: wangchen
  * \* Date: 2020/8/18
- * \* Time: 23:54
- * \* Description: PC端页面 购物车
+ * \* Time: 23:47
+ * \* Description: PC端页面 主页
  * \
  */
+
 @RestController
-@RequestMapping("/api/v1/cart")
-@Api(tags = "PC端页面 购物车")
+@RequestMapping("/api/v1/home")
+@Api(tags = "PC端页面 主页")
 @Validated
-public class PCartController {
+public class HomeController {
 
     @GetMapping
-    @ApiOperation(value = "查询 购物车页 信息", response = PCartVO.class)
+    @ApiOperation(value = "查询主页信息", response = PHomeVO.class)
     public Res<?> getPageInfo(@RequestHeader(HEADER_STRING) String token) {
 
         return null;

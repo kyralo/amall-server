@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbAccountPlatformService;
+import online.kyralo.amall.api.bo.TbAccountPlatformBO;
 import online.kyralo.amall.api.model.TbAccountPlatformModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.UserException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbAccountPlatformDO;
 import online.kyralo.amall.dao.mapper.TbAccountPlatformDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbAccountPlatformServiceImpl implements TbAccountPlatformService {
         TbAccountPlatformDO tbAccountPlatformDO = tbAccountPlatformDAO.findById(id);
 
         if (tbAccountPlatformDO != null) {
-            TbAccountPlatformModel tbAccountPlatform = new TbAccountPlatformModel();
-            copier.copy(tbAccountPlatformDO, tbAccountPlatform, null);
+            TbAccountPlatformBO tbAccountPlatform = new TbAccountPlatformBO();
+            BeanUtils.copyProperties(tbAccountPlatformDO, tbAccountPlatform);
             return ResUtil.success(tbAccountPlatform);
         }
 

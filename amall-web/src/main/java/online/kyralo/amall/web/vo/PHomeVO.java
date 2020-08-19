@@ -59,6 +59,12 @@ public class PHomeVO extends Base {
     private List<TbActivityVO> activities;
 
     /**
+     * 用户信息
+     */
+    @ApiModelProperty("用户信息")
+    private TbUserVO user;
+
+    /**
      * 购物车 数量
      */
     @ApiModelProperty("购物车 数量")

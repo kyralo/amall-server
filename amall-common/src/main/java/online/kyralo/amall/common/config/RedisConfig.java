@@ -24,13 +24,12 @@ import java.time.Duration;
  * \* Author: WangChen
  * \* Date: 19-4-21
  * \* Time: 下午3:58
- * \* Description:
+ * \* Description: redis 配置
  * \
  */
 @Configuration
 @EnableCaching
 public class RedisConfig {
-
 
     /**
      * //如使用注解的话需要配置cacheManager
@@ -51,8 +50,9 @@ public class RedisConfig {
 
     /**
      * 以下两种redisTemplate自由根据场景选择
+     *
      * @param redisConnectionFactory connectionFactory
-     * @return RedisTemplate<Object, Object>
+     * @return RedisTemplate<String, Object>
      */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
@@ -73,10 +73,28 @@ public class RedisConfig {
         return template;
     }
 
+    /**
+     * 以下两种redisTemplate自由根据场景选择
+     *
+     * @param redisConnectionFactory connectionFactory
+     * @return RedisTemplate<String, String>
+     */
     @Bean
-    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory factory) {
+    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
-        stringRedisTemplate.setConnectionFactory(factory);
+        stringRedisTemplate.setConnectionFactory(redisConnectionFactory);
+        //使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
+        Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        mapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
+        serializer.setObjectMapper(mapper);
+        stringRedisTemplate.setValueSerializer(serializer);
+        //使用StringRedisSerializer来序列化和反序列化redis的key值
+        stringRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        stringRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        stringRedisTemplate.setHashValueSerializer(serializer);
+        stringRedisTemplate.afterPropertiesSet();
         return stringRedisTemplate;
     }
 

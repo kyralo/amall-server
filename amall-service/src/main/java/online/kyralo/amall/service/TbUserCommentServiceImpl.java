@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbUserCommentService;
+import online.kyralo.amall.api.bo.TbUserCommentBO;
 import online.kyralo.amall.api.model.TbUserCommentModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.UserException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserCommentDO;
 import online.kyralo.amall.dao.mapper.TbUserCommentDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbUserCommentServiceImpl implements TbUserCommentService {
         TbUserCommentDO tbUserCommentDO = tbUserCommentDAO.findById(id);
 
         if (tbUserCommentDO != null) {
-            TbUserCommentModel tbUserComment = new TbUserCommentModel();
-            copier.copy(tbUserCommentDO, tbUserComment, null);
+            TbUserCommentBO tbUserComment = new TbUserCommentBO();
+            BeanUtils.copyProperties(tbUserCommentDO, tbUserComment);
             return ResUtil.success(tbUserComment);
         }
 

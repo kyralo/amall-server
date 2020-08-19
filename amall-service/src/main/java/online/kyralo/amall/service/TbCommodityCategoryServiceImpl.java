@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbCommodityCategoryService;
+import online.kyralo.amall.api.bo.TbCommodityCategoryBO;
 import online.kyralo.amall.api.model.TbCommodityCategoryModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.CommodityException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommodityCategoryDO;
 import online.kyralo.amall.dao.mapper.TbCommodityCategoryDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbCommodityCategoryServiceImpl implements TbCommodityCategoryServic
         TbCommodityCategoryDO tbCommodityCategoryDO = tbCommodityCategoryDAO.findById(id);
 
         if (tbCommodityCategoryDO != null) {
-            TbCommodityCategoryModel tbCommodityCategory = new TbCommodityCategoryModel();
-            copier.copy(tbCommodityCategoryDO, tbCommodityCategory, null);
+            TbCommodityCategoryBO tbCommodityCategory = new TbCommodityCategoryBO();
+            BeanUtils.copyProperties(tbCommodityCategoryDO, tbCommodityCategory);
             return ResUtil.success(tbCommodityCategory);
         }
 

@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbOrderService;
+import online.kyralo.amall.api.bo.TbOrderBO;
 import online.kyralo.amall.api.model.TbOrderModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.OrderException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbOrderDO;
 import online.kyralo.amall.dao.mapper.TbOrderDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbOrderServiceImpl implements TbOrderService {
         TbOrderDO tbOrderDO = tbOrderDAO.findById(id);
 
         if (tbOrderDO != null) {
-            TbOrderModel tbOrder = new TbOrderModel();
-            copier.copy(tbOrderDO, tbOrder, null);
+            TbOrderBO tbOrder = new TbOrderBO();
+            BeanUtils.copyProperties(tbOrderDO, tbOrder);
             return ResUtil.success(tbOrder);
         }
 

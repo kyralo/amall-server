@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbCommoditySizeService;
+import online.kyralo.amall.api.bo.TbCommoditySizeBO;
 import online.kyralo.amall.api.model.TbCommoditySizeModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.CommodityException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySizeDO;
 import online.kyralo.amall.dao.mapper.TbCommoditySizeDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbCommoditySizeServiceImpl implements TbCommoditySizeService {
         TbCommoditySizeDO tbCommoditySizeDO = tbCommoditySizeDAO.findById(id);
 
         if (tbCommoditySizeDO != null) {
-            TbCommoditySizeModel tbCommoditySize = new TbCommoditySizeModel();
-            copier.copy(tbCommoditySizeDO, tbCommoditySize, null);
+            TbCommoditySizeBO tbCommoditySize = new TbCommoditySizeBO();
+            BeanUtils.copyProperties(tbCommoditySizeDO, tbCommoditySize);
             return ResUtil.success(tbCommoditySize);
         }
 

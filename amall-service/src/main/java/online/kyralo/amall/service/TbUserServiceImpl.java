@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbUserService;
+import online.kyralo.amall.api.bo.TbUserBO;
 import online.kyralo.amall.api.model.TbUserModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.UserException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserDO;
 import online.kyralo.amall.dao.mapper.TbUserDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbUserServiceImpl implements TbUserService {
         TbUserDO tbUserDO = tbUserDAO.findById(id);
 
         if (tbUserDO != null) {
-            TbUserModel tbUser = new TbUserModel();
-            copier.copy(tbUserDO, tbUser, null);
+            TbUserBO tbUser = new TbUserBO();
+            BeanUtils.copyProperties(tbUserDO, tbUser);
             return ResUtil.success(tbUser);
         }
 

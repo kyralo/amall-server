@@ -3,6 +3,7 @@ package online.kyralo.amall.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbCommoditySpuService;
+import online.kyralo.amall.api.bo.TbCommoditySpuBO;
 import online.kyralo.amall.api.model.TbCommoditySpuModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
@@ -10,6 +11,7 @@ import online.kyralo.amall.common.exceptions.business.CommodityException;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
 import online.kyralo.amall.dao.mapper.TbCommoditySpuDAO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +36,8 @@ public class TbCommoditySpuServiceImpl implements TbCommoditySpuService {
         TbCommoditySpuDO tbCommoditySpuDO = tbCommoditySpuDAO.findById(id);
 
         if (tbCommoditySpuDO != null) {
-            TbCommoditySpuModel tbCommoditySpu = new TbCommoditySpuModel();
-            copier.copy(tbCommoditySpuDO, tbCommoditySpu, null);
+            TbCommoditySpuBO tbCommoditySpu = new TbCommoditySpuBO();
+            BeanUtils.copyProperties(tbCommoditySpuDO, tbCommoditySpu);
             return ResUtil.success(tbCommoditySpu);
         }
 
