@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbMerchantModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.MerchantException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbMerchantDO;
 import online.kyralo.amall.dao.mapper.TbMerchantDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbMerchantServiceImpl implements TbMerchantService {
 
         if (tbMerchantDO != null) {
             TbMerchantBO tbMerchant = new TbMerchantBO();
-            BeanUtils.copyProperties(tbMerchantDO, tbMerchant);
+            CopyUtil.copyBean(tbMerchantDO, tbMerchant);
             return ResUtil.success(tbMerchant);
         }
 
@@ -71,7 +71,7 @@ public class TbMerchantServiceImpl implements TbMerchantService {
         TbMerchantDO tbMerchantDO = new TbMerchantDO();
         copier.copy(tbMerchantModel, tbMerchantDO, null);
 
-        int i = tbMerchantDAO.updateByPrimaryKey(tbMerchantDO);
+        int i = tbMerchantDAO.updateByPrimaryKeySelective(tbMerchantDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

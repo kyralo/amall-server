@@ -6,15 +6,17 @@ import io.swagger.annotations.ApiParam;
 import online.kyralo.amall.api.TbCommoditySizeService;
 import online.kyralo.amall.api.model.TbCommoditySizeModel;
 import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.utils.CopyUtil;
+import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.common.validator.Create;
 import online.kyralo.amall.common.validator.Update;
 import online.kyralo.amall.web.vo.TbCommoditySizeVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * sku表
@@ -32,30 +34,31 @@ public class TbCommoditySizeController {
     @ApiOperation(value = "通过ID查询单个sku表", response = TbCommoditySizeVO.class)
     public Res<?> findById(@ApiParam("ID") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") Integer id) {
-        return tbCommoditySizeService.findById(id);
+        Res<?> res = tbCommoditySizeService.findById(id);
+        TbCommoditySizeVO bCommoditySize = new TbCommoditySizeVO();
+        CopyUtil.copyBean(res.getData(), bCommoditySize);
+        return ResUtil.response(res.getCode(), res.getMessage(), bCommoditySize);
     }
 
     @GetMapping
     @ApiOperation(value = "分页查询sku表", response = TbCommoditySizeVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        return tbCommoditySizeService.findByPage(pageNum, pageSize);
+        Res<?> res = tbCommoditySizeService.findByPage(pageNum, pageSize);
+        List<TbCommoditySizeVO> bCommoditySizes = CopyUtil.copyList(res.getData(), TbCommoditySizeVO.class);
+        return ResUtil.response(res.getCode(), res.getMessage(), bCommoditySizes);
     }
 
     @PostMapping
     @ApiOperation(value = "新增sku表", response = TbCommoditySizeVO.class)
-    public Res<?> insert(@RequestBody @Validated(Create.class) TbCommoditySizeVO tbCommoditySize) {
-        TbCommoditySizeModel tbCommoditySizeModel = new TbCommoditySizeModel();
-        BeanUtils.copyProperties(tbCommoditySize, tbCommoditySizeModel);
-        return tbCommoditySizeService.insert(tbCommoditySizeModel);
+    public Res<?> insert(@RequestBody @Validated(Create.class) TbCommoditySizeModel tbCommoditySize) {
+        return tbCommoditySizeService.insert(tbCommoditySize);
     }
 
     @PutMapping
     @ApiOperation(value = "修改sku表", response = TbCommoditySizeVO.class)
-    public Res<?> update(@RequestBody @Validated(Update.class) TbCommoditySizeVO tbCommoditySize) {
-        TbCommoditySizeModel tbCommoditySizeModel = new TbCommoditySizeModel();
-        BeanUtils.copyProperties(tbCommoditySize, tbCommoditySizeModel);
-        return tbCommoditySizeService.update(tbCommoditySizeModel);
+    public Res<?> update(@RequestBody @Validated(Update.class) TbCommoditySizeModel tbCommoditySize) {
+        return tbCommoditySizeService.update(tbCommoditySize);
     }
 
     @DeleteMapping("/{id}")

@@ -39,7 +39,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 exceptionHandling().
                 authenticationEntryPoint(new RestAuthenticationEntryPoint()).and().
                 authorizeRequests().antMatchers("/api/v1/user/login/**").permitAll().and().
-                authorizeRequests().antMatchers(HttpMethod.GET, "/api/v1/commodity_spus").permitAll().and().
+                authorizeRequests().antMatchers(HttpMethod.GET,
+                "/api/v1/commodity_spus",
+                "/api/v1/home/**"
+        ).permitAll().and().
                 authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().and().
                 authorizeRequests().antMatchers("/", "/api", "/docs.html", "/favicon.ico",
                 "/v2/api-docs",

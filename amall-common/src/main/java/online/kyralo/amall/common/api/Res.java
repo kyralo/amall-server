@@ -34,13 +34,13 @@ public class Res<T> {
         this.message = resCode.getMessage();
     }
 
-    public Res(long code, String message) {
+    public Res(Long code, String message) {
         this.data = null;
         this.code = code;
         this.message = message;
     }
 
-    public Res(long code, String message, T data) {
+    public Res(Long code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;

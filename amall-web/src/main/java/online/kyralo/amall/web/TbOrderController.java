@@ -6,15 +6,17 @@ import io.swagger.annotations.ApiParam;
 import online.kyralo.amall.api.TbOrderService;
 import online.kyralo.amall.api.model.TbOrderModel;
 import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.utils.CopyUtil;
+import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.common.validator.Create;
 import online.kyralo.amall.common.validator.Update;
 import online.kyralo.amall.web.vo.TbOrderVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * 订单
@@ -32,30 +34,31 @@ public class TbOrderController {
     @ApiOperation(value = "通过ID查询单个订单", response = TbOrderVO.class)
     public Res<?> findById(@ApiParam("ID") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") Integer id) {
-        return tbOrderService.findById(id);
+        Res<?> res = tbOrderService.findById(id);
+        TbOrderVO tbOrder = new TbOrderVO();
+        CopyUtil.copyBean(res.getData(), tbOrder);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbOrder);
     }
 
     @GetMapping
     @ApiOperation(value = "分页查询订单", response = TbOrderVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        return tbOrderService.findByPage(pageNum, pageSize);
+        Res<?> res = tbOrderService.findByPage(pageNum, pageSize);
+        List<TbOrderVO> tbOrders = CopyUtil.copyList(res.getData(), TbOrderVO.class);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbOrders);
     }
 
     @PostMapping
     @ApiOperation(value = "新增订单", response = TbOrderVO.class)
-    public Res<?> insert(@RequestBody @Validated(Create.class) TbOrderVO tbOrder) {
-        TbOrderModel tbOrderModel = new TbOrderModel();
-        BeanUtils.copyProperties(tbOrder, tbOrderModel);
-        return tbOrderService.insert(tbOrderModel);
+    public Res<?> insert(@RequestBody @Validated(Create.class) TbOrderModel tbOrder) {
+        return tbOrderService.insert(tbOrder);
     }
 
     @PutMapping
     @ApiOperation(value = "修改订单", response = TbOrderVO.class)
-    public Res<?> update(@RequestBody @Validated(Update.class) TbOrderVO tbOrder) {
-        TbOrderModel tbOrderModel = new TbOrderModel();
-        BeanUtils.copyProperties(tbOrder, tbOrderModel);
-        return tbOrderService.update(tbOrderModel);
+    public Res<?> update(@RequestBody @Validated(Update.class) TbOrderModel tbOrder) {
+        return tbOrderService.update(tbOrder);
     }
 
     @DeleteMapping("/{id}")

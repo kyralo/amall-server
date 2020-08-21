@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbCommoditySkuModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.CommodityException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySkuDO;
 import online.kyralo.amall.dao.mapper.TbCommoditySkuDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbCommoditySkuServiceImpl implements TbCommoditySkuService {
 
         if (tbCommoditySkuDO != null) {
             TbCommoditySkuBO tbCommoditySku = new TbCommoditySkuBO();
-            BeanUtils.copyProperties(tbCommoditySkuDO, tbCommoditySku);
+            CopyUtil.copyBean(tbCommoditySkuDO, tbCommoditySku);
             return ResUtil.success(tbCommoditySku);
         }
 
@@ -71,7 +71,7 @@ public class TbCommoditySkuServiceImpl implements TbCommoditySkuService {
         TbCommoditySkuDO tbCommoditySkuDO = new TbCommoditySkuDO();
         copier.copy(tbCommoditySkuModel, tbCommoditySkuDO, null);
 
-        int i = tbCommoditySkuDAO.updateByPrimaryKey(tbCommoditySkuDO);
+        int i = tbCommoditySkuDAO.updateByPrimaryKeySelective(tbCommoditySkuDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

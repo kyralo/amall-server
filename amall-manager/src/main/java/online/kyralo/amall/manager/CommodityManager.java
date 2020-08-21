@@ -5,8 +5,10 @@ package online.kyralo.amall.manager;
  * \* @author: wangchen
  * \* Date: 2020/7/9
  * \* Time: 7:41
- * \* Description: 商品复合查询
+ * \* Description: 商品 复合查询
  * \
  */
 public class CommodityManager {
+
+
 }

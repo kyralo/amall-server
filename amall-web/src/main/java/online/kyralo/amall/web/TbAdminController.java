@@ -6,15 +6,17 @@ import io.swagger.annotations.ApiParam;
 import online.kyralo.amall.api.TbAdminService;
 import online.kyralo.amall.api.model.TbAdminModel;
 import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.utils.CopyUtil;
+import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.common.validator.Create;
 import online.kyralo.amall.common.validator.Update;
 import online.kyralo.amall.web.vo.TbAdminVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * 管理员
@@ -32,30 +34,32 @@ public class TbAdminController {
     @ApiOperation(value = "通过ID查询单个管理员", response = TbAdminVO.class)
     public Res<?> findById(@ApiParam("ID") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
-        return tbAdminService.findById(id);
+        Res<?> res = tbAdminService.findById(id);
+        TbAdminVO tbAdmin = new TbAdminVO();
+        CopyUtil.copyBean(res.getData(), tbAdmin);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbAdmin);
     }
 
     @GetMapping
     @ApiOperation(value = "分页查询管理员", response = TbAdminVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        return tbAdminService.findByPage(pageNum, pageSize);
+
+        Res<?> res = tbAdminService.findByPage(pageNum, pageSize);
+        List<TbAdminVO> tbAdmins = CopyUtil.copyList(res.getData(), TbAdminVO.class);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbAdmins);
     }
 
     @PostMapping
     @ApiOperation(value = "新增管理员", response = TbAdminVO.class)
-    public Res<?> insert(@RequestBody @Validated(Create.class) TbAdminVO tbAdmin) {
-        TbAdminModel tbAdminModel = new TbAdminModel();
-        BeanUtils.copyProperties(tbAdmin, tbAdminModel);
-        return tbAdminService.insert(tbAdminModel);
+    public Res<?> insert(@RequestBody @Validated(Create.class) TbAdminModel tbAdmin) {
+        return tbAdminService.insert(tbAdmin);
     }
 
     @PutMapping
     @ApiOperation(value = "修改管理员", response = TbAdminVO.class)
-    public Res<?> update(@RequestBody @Validated(Update.class) TbAdminVO tbAdmin) {
-        TbAdminModel tbAdminModel = new TbAdminModel();
-        BeanUtils.copyProperties(tbAdmin, tbAdminModel);
-        return tbAdminService.update(tbAdminModel);
+    public Res<?> update(@RequestBody @Validated(Update.class) TbAdminModel tbAdmin) {
+        return tbAdminService.update(tbAdmin);
     }
 
     @DeleteMapping("/{id}")

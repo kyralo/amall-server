@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbUserCollectionModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.UserException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserCollectionDO;
 import online.kyralo.amall.dao.mapper.TbUserCollectionDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbUserCollectionServiceImpl implements TbUserCollectionService {
 
         if (tbUserCollectionDO != null) {
             TbUserCollectionBO tbUserCollection = new TbUserCollectionBO();
-            BeanUtils.copyProperties(tbUserCollectionDO, tbUserCollection);
+            CopyUtil.copyBean(tbUserCollectionDO, tbUserCollection);
             return ResUtil.success(tbUserCollection);
         }
 
@@ -71,7 +71,7 @@ public class TbUserCollectionServiceImpl implements TbUserCollectionService {
         TbUserCollectionDO tbUserCollectionDO = new TbUserCollectionDO();
         copier.copy(tbUserCollectionModel, tbUserCollectionDO, null);
 
-        int i = tbUserCollectionDAO.updateByPrimaryKey(tbUserCollectionDO);
+        int i = tbUserCollectionDAO.updateByPrimaryKeySelective(tbUserCollectionDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

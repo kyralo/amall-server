@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbUserAddressModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.UserException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserAddressDO;
 import online.kyralo.amall.dao.mapper.TbUserAddressDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbUserAddressServiceImpl implements TbUserAddressService {
 
         if (tbUserAddressDO != null) {
             TbUserAddressBO tbUserAddress = new TbUserAddressBO();
-            BeanUtils.copyProperties(tbUserAddressDO, tbUserAddress);
+            CopyUtil.copyBean(tbUserAddressDO, tbUserAddress);
             return ResUtil.success(tbUserAddress);
         }
 
@@ -71,7 +71,7 @@ public class TbUserAddressServiceImpl implements TbUserAddressService {
         TbUserAddressDO tbUserAddressDO = new TbUserAddressDO();
         copier.copy(tbUserAddressModel, tbUserAddressDO, null);
 
-        int i = tbUserAddressDAO.updateByPrimaryKey(tbUserAddressDO);
+        int i = tbUserAddressDAO.updateByPrimaryKeySelective(tbUserAddressDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

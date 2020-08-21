@@ -82,6 +82,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
         <!-- hutool -->
         <dependency>
             <groupId>cn.hutool</groupId>

@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbAccountPlatformModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.UserException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbAccountPlatformDO;
 import online.kyralo.amall.dao.mapper.TbAccountPlatformDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbAccountPlatformServiceImpl implements TbAccountPlatformService {
 
         if (tbAccountPlatformDO != null) {
             TbAccountPlatformBO tbAccountPlatform = new TbAccountPlatformBO();
-            BeanUtils.copyProperties(tbAccountPlatformDO, tbAccountPlatform);
+            CopyUtil.copyBean(tbAccountPlatformDO, tbAccountPlatform);
             return ResUtil.success(tbAccountPlatform);
         }
 
@@ -71,7 +71,7 @@ public class TbAccountPlatformServiceImpl implements TbAccountPlatformService {
         TbAccountPlatformDO tbAccountPlatformDO = new TbAccountPlatformDO();
         copier.copy(tbAccountPlatformModel, tbAccountPlatformDO, null);
 
-        int i = tbAccountPlatformDAO.updateByPrimaryKey(tbAccountPlatformDO);
+        int i = tbAccountPlatformDAO.updateByPrimaryKeySelective(tbAccountPlatformDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

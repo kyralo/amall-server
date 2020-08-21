@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbCommodityAttrValueModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.CommodityException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommodityAttrValueDO;
 import online.kyralo.amall.dao.mapper.TbCommodityAttrValueDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbCommodityAttrValueServiceImpl implements TbCommodityAttrValueServ
 
         if (tbCommodityAttrValueDO != null) {
             TbCommodityAttrValueBO tbCommodityAttrValue = new TbCommodityAttrValueBO();
-            BeanUtils.copyProperties(tbCommodityAttrValueDO, tbCommodityAttrValue);
+            CopyUtil.copyBean(tbCommodityAttrValueDO, tbCommodityAttrValue);
             return ResUtil.success(tbCommodityAttrValue);
         }
 
@@ -71,7 +71,7 @@ public class TbCommodityAttrValueServiceImpl implements TbCommodityAttrValueServ
         TbCommodityAttrValueDO tbCommodityAttrValueDO = new TbCommodityAttrValueDO();
         copier.copy(tbCommodityAttrValueModel, tbCommodityAttrValueDO, null);
 
-        int i = tbCommodityAttrValueDAO.updateByPrimaryKey(tbCommodityAttrValueDO);
+        int i = tbCommodityAttrValueDAO.updateByPrimaryKeySelective(tbCommodityAttrValueDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

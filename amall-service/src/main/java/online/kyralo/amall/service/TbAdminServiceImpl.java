@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbAdminModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.AdminException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbAdminDO;
 import online.kyralo.amall.dao.mapper.TbAdminDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbAdminServiceImpl implements TbAdminService {
 
         if (tbAdminDO != null) {
             TbAdminBO tbAdmin = new TbAdminBO();
-            BeanUtils.copyProperties(tbAdminDO, tbAdmin);
+            CopyUtil.copyBean(tbAdminDO, tbAdmin);
             return ResUtil.success(tbAdmin);
         }
 
@@ -71,7 +71,7 @@ public class TbAdminServiceImpl implements TbAdminService {
         TbAdminDO tbAdminDO = new TbAdminDO();
         copier.copy(tbAdminModel, tbAdminDO, null);
 
-        int i = tbAdminDAO.updateByPrimaryKey(tbAdminDO);
+        int i = tbAdminDAO.updateByPrimaryKeySelective(tbAdminDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

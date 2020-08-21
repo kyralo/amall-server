@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbUserModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.UserException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserDO;
 import online.kyralo.amall.dao.mapper.TbUserDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbUserServiceImpl implements TbUserService {
 
         if (tbUserDO != null) {
             TbUserBO tbUser = new TbUserBO();
-            BeanUtils.copyProperties(tbUserDO, tbUser);
+            CopyUtil.copyBean(tbUserDO, tbUser);
             return ResUtil.success(tbUser);
         }
 
@@ -71,7 +71,7 @@ public class TbUserServiceImpl implements TbUserService {
         TbUserDO tbUserDO = new TbUserDO();
         copier.copy(tbUserModel, tbUserDO, null);
 
-        int i = tbUserDAO.updateByPrimaryKey(tbUserDO);
+        int i = tbUserDAO.updateByPrimaryKeySelective(tbUserDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");
@@ -89,6 +89,19 @@ public class TbUserServiceImpl implements TbUserService {
         }
 
         throw new UserException(ResCode.FAILED);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Res<?> queryById(String id) {
+        TbUserDO tbUserDO = tbUserDAO.findById(id);
+        TbUserBO tbUser = new TbUserBO();
+
+        if (tbUserDO != null) {
+            CopyUtil.copyBean(tbUserDO, tbUser);
+        }
+
+        return ResUtil.success(tbUser);
     }
 
 }

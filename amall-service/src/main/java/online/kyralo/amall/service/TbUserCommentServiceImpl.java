@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbUserCommentModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.UserException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserCommentDO;
 import online.kyralo.amall.dao.mapper.TbUserCommentDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbUserCommentServiceImpl implements TbUserCommentService {
 
         if (tbUserCommentDO != null) {
             TbUserCommentBO tbUserComment = new TbUserCommentBO();
-            BeanUtils.copyProperties(tbUserCommentDO, tbUserComment);
+            CopyUtil.copyBean(tbUserCommentDO, tbUserComment);
             return ResUtil.success(tbUserComment);
         }
 
@@ -71,7 +71,7 @@ public class TbUserCommentServiceImpl implements TbUserCommentService {
         TbUserCommentDO tbUserCommentDO = new TbUserCommentDO();
         copier.copy(tbUserCommentModel, tbUserCommentDO, null);
 
-        int i = tbUserCommentDAO.updateByPrimaryKey(tbUserCommentDO);
+        int i = tbUserCommentDAO.updateByPrimaryKeySelective(tbUserCommentDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

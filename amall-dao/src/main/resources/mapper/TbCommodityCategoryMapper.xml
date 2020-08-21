@@ -36,7 +36,7 @@
     <!--新增商品类型-->
     <insert id="insert">
         INSERT INTO
-        tb_commodity_category(id,parent_category_id,name,info,icon_url,pic_url,is_primary,status,create_time,update_time)
+        tb_commodity_category(id,parent_category_id,name,info,icon_url,pic_url,is_primary,status)
         VALUES
         (#{id},#{parentCategoryId},#{name},#{info},#{iconUrl},#{picUrl},#{primary},#{status},#{createTime},#{updateTime})
     </insert>
@@ -46,5 +46,19 @@
         DELETE FROM tb_commodity_category
         WHERE id=#{id}
     </delete>
+
+    <!--查询商品一级类型-->
+    <select id="listPrimaryCategories" resultMap="tbCommodityCategoryMap">
+        SELECT id,parent_category_id,name,info,icon_url,pic_url,is_primary,status,create_time,update_time
+        FROM tb_commodity_category
+        WHERE is_primary = 0 AND status = 1
+    </select>
+
+    <!--通过父类型ID查询商品二级类型-->
+    <select id="listSecondCategories" resultMap="tbCommodityCategoryMap">
+        SELECT id,parent_category_id,name,info,icon_url,pic_url,is_primary,status,create_time,update_time
+        FROM tb_commodity_category
+        WHERE parent_category_id = #{primaryId} AND status = 1
+    </select>
 
 </mapper>

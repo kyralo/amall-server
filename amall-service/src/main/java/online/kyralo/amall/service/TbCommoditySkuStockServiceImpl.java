@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbCommoditySkuStockModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.CommodityException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySkuStockDO;
 import online.kyralo.amall.dao.mapper.TbCommoditySkuStockDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbCommoditySkuStockServiceImpl implements TbCommoditySkuStockServic
 
         if (tbCommoditySkuStockDO != null) {
             TbCommoditySkuStockBO tbCommoditySkuStock = new TbCommoditySkuStockBO();
-            BeanUtils.copyProperties(tbCommoditySkuStockDO, tbCommoditySkuStock);
+            CopyUtil.copyBean(tbCommoditySkuStockDO, tbCommoditySkuStock);
             return ResUtil.success(tbCommoditySkuStock);
         }
 
@@ -71,7 +71,7 @@ public class TbCommoditySkuStockServiceImpl implements TbCommoditySkuStockServic
         TbCommoditySkuStockDO tbCommoditySkuStockDO = new TbCommoditySkuStockDO();
         copier.copy(tbCommoditySkuStockModel, tbCommoditySkuStockDO, null);
 
-        int i = tbCommoditySkuStockDAO.updateByPrimaryKey(tbCommoditySkuStockDO);
+        int i = tbCommoditySkuStockDAO.updateByPrimaryKeySelective(tbCommoditySkuStockDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

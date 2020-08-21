@@ -2,21 +2,26 @@ package online.kyralo.amall.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Maps;
 import online.kyralo.amall.api.TbCommodityCategoryService;
+import online.kyralo.amall.api.bo.CommodityKindBO;
 import online.kyralo.amall.api.bo.TbCommodityCategoryBO;
 import online.kyralo.amall.api.model.TbCommodityCategoryModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.CommodityException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommodityCategoryDO;
 import online.kyralo.amall.dao.mapper.TbCommodityCategoryDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author wangchen
@@ -37,7 +42,7 @@ public class TbCommodityCategoryServiceImpl implements TbCommodityCategoryServic
 
         if (tbCommodityCategoryDO != null) {
             TbCommodityCategoryBO tbCommodityCategory = new TbCommodityCategoryBO();
-            BeanUtils.copyProperties(tbCommodityCategoryDO, tbCommodityCategory);
+            CopyUtil.copyBean(tbCommodityCategoryDO, tbCommodityCategory);
             return ResUtil.success(tbCommodityCategory);
         }
 
@@ -71,7 +76,7 @@ public class TbCommodityCategoryServiceImpl implements TbCommodityCategoryServic
         TbCommodityCategoryDO tbCommodityCategoryDO = new TbCommodityCategoryDO();
         copier.copy(tbCommodityCategoryModel, tbCommodityCategoryDO, null);
 
-        int i = tbCommodityCategoryDAO.updateByPrimaryKey(tbCommodityCategoryDO);
+        int i = tbCommodityCategoryDAO.updateByPrimaryKeySelective(tbCommodityCategoryDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");
@@ -89,6 +94,34 @@ public class TbCommodityCategoryServiceImpl implements TbCommodityCategoryServic
         }
 
         throw new CommodityException(ResCode.FAILED);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Res<?> listCommodityCategories() {
+
+        List<CommodityKindBO> commodityKinds = new ArrayList<>();
+
+        List<TbCommodityCategoryDO> primaryCategories =
+                tbCommodityCategoryDAO.listPrimaryCategories();
+
+        primaryCategories.forEach(primaryCategory -> {
+
+            List<TbCommodityCategoryDO> secondCategories =
+                    tbCommodityCategoryDAO.listSecondCategories(primaryCategory.getId());
+
+            Map<String, Object> map = Maps.newHashMap();
+            map.put("primaryCategory", primaryCategories);
+            map.put("secondCategories", secondCategories);
+
+            CommodityKindBO commodityKind = new CommodityKindBO();
+            CopyUtil.copyBean(map, commodityKind);
+
+            commodityKinds.add(commodityKind);
+
+        });
+
+        return ResUtil.success(commodityKinds);
     }
 
 }

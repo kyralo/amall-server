@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbCommodityBrandsModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.CommodityException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommodityBrandsDO;
 import online.kyralo.amall.dao.mapper.TbCommodityBrandsDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbCommodityBrandsServiceImpl implements TbCommodityBrandsService {
 
         if (tbCommodityBrandsDO != null) {
             TbCommodityBrandsBO tbCommodityBrands = new TbCommodityBrandsBO();
-            BeanUtils.copyProperties(tbCommodityBrandsDO, tbCommodityBrands);
+            CopyUtil.copyBean(tbCommodityBrandsDO, tbCommodityBrands);
             return ResUtil.success(tbCommodityBrands);
         }
 
@@ -71,7 +71,7 @@ public class TbCommodityBrandsServiceImpl implements TbCommodityBrandsService {
         TbCommodityBrandsDO tbCommodityBrandsDO = new TbCommodityBrandsDO();
         copier.copy(tbCommodityBrandsModel, tbCommodityBrandsDO, null);
 
-        int i = tbCommodityBrandsDAO.updateByPrimaryKey(tbCommodityBrandsDO);
+        int i = tbCommodityBrandsDAO.updateByPrimaryKeySelective(tbCommodityBrandsDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

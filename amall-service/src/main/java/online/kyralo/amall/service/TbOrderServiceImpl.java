@@ -8,10 +8,10 @@ import online.kyralo.amall.api.model.TbOrderModel;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
 import online.kyralo.amall.common.exceptions.business.OrderException;
+import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbOrderDO;
 import online.kyralo.amall.dao.mapper.TbOrderDAO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class TbOrderServiceImpl implements TbOrderService {
 
         if (tbOrderDO != null) {
             TbOrderBO tbOrder = new TbOrderBO();
-            BeanUtils.copyProperties(tbOrderDO, tbOrder);
+            CopyUtil.copyBean(tbOrderDO, tbOrder);
             return ResUtil.success(tbOrder);
         }
 
@@ -70,7 +70,7 @@ public class TbOrderServiceImpl implements TbOrderService {
         TbOrderDO tbOrderDO = new TbOrderDO();
         copier.copy(tbOrderModel, tbOrderDO, null);
 
-        int i = tbOrderDAO.updateByPrimaryKey(tbOrderDO);
+        int i = tbOrderDAO.updateByPrimaryKeySelective(tbOrderDO);
 
         if (i == 1) {
             return ResUtil.success("更新成功");

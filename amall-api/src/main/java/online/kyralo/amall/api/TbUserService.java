@@ -50,4 +50,12 @@ public interface TbUserService {
      */
     Res<?> deleteById(String id);
 
+    /**
+     * 通过ID查询单个用户
+     *
+     * @param id ID
+     * @return {@link TbUserModel}
+     */
+    Res<?> queryById(String id);
+
 }

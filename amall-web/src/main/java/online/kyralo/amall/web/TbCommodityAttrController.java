@@ -6,15 +6,17 @@ import io.swagger.annotations.ApiParam;
 import online.kyralo.amall.api.TbCommodityAttrService;
 import online.kyralo.amall.api.model.TbCommodityAttrModel;
 import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.utils.CopyUtil;
+import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.common.validator.Create;
 import online.kyralo.amall.common.validator.Update;
 import online.kyralo.amall.web.vo.TbCommodityAttrVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * 销售属性表 (产品参数)
@@ -32,30 +34,31 @@ public class TbCommodityAttrController {
     @ApiOperation(value = "通过ID查询单个销售属性表 (产品参数)", response = TbCommodityAttrVO.class)
     public Res<?> findById(@ApiParam("ID") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
-        return tbCommodityAttrService.findById(id);
+        Res<?> res = tbCommodityAttrService.findById(id);
+        TbCommodityAttrVO tbCommodityAttr = new TbCommodityAttrVO();
+        CopyUtil.copyBean(res.getData(), tbCommodityAttr);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbCommodityAttr);
     }
 
     @GetMapping
     @ApiOperation(value = "分页查询销售属性表 (产品参数)", response = TbCommodityAttrVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        return tbCommodityAttrService.findByPage(pageNum, pageSize);
+        Res<?> res = tbCommodityAttrService.findByPage(pageNum, pageSize);
+        List<TbCommodityAttrVO> tbCommodityAttrs = CopyUtil.copyList(res.getData(), TbCommodityAttrVO.class);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbCommodityAttrs);
     }
 
     @PostMapping
     @ApiOperation(value = "新增销售属性表 (产品参数)", response = TbCommodityAttrVO.class)
-    public Res<?> insert(@RequestBody @Validated(Create.class) TbCommodityAttrVO tbCommodityAttr) {
-        TbCommodityAttrModel tbCommodityAttrModel = new TbCommodityAttrModel();
-        BeanUtils.copyProperties(tbCommodityAttr, tbCommodityAttrModel);
-        return tbCommodityAttrService.insert(tbCommodityAttrModel);
+    public Res<?> insert(@RequestBody @Validated(Create.class) TbCommodityAttrModel tbCommodityAttr) {
+        return tbCommodityAttrService.insert(tbCommodityAttr);
     }
 
     @PutMapping
     @ApiOperation(value = "修改销售属性表 (产品参数)", response = TbCommodityAttrVO.class)
-    public Res<?> update(@RequestBody @Validated(Update.class) TbCommodityAttrVO tbCommodityAttr) {
-        TbCommodityAttrModel tbCommodityAttrModel = new TbCommodityAttrModel();
-        BeanUtils.copyProperties(tbCommodityAttr, tbCommodityAttrModel);
-        return tbCommodityAttrService.update(tbCommodityAttrModel);
+    public Res<?> update(@RequestBody @Validated(Update.class) TbCommodityAttrModel tbCommodityAttr) {
+        return tbCommodityAttrService.update(tbCommodityAttr);
     }
 
     @DeleteMapping("/{id}")

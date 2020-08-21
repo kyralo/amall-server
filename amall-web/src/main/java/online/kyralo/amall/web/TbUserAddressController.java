@@ -6,15 +6,17 @@ import io.swagger.annotations.ApiParam;
 import online.kyralo.amall.api.TbUserAddressService;
 import online.kyralo.amall.api.model.TbUserAddressModel;
 import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.utils.CopyUtil;
+import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.common.validator.Create;
 import online.kyralo.amall.common.validator.Update;
 import online.kyralo.amall.web.vo.TbUserAddressVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * 用户地址
@@ -32,30 +34,31 @@ public class TbUserAddressController {
     @ApiOperation(value = "通过ID查询单个用户地址", response = TbUserAddressVO.class)
     public Res<?> findById(@ApiParam("ID") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") Integer id) {
-        return tbUserAddressService.findById(id);
+        Res<?> res = tbUserAddressService.findById(id);
+        TbUserAddressVO tbUserAddress = new TbUserAddressVO();
+        CopyUtil.copyBean(res.getData(), tbUserAddress);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbUserAddress);
     }
 
     @GetMapping
     @ApiOperation(value = "分页查询用户地址", response = TbUserAddressVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        return tbUserAddressService.findByPage(pageNum, pageSize);
+        Res<?> res = tbUserAddressService.findByPage(pageNum, pageSize);
+        List<TbUserAddressVO> tbUserAddresses = CopyUtil.copyList(res.getData(), TbUserAddressVO.class);
+        return ResUtil.response(res.getCode(), res.getMessage(), tbUserAddresses);
     }
 
     @PostMapping
     @ApiOperation(value = "新增用户地址", response = TbUserAddressVO.class)
-    public Res<?> insert(@RequestBody @Validated(Create.class) TbUserAddressVO tbUserAddress) {
-        TbUserAddressModel tbUserAddressModel = new TbUserAddressModel();
-        BeanUtils.copyProperties(tbUserAddress, tbUserAddressModel);
-        return tbUserAddressService.insert(tbUserAddressModel);
+    public Res<?> insert(@RequestBody @Validated(Create.class) TbUserAddressModel tbUserAddress) {
+        return tbUserAddressService.insert(tbUserAddress);
     }
 
     @PutMapping
     @ApiOperation(value = "修改用户地址", response = TbUserAddressVO.class)
-    public Res<?> update(@RequestBody @Validated(Update.class) TbUserAddressVO tbUserAddress) {
-        TbUserAddressModel tbUserAddressModel = new TbUserAddressModel();
-        BeanUtils.copyProperties(tbUserAddress, tbUserAddressModel);
-        return tbUserAddressService.update(tbUserAddressModel);
+    public Res<?> update(@RequestBody @Validated(Update.class) TbUserAddressModel tbUserAddress) {
+        return tbUserAddressService.update(tbUserAddress);
     }
 
     @DeleteMapping("/{id}")

@@ -56,7 +56,7 @@ public class PHomeVO extends Base {
      * 活动 列表
      */
     @ApiModelProperty("活动 列表")
-    private List<TbActivityVO> activities;
+    private List<PActivityVO> activities;
 
     /**
      * 用户信息
@@ -84,17 +84,32 @@ public class PHomeVO extends Base {
 
     // 第二栏目
 
-    /**
-     * 正在执行的 整点场 秒杀
-     */
-    @ApiModelProperty("正在执行的 整点场 秒杀")
-    private String seckillClock;
+    @Builder
+    @Setter
+    @Getter
+    @ToString
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Seckill extends Base {
+
+        /**
+         * 正在执行的 整点场 秒杀
+         */
+        @ApiModelProperty("正在执行的 整点场 秒杀")
+        private String seckillClock;
+
+        /**
+         * 秒杀的商品 前五名
+         */
+        @ApiModelProperty("秒杀的商品 前五名")
+        private List<TbCommodityVO> seckillCommodities;
+    }
 
     /**
-     * 秒杀的商品 前五名
+     * 秒杀
      */
-    @ApiModelProperty("秒杀的商品 前五名")
-    private List<TbCommodityVO> seckillCommodities;
+    @ApiModelProperty("秒杀")
+    private Seckill seckill;
 
     // 第三栏目
 

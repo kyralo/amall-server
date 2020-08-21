@@ -6,15 +6,17 @@ import io.swagger.annotations.ApiParam;
 import online.kyralo.amall.api.TbCommodityCategoryService;
 import online.kyralo.amall.api.model.TbCommodityCategoryModel;
 import online.kyralo.amall.common.api.Res;
+import online.kyralo.amall.common.utils.CopyUtil;
+import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.common.validator.Create;
 import online.kyralo.amall.common.validator.Update;
 import online.kyralo.amall.web.vo.TbCommodityCategoryVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * 商品类型
@@ -32,30 +34,31 @@ public class TbCommodityCategoryController {
     @ApiOperation(value = "通过ID查询单个商品类型", response = TbCommodityCategoryVO.class)
     public Res<?> findById(@ApiParam("ID") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") Integer id) {
-        return tbCommodityCategoryService.findById(id);
+        Res<?> res = tbCommodityCategoryService.findById(id);
+        TbCommodityCategoryVO bCommodityCategory = new TbCommodityCategoryVO();
+        CopyUtil.copyBean(res.getData(), bCommodityCategory);
+        return ResUtil.response(res.getCode(), res.getMessage(), bCommodityCategory);
     }
 
     @GetMapping
     @ApiOperation(value = "分页查询商品类型", response = TbCommodityCategoryVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        return tbCommodityCategoryService.findByPage(pageNum, pageSize);
+        Res<?> res = tbCommodityCategoryService.findByPage(pageNum, pageSize);
+        List<TbCommodityCategoryVO> bCommodityCategories = CopyUtil.copyList(res.getData(), TbCommodityCategoryVO.class);
+        return ResUtil.response(res.getCode(), res.getMessage(), bCommodityCategories);
     }
 
     @PostMapping
     @ApiOperation(value = "新增商品类型", response = TbCommodityCategoryVO.class)
-    public Res<?> insert(@RequestBody @Validated(Create.class) TbCommodityCategoryVO tbCommodityCategory) {
-        TbCommodityCategoryModel tbCommodityCategoryModel = new TbCommodityCategoryModel();
-        BeanUtils.copyProperties(tbCommodityCategory, tbCommodityCategoryModel);
-        return tbCommodityCategoryService.insert(tbCommodityCategoryModel);
+    public Res<?> insert(@RequestBody @Validated(Create.class) TbCommodityCategoryModel tbCommodityCategory) {
+        return tbCommodityCategoryService.insert(tbCommodityCategory);
     }
 
     @PutMapping
     @ApiOperation(value = "修改商品类型", response = TbCommodityCategoryVO.class)
-    public Res<?> update(@RequestBody @Validated(Update.class) TbCommodityCategoryVO tbCommodityCategory) {
-        TbCommodityCategoryModel tbCommodityCategoryModel = new TbCommodityCategoryModel();
-        BeanUtils.copyProperties(tbCommodityCategory, tbCommodityCategoryModel);
-        return tbCommodityCategoryService.update(tbCommodityCategoryModel);
+    public Res<?> update(@RequestBody @Validated(Update.class) TbCommodityCategoryModel tbCommodityCategory) {
+        return tbCommodityCategoryService.update(tbCommodityCategory);
     }
 
     @DeleteMapping("/{id}")

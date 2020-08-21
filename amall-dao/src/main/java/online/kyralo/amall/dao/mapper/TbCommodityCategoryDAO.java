@@ -5,6 +5,8 @@ import online.kyralo.amall.common.base.BaseDao;
 import online.kyralo.amall.dao.dataobject.TbCommodityCategoryDO;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 商品类型
  */
@@ -43,5 +45,20 @@ public interface TbCommodityCategoryDAO extends BaseDao<TbCommodityCategoryDO> {
      * @return 是否删除成功
      */
     int deleteById(Integer id);
+
+    /**
+     * 查询商品一级类型
+     *
+     * @return {@link TbCommodityCategoryDO}
+     */
+    List<TbCommodityCategoryDO> listPrimaryCategories();
+
+    /**
+     * 通过父类型ID查询商品二级类型
+     *
+     * @param primaryId 一级类型ID
+     * @return {@link TbCommodityCategoryDO}
+     */
+    List<TbCommodityCategoryDO> listSecondCategories(Integer primaryId);
 
 }

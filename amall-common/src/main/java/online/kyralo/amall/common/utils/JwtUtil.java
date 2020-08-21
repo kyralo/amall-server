@@ -62,6 +62,23 @@ public class JwtUtil {
     }
 
     /**
+     * 用户token授权
+     *
+     * @param username 用户名
+     * @return the JWT token
+     */
+    public static String generateTokenForUser(String username) {
+
+        Claims claims = Jwts.claims()
+                .setAudience(username).setSubject("ROLE_USER");
+        return Jwts.builder()
+                .setClaims(claims)
+                .setExpiration(generateExpirationDate())
+                .signWith(KEY)
+                .compact();
+    }
+
+    /**
      * 管理员token授权
      *
      * @param username 用户名
@@ -95,7 +112,7 @@ public class JwtUtil {
                     .getBody();
         } catch (JwtException e) {
             log.warn("JWT格式验证失败: {} \n {}\n", token, e.getMessage());
-            throw new AuthException(ResCode.UNAUTHORIZED);
+            return null;
         }
         return claims;
     }

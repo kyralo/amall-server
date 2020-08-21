@@ -50,4 +50,11 @@ public interface TbCommodityCategoryService {
      */
     Res<?> deleteById(Integer id);
 
+    /**
+     * 查询商品类型 一级类型 + 二级类型
+     *
+     * @return 商品类型 一级类型 + 二级类型
+     */
+    Res<?> listCommodityCategories();
+
 }

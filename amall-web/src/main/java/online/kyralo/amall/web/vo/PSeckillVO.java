@@ -26,11 +26,16 @@ import java.util.List;
 public class PSeckillVO extends Base {
 
     /**
+     * 正在执行的 整点场 秒杀
+     */
+    @ApiModelProperty("正在执行的 整点场 秒杀")
+    private String seckillClock;
+
+    /**
      * 秒杀 广告
-     * todo 暂时不加
      */
     @ApiModelProperty("秒杀 广告")
-    private PAdvertisingVO ad;
+    private PActivityVO ad;
 
     /**
      * 秒杀 一级类型 列表

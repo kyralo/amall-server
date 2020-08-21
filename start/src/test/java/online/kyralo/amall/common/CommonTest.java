@@ -1,9 +1,15 @@
 package online.kyralo.amall.common;
 
 import online.kyralo.amall.common.utils.CommonUtil;
+import online.kyralo.amall.common.utils.CopyUtil;
+import online.kyralo.amall.web.vo.TbUserVO;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.BeanUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * \* Created with Intellij IDEA.
@@ -28,38 +34,17 @@ public class CommonTest {
 
     @Test
     public void queryTest() {
-        /*
-         * 1: 0000 0001
-         * 2: 0000 0010
-         *    0000 0011
-         *    0000 0000
-         *    0000 0011
-         *
-         *   b ^ c = a ^ (b ^ c) ^ a = x ^ a
-         *   x = 255
-         *   e.g
-         *   a = 1 -> 255 ^ 1 = 254 -> b ^ c =254 -> c = 254 ^ b
-         */
-        System.out.println(1|2);
-        System.out.println(1&2);
-        System.out.println(1^2);
-        System.out.println(1^255);
+        TbUserVO build = TbUserVO.builder().avatarUrl("-----").build();
+        TbUserVO build1 = TbUserVO.builder().avatarUrl("--22--").build();
 
-        int min = 255;
+        CopyUtil.copyBean(build, build1);
+        System.out.println(build.getAvatarUrl());
+        System.out.println(build1.getAvatarUrl());
 
-        for (int i = 0; i < 254; i++) {
-            int c = 254 ^ i;
-            if (i - c < 0){
-                continue;
-            }
-            if (i - c == 2){
-                System.out.println(i);
-                System.out.println(c);
-            }
-            min = Math.min(min, (i - c));
+        List<TbUserVO> userVOList = Lists.newArrayList();
+        List<TbUserVO> objects = CopyUtil.copyList(userVOList, TbUserVO.class);
 
-        }
 
-        System.out.println(min);
+        System.out.println(objects);
     }
 }

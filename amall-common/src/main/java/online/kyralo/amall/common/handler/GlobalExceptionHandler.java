@@ -36,6 +36,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(ConstraintViolationException.class)
     public Res<?> handler(HttpServletRequest request, ConstraintViolationException ex) {
+
+        log.info("参数校验异常: {} \n", ex.getCause().toString());
+
         StringBuilder msg = new StringBuilder();
         Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
         for (ConstraintViolation<?> violation : violations) {
