@@ -15,6 +15,7 @@ import online.kyralo.amall.dao.mapper.TbUserCollectionDAO;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 
@@ -89,6 +90,15 @@ public class TbUserCollectionServiceImpl implements TbUserCollectionService {
         }
 
         throw new UserException(ResCode.FAILED);
+    }
+
+    @Override
+    public Res<?> countByUserId(String userId) {
+        Example example = new Example(TbUserCollectionDO.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("userId", userId);
+        int count = tbUserCollectionDAO.selectCountByExample(example);
+        return ResUtil.success(count);
     }
 
 }

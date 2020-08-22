@@ -91,4 +91,14 @@ public class TbMerchantServiceImpl implements TbMerchantService {
         throw new MerchantException(ResCode.FAILED);
     }
 
+    @Override
+    public Res<?> getMerchantByCommoditySkuId(String commoditySkuId) {
+        return null;
+    }
+
+    @Override
+    public Res<?> getMerchantCommodityKindByCommoditySkuId(String commoditySkuId) {
+        return null;
+    }
+
 }

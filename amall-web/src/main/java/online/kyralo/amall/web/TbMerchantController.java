@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
-import java.util.List;
 
 /**
  * 商家
@@ -44,9 +43,7 @@ public class TbMerchantController {
     @ApiOperation(value = "分页查询商家", response = TbMerchantVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        Res<?> res = tbMerchantService.findByPage(pageNum, pageSize);
-        List<TbMerchantVO> tbMerchants = CopyUtil.copyList(res.getData(), TbMerchantVO.class);
-        return ResUtil.response(res.getCode(), res.getMessage(), tbMerchants);
+        return tbMerchantService.findByPage(pageNum, pageSize);
     }
 
     @PostMapping

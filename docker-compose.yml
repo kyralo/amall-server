@@ -2,22 +2,22 @@ version: '3'
 
 services:
   # mysql
-#  mysql:
-#    # 镜像
-#    image: mysql/mysql-server:latest
-#    restart: always
-#    container_name: mysql
-#    ports:
-#      - "3306:3306"
-#    volumes:
-#      - /usr/local/docker/mysql/conf:/etc/mysql
-#      - /usr/local/docker/mysql/logs:/var/log/mysql
-#      - /usr/local/docker/mysql/data:/var/lib/mysql
-#    environment:
-#      - TZ=Asia/Shanghai
-#      - MYSQL_ROOT_PASSWORD=123456
-#    networks:
-#      - b-amall
+  mysql:
+    # 镜像
+    image: mysql/mysql-server:latest
+    restart: always
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - /usr/local/docker/mysql/conf:/etc/mysql
+      - /usr/local/docker/mysql/logs:/var/log/mysql
+      - /usr/local/docker/mysql/data:/var/lib/mysql
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=123456
+    networks:
+      - b-amall
 
   # redis
   redis01:

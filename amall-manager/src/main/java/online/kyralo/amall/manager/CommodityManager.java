@@ -1,14 +1,17 @@
 package online.kyralo.amall.manager;
 
+import org.springframework.stereotype.Component;
+
 /**
  * \* Created with Intellij IDEA.
- * \* @author: wangchen
+ * \* Author: wangchen
  * \* Date: 2020/7/9
  * \* Time: 7:41
  * \* Description: 商品 复合查询
  * \
  */
-public class CommodityManager {
 
+@Component
+public class CommodityManager {
 
 }

@@ -18,7 +18,7 @@ import online.kyralo.amall.common.base.domain.Base;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommoditySeckillBO extends Base {
+public class SeckillCommodityBO extends Base {
 
     /**
      * 商品ID

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
-import java.util.List;
 
 /**
  * 商品类型
@@ -44,9 +43,7 @@ public class TbCommodityCategoryController {
     @ApiOperation(value = "分页查询商品类型", response = TbCommodityCategoryVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        Res<?> res = tbCommodityCategoryService.findByPage(pageNum, pageSize);
-        List<TbCommodityCategoryVO> bCommodityCategories = CopyUtil.copyList(res.getData(), TbCommodityCategoryVO.class);
-        return ResUtil.response(res.getCode(), res.getMessage(), bCommodityCategories);
+        return tbCommodityCategoryService.findByPage(pageNum, pageSize);
     }
 
     @PostMapping

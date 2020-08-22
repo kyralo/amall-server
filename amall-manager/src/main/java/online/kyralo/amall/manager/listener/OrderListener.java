@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
  * \
  */
 
+// @RabbitListener(queues = "Topic.ORDER")
+
 @Slf4j
 @Component
 public class OrderListener {
@@ -20,7 +22,7 @@ public class OrderListener {
 //    /**
 //     * 订单
 //     */
-//    @RabbitListener(queues = "Topic.ORDER")
+//    @RabbitHandler
 //    public void orderNotice() {
 //        System.out.println("order");
 //    }

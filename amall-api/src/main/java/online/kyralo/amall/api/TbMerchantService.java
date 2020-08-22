@@ -50,4 +50,20 @@ public interface TbMerchantService {
      */
     Res<?> deleteById(String id);
 
+
+    /**
+     * 获取商家信息
+     *
+     * @param commoditySkuId 商品sku ID
+     * @return 商家信息
+     */
+    Res<?> getMerchantByCommoditySkuId(String commoditySkuId);
+
+    /**
+     * 获取商家销售商品类型 列表
+     *
+     * @param commoditySkuId 商品sku ID
+     * @return 商家销售商品类型
+     */
+    Res<?> getMerchantCommodityKindByCommoditySkuId(String commoditySkuId);
 }

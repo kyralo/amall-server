@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
-import java.util.List;
 
 /**
  * 商品spu表
@@ -44,9 +43,7 @@ public class TbCommoditySpuController {
     @ApiOperation(value = "分页查询商品spu表", response = TbCommoditySpuVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        Res<?> res = tbCommoditySpuService.findByPage(pageNum, pageSize);
-        List<TbCommoditySpuVO> tbCommoditySpus = CopyUtil.copyList(res.getData(), TbCommoditySpuVO.class);
-        return ResUtil.response(res.getCode(), res.getMessage(), tbCommoditySpus);
+        return tbCommoditySpuService.findByPage(pageNum, pageSize);
     }
 
     @PostMapping

@@ -90,5 +90,4 @@ public class TbCommoditySkuServiceImpl implements TbCommoditySkuService {
 
         throw new CommodityException(ResCode.FAILED);
     }
-
 }

@@ -15,6 +15,7 @@ import online.kyralo.amall.dao.mapper.TbOrderDAO;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 
@@ -89,5 +90,16 @@ public class TbOrderServiceImpl implements TbOrderService {
 
         throw new OrderException(ResCode.FAILED);
     }
+
+    @Override
+    public Res<?> countOrdersByUserIdAndStatus(String userId, Integer status) {
+        Example example = new Example(TbOrderDO.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("userId", userId);
+        criteria.andEqualTo("status", status);
+        int count = tbOrderDAO.selectCountByExample(example);
+        return ResUtil.success(count);
+    }
+
 
 }

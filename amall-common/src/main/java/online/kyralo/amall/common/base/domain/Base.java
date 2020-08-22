@@ -5,5 +5,6 @@ import java.io.Serializable;
 /**
  * @author wangchen
  */
+
 public class Base implements Serializable {
 }

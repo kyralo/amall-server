@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
-import java.util.List;
 
 /**
  * sku表
@@ -44,9 +43,7 @@ public class TbCommoditySkuController {
     @ApiOperation(value = "分页查询sku表", response = TbCommoditySkuVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        Res<?> res = tbCommoditySkuService.findByPage(pageNum, pageSize);
-        List<TbCommoditySkuVO> tbCommoditySkus = CopyUtil.copyList(res.getData(), TbCommoditySkuVO.class);
-        return ResUtil.response(res.getCode(), res.getMessage(), tbCommoditySkus);
+        return tbCommoditySkuService.findByPage(pageNum, pageSize);
     }
 
     @PostMapping

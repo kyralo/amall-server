@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
-import java.util.List;
 
 /**
  * 用户收藏
@@ -44,9 +43,7 @@ public class TbUserCollectionController {
     @ApiOperation(value = "分页查询用户收藏", response = TbUserCollectionVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        Res<?> res = tbUserCollectionService.findByPage(pageNum, pageSize);
-        List<TbUserCollectionVO> tbUserCollections = CopyUtil.copyList(res.getData(), TbUserCollectionVO.class);
-        return ResUtil.response(res.getCode(), res.getMessage(), tbUserCollections);
+        return tbUserCollectionService.findByPage(pageNum, pageSize);
     }
 
     @PostMapping

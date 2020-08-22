@@ -50,4 +50,14 @@ public interface TbOrderService {
      */
     Res<?> deleteById(Integer id);
 
+    /**
+     * 统计订单
+     *
+     * @param userId 用户ID
+     * @param status 订单状态
+     * @return 统计数
+     */
+    Res<?> countOrdersByUserIdAndStatus(String userId, Integer status);
+
+
 }

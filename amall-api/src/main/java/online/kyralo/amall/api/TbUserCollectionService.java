@@ -50,4 +50,12 @@ public interface TbUserCollectionService {
      */
     Res<?> deleteById(Integer id);
 
+    /**
+     * 统计收藏
+     *
+     * @param userId 用户ID
+     * @return 统计数
+     */
+    Res<?> countByUserId(String userId);
+
 }

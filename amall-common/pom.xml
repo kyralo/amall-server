@@ -24,6 +24,18 @@
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- aop -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!-- 用于日志切面中，以 json 格式打印出入参 -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
         <!-- redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -41,12 +53,16 @@
             <artifactId>aliyun-sdk-oss</artifactId>
         </dependency>
 
-<!--        &lt;!&ndash; RabbitMq &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-amqp</artifactId>-->
-<!--        </dependency>-->
-
+        <!--        &lt;!&ndash; RabbitMq &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-amqp</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.amqp</groupId>-->
+        <!--            <artifactId>spring-rabbit-test</artifactId>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
 
         <!--邮件发送核心包-->
         <dependency>
@@ -170,6 +186,12 @@
         <dependency>
             <groupId>com.github.caspar-chen</groupId>
             <artifactId>swagger-ui-layer</artifactId>
+        </dependency>
+
+        <!--pagehelper 分页插件 ref:https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 </project>

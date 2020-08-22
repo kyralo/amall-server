@@ -33,4 +33,9 @@ public class CartServiceImpl implements CartService {
         return null;
     }
 
+    @Override
+    public Res<?> countByUserId(String userId) {
+        return null;
+    }
+
 }

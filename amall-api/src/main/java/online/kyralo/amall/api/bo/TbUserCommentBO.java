@@ -1,10 +1,12 @@
 package online.kyralo.amall.api.bo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户评论
@@ -69,5 +71,11 @@ public class TbUserCommentBO extends Base {
      */
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+
+    /**
+     * 下级评论
+     */
+    @ApiModelProperty("下级评论")
+    private List<TbUserCommentBO> lowerComments;
 
 }

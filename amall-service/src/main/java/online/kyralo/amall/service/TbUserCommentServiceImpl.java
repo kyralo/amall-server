@@ -91,4 +91,9 @@ public class TbUserCommentServiceImpl implements TbUserCommentService {
         throw new UserException(ResCode.FAILED);
     }
 
+    @Override
+    public Res<?> listCommentsByCommodityId(String commodityId) {
+        return null;
+    }
+
 }

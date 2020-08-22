@@ -43,4 +43,12 @@ public interface CartService {
      * @return 删除的状态
      */
     Res<?> remove(String userId, String commodityId);
+
+    /**
+     * 统计商品
+     *
+     * @param userId 用户ID
+     * @return 统计数
+     */
+    Res<?> countByUserId(String userId);
 }

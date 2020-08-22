@@ -7,6 +7,7 @@ import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户评论
@@ -82,5 +83,11 @@ public class TbUserCommentVO extends Base {
     @ApiModelProperty("更新时间")
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+
+    /**
+     * 下级评论
+     */
+    @ApiModelProperty("下级评论")
+    private List<TbUserCommentVO> lowerComments;
 
 }

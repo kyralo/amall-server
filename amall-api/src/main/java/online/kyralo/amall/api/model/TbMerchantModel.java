@@ -63,7 +63,7 @@ public class TbMerchantModel {
     private Integer sex;
 
     /**
-     * 管理员头像 (默认路径 “/avatar/boy.jpg”)
+     * 商家头像 (默认路径 “/avatar/boy.jpg”)
      */
     private String avatarUrl;
 

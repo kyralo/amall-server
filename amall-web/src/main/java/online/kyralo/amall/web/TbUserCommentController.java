@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * 用户评论
@@ -45,9 +44,7 @@ public class TbUserCommentController {
     @ApiOperation(value = "分页查询用户评论", response = TbUserCommentVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        Res<?> res = tbUserCommentService.findByPage(pageNum, pageSize);
-        List<TbUserCommentVO> bUserComments = CopyUtil.copyList(res.getData(), TbUserCommentVO.class);
-        return ResUtil.response(res.getCode(), res.getMessage(), bUserComments);
+        return tbUserCommentService.findByPage(pageNum, pageSize);
     }
 
     @PostMapping

@@ -114,9 +114,7 @@ public class TbCommodityCategoryServiceImpl implements TbCommodityCategoryServic
             map.put("primaryCategory", primaryCategories);
             map.put("secondCategories", secondCategories);
 
-            CommodityKindBO commodityKind = new CommodityKindBO();
-            CopyUtil.copyBean(map, commodityKind);
-
+            CommodityKindBO commodityKind = CopyUtil.copyMapToObject(map, CommodityKindBO.class);
             commodityKinds.add(commodityKind);
 
         });

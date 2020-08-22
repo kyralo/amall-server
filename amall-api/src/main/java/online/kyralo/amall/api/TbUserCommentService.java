@@ -49,4 +49,12 @@ public interface TbUserCommentService {
      */
     Res<?> deleteById(String id);
 
+    /**
+     * 获取用户评论 列表
+     *
+     * @param commodityId 商品ID
+     * @return 用户评论
+     */
+    Res<?> listCommentsByCommodityId(String commodityId);
+
 }

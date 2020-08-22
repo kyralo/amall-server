@@ -49,5 +49,4 @@ public interface TbCommoditySkuService {
      * @return 删除的状态
      */
     Res<?> deleteById(String id);
-
 }

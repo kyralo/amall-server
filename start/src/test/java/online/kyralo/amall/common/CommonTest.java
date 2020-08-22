@@ -3,13 +3,9 @@ package online.kyralo.amall.common;
 import online.kyralo.amall.common.utils.CommonUtil;
 import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.web.vo.TbUserVO;
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.BeanUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * \* Created with Intellij IDEA.
@@ -19,6 +15,7 @@ import java.util.List;
  * \* Description: 通用测试
  * \
  */
+
 public class CommonTest {
 
     @Test
@@ -29,22 +26,16 @@ public class CommonTest {
     }
 
     @Test
-    public void excTest() {
+    public void start() {
     }
 
     @Test
     public void queryTest() {
-        TbUserVO build = TbUserVO.builder().avatarUrl("-----").build();
-        TbUserVO build1 = TbUserVO.builder().avatarUrl("--22--").build();
+        Map<String, Object> map = new HashMap<>();
+        map.put("avatarUrl", "2312313");
 
-        CopyUtil.copyBean(build, build1);
-        System.out.println(build.getAvatarUrl());
-        System.out.println(build1.getAvatarUrl());
+        TbUserVO tbUserVO = CopyUtil.copyMapToObject(map, TbUserVO.class);
+        System.out.println(tbUserVO);
 
-        List<TbUserVO> userVOList = Lists.newArrayList();
-        List<TbUserVO> objects = CopyUtil.copyList(userVOList, TbUserVO.class);
-
-
-        System.out.println(objects);
     }
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
-import java.util.List;
 
 /**
  * 品牌表
@@ -44,9 +43,7 @@ public class TbCommodityBrandsController {
     @ApiOperation(value = "分页查询品牌表", response = TbCommodityBrandsVO.class)
     public Res<?> findByPage(@ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
                              @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) {
-        Res<?> res = tbCommodityBrandsService.findByPage(pageNum, pageSize);
-        List<TbCommodityBrandsVO> tbCommodityBrands = CopyUtil.copyList(res.getData(), TbCommodityBrandsVO.class);
-        return ResUtil.response(res.getCode(), res.getMessage(), tbCommodityBrands);
+        return tbCommodityBrandsService.findByPage(pageNum, pageSize);
     }
 
     @PostMapping

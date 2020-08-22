@@ -1,5 +1,7 @@
 package online.kyralo.amall.manager;
 
+import org.springframework.stereotype.Component;
+
 /**
  * \* Created with Intellij IDEA.
  * \* Author: wangchen
@@ -8,5 +10,7 @@ package online.kyralo.amall.manager;
  * \* Description: 购物车 复合查询
  * \
  */
+
+@Component
 public class CartManager {
 }

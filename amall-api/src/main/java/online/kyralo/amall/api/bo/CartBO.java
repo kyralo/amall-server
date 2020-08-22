@@ -1,6 +1,7 @@
 package online.kyralo.amall.api.bo;
 
 import lombok.*;
+import online.kyralo.amall.common.base.domain.Base;
 
 /**
  * \* Created with Intellij IDEA.
@@ -17,6 +18,6 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartBO {
+public class CartBO extends Base {
     private Integer id;
 }
