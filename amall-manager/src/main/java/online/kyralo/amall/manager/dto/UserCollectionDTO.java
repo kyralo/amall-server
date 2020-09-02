@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * sku库存表
+ * 用户收藏
  */
 
 @Builder
@@ -16,37 +16,22 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbCommoditySkuStockDTO extends Base {
+public class UserCollectionDTO extends Base {
 
     /**
-     * 自增ID
+     * 用户地址ID
      */
     private Integer id;
+
+    /**
+     * 用户ID
+     */
+    private String userId;
 
     /**
      * SKU ID
      */
     private String skuId;
-
-    /**
-     * SKU color
-     */
-    private String skuColor;
-
-    /**
-     * SKU 商品尺码名
-     */
-    private String skuSizeName;
-
-    /**
-     * 库存量
-     */
-    private Integer quantity;
-
-    /**
-     * 状态 1:enable, 0:disable, -1:deleted
-     */
-    private Integer status;
 
     /**
      * 创建时间

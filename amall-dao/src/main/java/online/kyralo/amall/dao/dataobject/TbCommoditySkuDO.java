@@ -33,12 +33,6 @@ public class TbCommoditySkuDO {
     private String spuId;
 
     /**
-     * 商家ID
-     */
-    @Column(name = "merchant_id")
-    private String merchantId;
-
-    /**
      * sku描述(商家对产品的描述)
      */
     @Column(name = "sku_desc")

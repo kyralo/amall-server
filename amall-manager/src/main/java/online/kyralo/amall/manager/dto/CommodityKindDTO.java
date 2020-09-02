@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 品牌表
+ * 商品类型
  */
 
 @Builder
@@ -16,30 +16,45 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbCommodityBrandsDTO extends Base {
+public class CommodityKindDTO extends Base {
 
     /**
-     * 品牌ID
+     * 商品类型ID
      */
-    private String id;
+    private Integer id;
 
     /**
-     * 品牌名称
+     * 父级商品类型ID 默认为 -1 表示当前商品类型无父类型
+     */
+    private Integer parentCategoryId;
+
+    /**
+     * 商品类型 名称
      */
     private String name;
 
     /**
-     * 品牌描述
+     * 商品类型 类型说明
      */
-    private String desc;
+    private String info;
 
     /**
-     * 品牌logo图片
+     * 商品类型 图标
      */
-    private String logoUrl;
+    private String iconUrl;
 
     /**
-     * 状态 1:enable, 0:disable, -1:deleted
+     * 商品类型 大图
+     */
+    private String picUrl;
+
+    /**
+     * 0表示一级类型, 1表示其他类型(二级类型), 默认为0
+     */
+    private Boolean primary;
+
+    /**
+     * 状态 1:ENABLE, 0:DISABLE, -1:DELETED
      */
     private Integer status;
 

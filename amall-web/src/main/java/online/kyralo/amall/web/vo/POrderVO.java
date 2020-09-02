@@ -1,10 +1,12 @@
 package online.kyralo.amall.web.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,9 +28,9 @@ import java.util.List;
 public class POrderVO extends Base {
 
     /**
-     * 订单ID
+     * 订单 ID
      */
-    @ApiModelProperty("订单ID")
+    @ApiModelProperty("订单 ID")
     private String orderId;
 
     /**
@@ -42,4 +44,17 @@ public class POrderVO extends Base {
      */
     @ApiModelProperty("订单 商品列表")
     private List<PCartVO> carts;
+
+    /**
+     * 订单 支付方式
+     */
+    @ApiModelProperty("订单 支付方式")
+    private Integer paymentType;
+
+    /**
+     * 订单 创建时间
+     */
+    @ApiModelProperty("订单 创建时间")
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 }

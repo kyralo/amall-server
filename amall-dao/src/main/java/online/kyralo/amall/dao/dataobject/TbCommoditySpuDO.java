@@ -39,6 +39,12 @@ public class TbCommoditySpuDO {
     private Integer categoryId;
 
     /**
+     * 商家ID
+     */
+    @Column(name = "merchant_id")
+    private String merchantId;
+
+    /**
      * spu名称
      */
     @Column(name = "name")

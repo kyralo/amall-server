@@ -1,6 +1,8 @@
 package online.kyralo.amall.api.bo;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
+import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.List;
 
@@ -12,7 +14,14 @@ import java.util.List;
  * \* Description: 商品评论
  * \
  */
-public class CommodityCommentsBO {
+
+@Builder
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class CommodityCommentsBO  extends Base {
 
     /**
      * 商品平均评分

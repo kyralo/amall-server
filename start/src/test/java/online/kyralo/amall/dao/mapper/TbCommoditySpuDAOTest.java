@@ -15,8 +15,10 @@ public class TbCommoditySpuDAOTest {
     @Resource
     private TbCommoditySpuDAO dao;
 
+
     @Test
     void findById() {
+        System.out.println(dao.findById("63f6659a097e467eb10483bf56d6a34e"));
     }
 
     @Test

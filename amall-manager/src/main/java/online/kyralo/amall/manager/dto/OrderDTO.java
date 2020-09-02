@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbOrderDTO extends Base {
+public class OrderDTO extends Base {
 
     /**
      * 订单id

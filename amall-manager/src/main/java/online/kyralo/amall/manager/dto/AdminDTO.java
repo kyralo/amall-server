@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 第三方用户信息
+ * 管理员
  */
 
 @Builder
@@ -16,42 +16,52 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbAccountPlatformDTO extends Base {
+public class AdminDTO extends Base {
 
     /**
-     * 自增id
+     * 管理员ID
      */
     private String id;
 
     /**
-     * 账号id
+     * 管理员用户名
      */
-    private String uid;
+    private String name;
 
     /**
-     * 平台id
+     * 管理员邮箱
      */
-    private String platformId;
+    private String mail;
 
     /**
-     * 平台access_token
+     * 管理员密码
      */
-    private String platformToken;
+    private String password;
 
     /**
-     * 平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter
+     * 管理员电话
      */
-    private Integer type;
+    private String telephone;
 
     /**
-     * 昵称
+     * 0表示男, 1表示女, 2表示未知
      */
-    private String nickname;
+    private Integer sex;
 
     /**
-     * 头像
+     * 管理员头像 (默认路径 “/avatar/boy.jpg”)
      */
-    private String avatar;
+    private String avatarUrl;
+
+    /**
+     * 超级管理员标识 (0,普通管理员  1,超级管理员)
+     */
+    private Integer superKey;
+
+    /**
+     * 状态 1:enable, 0:disable, -1:deleted
+     */
+    private Integer status;
 
     /**
      * 创建时间

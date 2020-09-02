@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbUserAddressDTO extends Base {
+public class UserAddressDTO extends Base {
 
     /**
      * 用户地址ID

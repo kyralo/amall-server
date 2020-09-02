@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 商品类型
+ * 用户
  */
 
 @Builder
@@ -16,45 +16,50 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbCommodityCategoryDTO extends Base {
+public class UserDTO extends Base {
 
     /**
-     * 商品类型ID
+     * 用户ID
      */
-    private Integer id;
+    private String id;
 
     /**
-     * 父级商品类型ID 默认为 -1 表示当前商品类型无父类型
-     */
-    private Integer parentCategoryId;
-
-    /**
-     * 商品类型 名称
+     * 用户名
      */
     private String name;
 
     /**
-     * 商品类型 类型说明
+     * 用户邮箱
      */
-    private String info;
+    private String mail;
 
     /**
-     * 商品类型 图标
+     * 用户密码
      */
-    private String iconUrl;
+    private String password;
 
     /**
-     * 商品类型 大图
+     * 用户电话
      */
-    private String picUrl;
+    private String telephone;
 
     /**
-     * 0表示一级类型, 1表示其他类型(二级类型), 默认为0
+     * 0表示男, 1表示女, 2表示未知
      */
-    private Boolean primary;
+    private Integer sex;
 
     /**
-     * 状态 1:ENABLE, 0:DISABLE, -1:DELETED
+     * 用户头像 (默认路径 “/avatar/boy.jpg”)
+     */
+    private String avatarUrl;
+
+    /**
+     * 是否为vip,0表示是,1表示不是, 默认为0
+     */
+    private boolean vip;
+
+    /**
+     * 状态 1:enable, 0:disable, -1:deleted
      */
     private Integer status;
 

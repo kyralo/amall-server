@@ -31,7 +31,7 @@ public class TbCommoditySizeController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个sku表", response = TbCommoditySizeVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") Integer id) {
         Res<?> res = tbCommoditySizeService.findById(id);
         TbCommoditySizeVO bCommoditySize = new TbCommoditySizeVO();
@@ -60,7 +60,7 @@ public class TbCommoditySizeController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个sku表", response = TbCommoditySizeVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") Integer id) {
         return tbCommoditySizeService.deleteById(id);
     }

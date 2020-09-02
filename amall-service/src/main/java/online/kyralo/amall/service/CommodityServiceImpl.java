@@ -22,6 +22,11 @@ public class CommodityServiceImpl implements CommodityService {
     }
 
     @Override
+    public Res<?> listByCategory(String primaryType, String secondType) {
+        return null;
+    }
+
+    @Override
     public Res<?> listHomeShowModules() {
         return null;
     }

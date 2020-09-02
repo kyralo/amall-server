@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 销售属性值
+ * 第三方用户信息
  */
 
 @Builder
@@ -16,32 +16,42 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbCommodityAttrValueDTO extends Base {
+public class AccountPlatformDTO extends Base {
 
     /**
-     * 销售属性值ID
+     * 自增id
      */
     private String id;
 
     /**
-     * 销售属性ID
+     * 账号id
      */
-    private String attrId;
+    private String uid;
 
     /**
-     * 销售属性值
+     * 平台id
      */
-    private String value;
+    private String platformId;
 
     /**
-     * 销售属性值描述
+     * 平台access_token
      */
-    private String desc;
+    private String platformToken;
 
     /**
-     * 状态 1:enable, 0:disable, -1:deleted
+     * 平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter
      */
-    private Integer status;
+    private Integer type;
+
+    /**
+     * 昵称
+     */
+    private String nickname;
+
+    /**
+     * 头像
+     */
+    private String avatar;
 
     /**
      * 创建时间

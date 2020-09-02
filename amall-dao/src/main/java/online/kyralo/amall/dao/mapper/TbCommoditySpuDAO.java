@@ -1,9 +1,12 @@
 package online.kyralo.amall.dao.mapper;
 
 import com.github.pagehelper.Page;
+import online.kyralo.amall.common.annotation.MyDemo;
 import online.kyralo.amall.common.base.BaseDao;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
 import org.springframework.stereotype.Repository;
+
+import java.util.UUID;
 
 /**
  * 商品spu表
@@ -18,6 +21,7 @@ public interface TbCommoditySpuDAO extends BaseDao<TbCommoditySpuDO> {
      * @param id ID
      * @return {@link TbCommoditySpuDO}
      */
+    @MyDemo(description = "I Like This !", id = "9090909")
     TbCommoditySpuDO findById(String id);
 
     /**

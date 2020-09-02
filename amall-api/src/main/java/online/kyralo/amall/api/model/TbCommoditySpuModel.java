@@ -33,6 +33,11 @@ public class TbCommoditySpuModel {
     private Integer categoryId;
 
     /**
+     * 商家ID
+     */
+    private String merchantId;
+
+    /**
      * spu名称
      */
     private String name;

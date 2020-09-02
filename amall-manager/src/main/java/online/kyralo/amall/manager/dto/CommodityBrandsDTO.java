@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 用户评论
+ * 品牌表
  */
 
 @Builder
@@ -16,47 +16,32 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbUserCommentDTO extends Base {
+public class CommodityBrandsDTO extends Base {
 
     /**
-     * 用户评论id
+     * 品牌ID
      */
     private String id;
 
     /**
-     * 商品SKU ID
+     * 品牌名称
      */
-    private String skuId;
+    private String name;
 
     /**
-     * 发送者id
+     * 品牌描述
      */
-    private String sendId;
+    private String desc;
 
     /**
-     * 要回复的评论id
+     * 品牌logo图片
      */
-    private String answerCommentId;
+    private String logoUrl;
 
     /**
-     * 评论内容
+     * 状态 1:enable, 0:disable, -1:deleted
      */
-    private String content;
-
-    /**
-     * 评论图片 多个图片逗号分隔
-     */
-    private String picUrls;
-
-    /**
-     * 评论评分 仅一级评论可评 1-5
-     */
-    private Integer mark;
-
-    /**
-     * 祖父评论(一级评论)的id
-     */
-    private String ancestryId;
+    private Integer status;
 
     /**
      * 创建时间

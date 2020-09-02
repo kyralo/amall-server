@@ -26,6 +26,7 @@ public class CommodityKindBO extends Base {
      * 一级类型
      */
     private TbCommodityCategoryBO primaryCategory;
+
     /**
      * 二级类型 列表
      */

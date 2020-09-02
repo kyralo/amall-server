@@ -8,7 +8,7 @@ import online.kyralo.amall.common.base.domain.Base;
  * \* Author: wangchen
  * \* Date: 2020/8/20
  * \* Time: 1:25
- * \* Description:
+ * \* Description: 商品参数值
  * \
  */
 @Builder

@@ -29,11 +29,40 @@ public class PMerchantVO extends Base {
      * 商家信息
      */
     @ApiModelProperty("商家信息")
-    private TbMerchantVO merchant;
+    private TbMerchantVO merchantInfo;
+
+
+    @Builder
+    @Setter
+    @Getter
+    @ToString
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class CommodityKind {
+
+        /**
+         * 一级类型
+         */
+        @ApiModelProperty("商品 一级类型")
+        private TbCommodityCategoryVO primaryCategory;
+
+        /**
+         * 二级类型 列表
+         */
+        @ApiModelProperty("商品 二级类型 列表")
+        private List<TbCommodityCategoryVO> secondCategories;
+
+    }
 
     /**
-     * 商品 类型列表
+     * 商品 一级类型 列表
      */
-    @ApiModelProperty("商品 类型列表")
-    private List<PKindVO> kinds;
+    @ApiModelProperty("商品 一级类型 列表")
+    private List<PMerchantVO.CommodityKind> categories;
+
+    /**
+     * 商品 列表
+     */
+    @ApiModelProperty("商品 列表")
+    private List<TbCommodityVO> commodities;
 }

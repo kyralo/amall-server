@@ -34,6 +34,11 @@ public class TbCommoditySpuBO extends Base {
     private Integer categoryId;
 
     /**
+     * 商家ID
+     */
+    private String merchantId;
+
+    /**
      * spu名称
      */
     private String name;

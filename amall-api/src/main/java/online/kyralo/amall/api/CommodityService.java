@@ -16,6 +16,14 @@ public interface CommodityService {
     Res<?> queryById(String commoditySkuId);
 
     /**
+     * 查询商品 通过商品类型
+     * @param primaryType 一级类型
+     * @param secondType 二级类型
+     * @return 商品列表
+     */
+    Res<?> listByCategory(String primaryType, String secondType);
+
+    /**
      * 查询主页展示模块
      *
      * @return 主页展示模块

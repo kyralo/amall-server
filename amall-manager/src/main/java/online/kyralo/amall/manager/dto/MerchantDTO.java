@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbMerchantDTO extends Base {
+public class MerchantDTO extends Base {
 
     /**
      * 商家ID

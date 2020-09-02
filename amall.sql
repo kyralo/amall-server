@@ -17,7 +17,7 @@ CREATE TABLE `tb_account_platform` (
   `uid` CHAR(32) NOT NULL DEFAULT '' COMMENT '账号id',
   `platform_id` VARCHAR(60) NOT NULL DEFAULT '' COMMENT '平台id',
   `platform_token` VARCHAR(60) NOT NULL DEFAULT '' COMMENT '平台access_token',
-  `type` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter',
+  `type` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter',
   `nickname` VARCHAR(60) NOT NULL DEFAULT '' COMMENT '昵称',
   `avatar` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '头像',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -45,8 +45,8 @@ CREATE TABLE `tb_admin` (
   `telephone` VARCHAR(32) NOT NULL DEFAULT '' COMMENT '管理员电话',
   `sex` TINYINT NOT NULL DEFAULT '2' COMMENT '0表示男, 1表示女, 2表示未知',
   `avatar_url` VARCHAR(255) NOT NULL DEFAULT '/avatar/boy.jpg' COMMENT '管理员头像 (默认路径 “/avatar/boy.jpg”)',
-  `super_key` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '超级管理员标识 (0,普通管理员  1,超级管理员)',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `super_key` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '超级管理员标识 (0,普通管理员  1,超级管理员)',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
@@ -69,7 +69,7 @@ CREATE TABLE `tb_commodity_attr` (
   `id` CHAR(32) NOT NULL COMMENT '销售属性ID',
   `name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '销售属性名称',
   `attr_desc` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '销售属性描述',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -90,7 +90,7 @@ CREATE TABLE `tb_commodity_attr_value` (
   `attr_id` CHAR(32) NOT NULL DEFAULT '' COMMENT '销售属性ID',
   `value` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '销售属性值',
   `attr_value_desc` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '销售属性值描述',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -111,7 +111,7 @@ CREATE TABLE `tb_commodity_brands` (
   `name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '品牌名称',
   `brands_desc` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '品牌描述',
   `logo_url` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '品牌logo图片',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -128,14 +128,14 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tb_commodity_category`;
  SET CHARacter_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_category` (
-  `id` INT unsigned NOT NULL AUTO_INCREMENT COMMENT '商品类型ID',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '商品类型ID',
   `parent_category_id` INT DEFAULT '-1' COMMENT '父级商品类型ID 默认为 -1 表示当前商品类型无父类型',
   `name` VARCHAR(45) NOT NULL COMMENT '商品类型 名称',
   `info` VARCHAR(255) NOT NULL COMMENT '商品类型 类型说明',
   `icon_url` VARCHAR(255) NOT NULL COMMENT '商品类型 图标',
   `pic_url` VARCHAR(255) NOT NULL COMMENT '商品类型 大图',
-  `is_primary` TINYINT unsigned DEFAULT '0' COMMENT '0表示一级类型, 1表示其他类型(二级类型), 默认为0',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:ENABLE, 0:DISABLE, -1:DELETED',
+  `is_primary` TINYINT UNSIGNED DEFAULT '0' COMMENT '0表示一级类型, 1表示其他类型(二级类型), 默认为0',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:ENABLE, 0:DISABLE, -1:DELETED',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
@@ -153,11 +153,11 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tb_commodity_size`;
  SET CHARacter_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_size` (
-  `id` INT unsigned NOT NULL AUTO_INCREMENT COMMENT '商品尺码自增ID',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '商品尺码自增ID',
   `sku_id` CHAR(32) NOT NULL DEFAULT '' COMMENT 'SKU ID',
   `size_name` VARCHAR(32) NOT NULL COMMENT '商品尺码名',
   `size_desc` json NOT NULL COMMENT 'sku描述(商家对产品的描述) json存储 e.g: [{"name":"腰围", "value":"62-72"},{"name":"裤长", "value":"92"}]',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -176,7 +176,6 @@ DROP TABLE IF EXISTS `tb_commodity_sku`;
 CREATE TABLE `tb_commodity_sku` (
   `id` CHAR(32) NOT NULL COMMENT 'SKU ID',
   `spu_id` CHAR(32) NOT NULL DEFAULT '' COMMENT 'SPU ID',
-  `merchant_id` CHAR(32) NOT NULL DEFAULT '' COMMENT '商家ID',
   `sku_desc` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT 'sku描述(商家对产品的描述)',
   `banner_url` TEXT COMMENT 'banner图片 多个图片逗号分隔',
   `main_url` TEXT COMMENT '商品介绍主图 多个图片逗号分隔',
@@ -184,11 +183,11 @@ CREATE TABLE `tb_commodity_sku` (
   `commodity_graphic_details` TEXT COMMENT '图文详情 图片url 多个图片逗号分隔',
   `commodity_in_effect` TEXT COMMENT '穿着效果 图片url 多个图片逗号分隔',
   `commodity_size_specification` TEXT COMMENT '尺码说明 {attr_value_id} (map保存尺码名) 多个销售属性值逗号分隔',
-  `price_fee` INT unsigned NOT NULL DEFAULT '0' COMMENT '售价，整数方式保存',
-  `price_scale` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '售价，金额对应的小数位数',
-  `market_price_fee` INT unsigned NOT NULL DEFAULT '0' COMMENT '市场价，整数方式保存',
-  `market_price_scale` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '市场价，金额对应的小数位数',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `price_fee` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '售价，整数方式保存',
+  `price_scale` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '售价，金额对应的小数位数',
+  `market_price_fee` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '市场价，整数方式保存',
+  `market_price_scale` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '市场价，金额对应的小数位数',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -205,12 +204,12 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tb_commodity_sku_stock`;
  SET CHARacter_set_client = utf8mb4 ;
 CREATE TABLE `tb_commodity_sku_stock` (
-  `id` INT unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID',
   `sku_id` CHAR(32) NOT NULL DEFAULT '' COMMENT 'SKU ID',
   `sku_color` CHAR(32) NOT NULL DEFAULT '' COMMENT 'SKU color',
   `sku_size_name` CHAR(32) NOT NULL DEFAULT '' COMMENT 'SKU 商品尺码名',
-  `quantity` INT unsigned NOT NULL DEFAULT '0' COMMENT '库存量',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `quantity` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '库存量',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -226,14 +225,15 @@ DROP TABLE IF EXISTS `tb_commodity_spu`;
 CREATE TABLE `tb_commodity_spu` (
   `id` CHAR(32) NOT NULL COMMENT 'SPU ID',
   `brand_id` CHAR(32) NOT NULL DEFAULT '' COMMENT '品牌ID',
-  `category_id` INT unsigned NOT NULL COMMENT '分类ID',
+  `category_id` INT UNSIGNED NOT NULL COMMENT '分类ID',
+  `merchant_id` CHAR(32) NOT NULL DEFAULT '' COMMENT '商家ID',
   `name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'spu名称',
   `spu_desc` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT 'spu描述',
-  `selling_poINT` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '卖点',
+  `selling_point` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '卖点',
   `unit` VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'spu单位',
   `banner_url` TEXT COMMENT 'banner图片 多个图片逗号分隔',
   `main_url` TEXT COMMENT '商品介绍主图 多个图片逗号分隔',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -261,7 +261,7 @@ CREATE TABLE `tb_merchant` (
   `address` VARCHAR(255) NOT NULL COMMENT '商家地址',
   `sex` TINYINT NOT NULL DEFAULT '2' COMMENT '0表示男, 1表示女, 2表示未知',
   `avatar_url` VARCHAR(255) NOT NULL DEFAULT '/avatar/boy.jpg' COMMENT '管理员头像 (默认路径 “/avatar/boy.jpg”)',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
@@ -282,13 +282,13 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tb_order`;
  SET CHARacter_set_client = utf8mb4 ;
 CREATE TABLE `tb_order` (
-  `id` INT unsigned NOT NULL AUTO_INCREMENT COMMENT '订单id',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `num` CHAR(28) NOT NULL COMMENT '订单号 日期加id',
   `user_id` CHAR(32) NOT NULL COMMENT '用户id',
   `sku_id` CHAR(32) NOT NULL COMMENT 'SKU id',
-  `pay_fee` INT unsigned NOT NULL DEFAULT '0' COMMENT '付款，整数方式保存',
-  `pay_scale` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '付款，金额对应的小数位数',
-  `payment_type` TINYINT unsigned DEFAULT NULL COMMENT '支付类型,1-在线支付',
+  `pay_fee` INT UNSIGNED NOT NULL DEFAULT '0' COMMENT '付款，整数方式保存',
+  `pay_scale` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '付款，金额对应的小数位数',
+  `payment_type` TINYINT UNSIGNED DEFAULT NULL COMMENT '支付类型,1-在线支付',
   `postage` INT DEFAULT '0' COMMENT '运费,单位是元',
   `status` INT DEFAULT '0' COMMENT '订单状态:0-已取消-10-未付款，20-已付款，40-已发货，50-交易成功，60-交易关闭',
   `payment_time` DATETIME DEFAULT NULL COMMENT '支付时间',
@@ -319,8 +319,8 @@ CREATE TABLE `tb_user` (
   `telephone` VARCHAR(32) NOT NULL COMMENT '用户电话',
   `sex` TINYINT NOT NULL DEFAULT '2' COMMENT '0表示男, 1表示女, 2表示未知',
   `avatar_url` VARCHAR(255) NOT NULL DEFAULT '/avatar/boy.jpg' COMMENT '用户头像 (默认路径 “/avatar/boy.jpg”)',
-  `is_vip` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '是否为vip,0表示是,1表示不是, 默认为0',
-  `status` TINYINT unsigned NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
+  `is_vip` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '是否为vip,0表示是,1表示不是, 默认为0',
+  `status` TINYINT UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1:enable, 0:disable, -1:deleted',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
@@ -340,7 +340,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tb_user_address`;
  SET CHARacter_set_client = utf8mb4 ;
 CREATE TABLE `tb_user_address` (
-  `id` INT unsigned NOT NULL AUTO_INCREMENT COMMENT '用户地址ID',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户地址ID',
   `user_id` CHAR(32) NOT NULL COMMENT '用户ID',
   `province` VARCHAR(20) DEFAULT '' COMMENT '省份',
   `city` VARCHAR(20) DEFAULT '' COMMENT '城市',
@@ -363,7 +363,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tb_user_collection`;
  SET CHARacter_set_client = utf8mb4 ;
 CREATE TABLE `tb_user_collection` (
-  `id` INT unsigned NOT NULL AUTO_INCREMENT COMMENT '用户地址ID',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户地址ID',
   `user_id` CHAR(32) NOT NULL COMMENT '用户ID',
   `sku_id` CHAR(32) NOT NULL COMMENT 'SKU ID',
   `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

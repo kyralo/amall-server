@@ -32,7 +32,7 @@ public class TbUserCommentController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个用户评论", response = TbUserCommentVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
         Res<?> res = tbUserCommentService.findById(id);
         TbUserCommentVO bUserComment = new TbUserCommentVO();
@@ -61,7 +61,7 @@ public class TbUserCommentController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个用户评论", response = TbUserCommentVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") String id) {
         return tbUserCommentService.deleteById(id);
     }

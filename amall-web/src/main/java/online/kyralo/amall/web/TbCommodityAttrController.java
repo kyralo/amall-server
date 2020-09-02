@@ -31,7 +31,7 @@ public class TbCommodityAttrController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个销售属性表 (产品参数)", response = TbCommodityAttrVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
         Res<?> res = tbCommodityAttrService.findById(id);
         TbCommodityAttrVO tbCommodityAttr = new TbCommodityAttrVO();
@@ -60,7 +60,7 @@ public class TbCommodityAttrController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个销售属性表 (产品参数)", response = TbCommodityAttrVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") String id) {
         return tbCommodityAttrService.deleteById(id);
     }

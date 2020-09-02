@@ -12,11 +12,16 @@ import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbUserDO;
 import online.kyralo.amall.dao.mapper.TbUserDAO;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+
+import static online.kyralo.amall.common.constants.RedisConstant.CACHE_TB_KEY_PREFIX;
 
 /**
  * @author wangchen
@@ -31,6 +36,7 @@ public class TbUserServiceImpl implements TbUserService {
     private final BeanCopier copier = BeanCopier.create(TbUserModel.class, TbUserDO.class, false);
 
     @Transactional(readOnly = true)
+    @Cacheable(value = CACHE_TB_KEY_PREFIX + "user", key = "#id")
     @Override
     public Res<?> findById(String id) {
         TbUserDO tbUserDO = tbUserDAO.findById(id);
@@ -65,6 +71,7 @@ public class TbUserServiceImpl implements TbUserService {
         throw new UserException(ResCode.FAILED);
     }
 
+    @CachePut(value = CACHE_TB_KEY_PREFIX + "user", key = "#tbUserModel.id")
     @Override
     public Res<?> update(TbUserModel tbUserModel) {
 
@@ -81,6 +88,7 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     @Override
+    @CacheEvict(value = CACHE_TB_KEY_PREFIX + "user", key = "#id")
     public Res<?> deleteById(String id) {
         int i = tbUserDAO.deleteById(id);
 
@@ -92,6 +100,7 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     @Transactional(readOnly = true)
+    @Cacheable(value = CACHE_TB_KEY_PREFIX + "user", key = "#id")
     @Override
     public Res<?> queryById(String id) {
         TbUserDO tbUserDO = tbUserDAO.findById(id);

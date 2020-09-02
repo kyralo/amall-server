@@ -2,6 +2,7 @@ package online.kyralo.amall.manager.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
 
@@ -20,7 +21,8 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActivityDTO {
+public class ActivityDTO  extends Base {
+
     /**
      * 活动id
      */
@@ -61,4 +63,5 @@ public class ActivityDTO {
      */
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
+
 }

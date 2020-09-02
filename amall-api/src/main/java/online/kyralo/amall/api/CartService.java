@@ -51,4 +51,13 @@ public interface CartService {
      * @return 统计数
      */
     Res<?> countByUserId(String userId);
+
+
+    /**
+     * 查询用户购物车商品 列表
+     *
+     * @param userId 用户ID
+     * @return 用户购物车商品
+     */
+    Res<?> listCartByUserId(String userId);
 }

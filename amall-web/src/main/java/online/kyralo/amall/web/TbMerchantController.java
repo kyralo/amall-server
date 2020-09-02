@@ -3,6 +3,8 @@ package online.kyralo.amall.web;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import online.kyralo.amall.api.CommodityService;
+import online.kyralo.amall.api.KindService;
 import online.kyralo.amall.api.TbMerchantService;
 import online.kyralo.amall.api.model.TbMerchantModel;
 import online.kyralo.amall.common.api.Res;
@@ -10,12 +12,15 @@ import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.common.validator.Create;
 import online.kyralo.amall.common.validator.Update;
+import online.kyralo.amall.web.vo.PMerchantVO;
+import online.kyralo.amall.web.vo.TbCommodityVO;
 import online.kyralo.amall.web.vo.TbMerchantVO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * 商家
@@ -28,10 +33,14 @@ public class TbMerchantController {
 
     @Resource
     private TbMerchantService tbMerchantService;
+    @Resource
+    private KindService kindService;
+    @Resource
+    private CommodityService commodityService;
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个商家", response = TbMerchantVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
         Res<?> res = tbMerchantService.findById(id);
         TbMerchantVO tbMerchants = new TbMerchantVO();
@@ -60,8 +69,35 @@ public class TbMerchantController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个商家", response = TbMerchantVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") String id) {
         return tbMerchantService.deleteById(id);
+    }
+
+    @GetMapping("/kind")
+    @ApiOperation(value = " 查询商家信息 商家信息页 ", response = PMerchantVO.class)
+    public Res<?> getPageInfoById(
+            @ApiParam("商家ID") @RequestParam("id") @NotNull(message = "id内容不能为空") String id,
+            @ApiParam("一级类型") @RequestParam(required = false, defaultValue = "ALL") String primaryType,
+            @ApiParam("二级类型") @RequestParam(required = false, defaultValue = "ALL") String secondType) {
+
+        PMerchantVO merchant = new PMerchantVO();
+
+        Object merchantInfoBO = tbMerchantService.findById(id).getData();
+        TbMerchantVO merchantInfo = new TbMerchantVO();
+        CopyUtil.copyBean(merchantInfoBO, merchantInfo);
+        merchant.setMerchantInfo(merchantInfo);
+
+        Object kindsVO = kindService.listKinds().getData();
+        List<PMerchantVO.CommodityKind> commodityKinds =
+                CopyUtil.copyList(kindsVO, PMerchantVO.CommodityKind.class);
+        merchant.setCategories(commodityKinds);
+
+        Object commoditiesBO = commodityService.listByCategory(primaryType, secondType).getData();
+        List<TbCommodityVO> commodities =
+                CopyUtil.copyList(commoditiesBO, TbCommodityVO.class);
+        merchant.setCommodities(commodities);
+
+        return ResUtil.success(merchant);
     }
 }

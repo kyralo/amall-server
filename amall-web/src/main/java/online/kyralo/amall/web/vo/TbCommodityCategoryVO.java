@@ -7,6 +7,7 @@ import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 商品类型

@@ -12,11 +12,16 @@ import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
 import online.kyralo.amall.dao.mapper.TbCommoditySpuDAO;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+
+import static online.kyralo.amall.common.constants.RedisConstant.CACHE_TB_KEY_PREFIX;
 
 /**
  * @author wangchen
@@ -31,6 +36,7 @@ public class TbCommoditySpuServiceImpl implements TbCommoditySpuService {
     private final BeanCopier copier = BeanCopier.create(TbCommoditySpuModel.class, TbCommoditySpuDO.class, false);
 
     @Transactional(readOnly = true)
+    @Cacheable(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "#id")
     @Override
     public Res<?> findById(String id) {
         TbCommoditySpuDO tbCommoditySpuDO = tbCommoditySpuDAO.findById(id);
@@ -65,6 +71,7 @@ public class TbCommoditySpuServiceImpl implements TbCommoditySpuService {
         throw new CommodityException(ResCode.FAILED);
     }
 
+    @CachePut(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "#tbCommoditySpuModel.id")
     @Override
     public Res<?> update(TbCommoditySpuModel tbCommoditySpuModel) {
 
@@ -80,6 +87,7 @@ public class TbCommoditySpuServiceImpl implements TbCommoditySpuService {
         throw new CommodityException(ResCode.FAILED);
     }
 
+    @CacheEvict(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "#id")
     @Override
     public Res<?> deleteById(String id) {
         int i = tbCommoditySpuDAO.deleteById(id);

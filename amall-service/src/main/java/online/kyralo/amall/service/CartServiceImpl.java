@@ -38,4 +38,9 @@ public class CartServiceImpl implements CartService {
         return null;
     }
 
+    @Override
+    public Res<?> listCartByUserId(String userId) {
+        return null;
+    }
+
 }

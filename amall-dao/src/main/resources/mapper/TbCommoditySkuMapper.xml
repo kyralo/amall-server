@@ -5,7 +5,6 @@
     <resultMap id="tbCommoditySkuMap" type="online.kyralo.amall.dao.dataobject.TbCommoditySkuDO">
         <id property="id" column="id"/>
         <result property="spuId" column="spu_id"/>
-        <result property="merchantId" column="merchant_id"/>
         <result property="skuDesc" column="sku_desc"/>
         <result property="bannerUrl" column="banner_url"/>
         <result property="mainUrl" column="main_url"/>
@@ -23,14 +22,14 @@
     </resultMap>
 
     <sql id="columns">
-        id,spu_id,merchant_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
+        id,spu_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
         FROM tb_commodity_sku
     </sql>
 
     <!--通过ID查询单个sku表-->
     <select id="findById" resultMap="tbCommoditySkuMap">
         SELECT
-        id,spu_id,merchant_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
+        id,spu_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
         FROM tb_commodity_sku
         WHERE id=#{id}
     </select>
@@ -38,16 +37,16 @@
     <!--分页查询sku表-->
     <select id="findByPage" resultMap="tbCommoditySkuMap">
         SELECT
-        id,spu_id,merchant_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
+        id,spu_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
         FROM tb_commodity_sku
     </select>
 
     <!--新增sku表-->
     <insert id="insert">
         INSERT INTO
-        tb_commodity_sku(id,spu_id,merchant_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time)
+        tb_commodity_sku(id,spu_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time)
         VALUES
-        (#{id},#{spuId},#{merchantId},#{skuDesc},#{bannerUrl},#{mainUrl},#{commodityParameters},#{commodityGraphicDetails},#{commodityInEffect},#{commoditySizeSpecification},#{priceFee},#{priceScale},#{marketPriceFee},#{marketPriceScale},#{status},#{createTime},#{updateTime})
+        (#{id},#{spuId},#{skuDesc},#{bannerUrl},#{mainUrl},#{commodityParameters},#{commodityGraphicDetails},#{commodityInEffect},#{commoditySizeSpecification},#{priceFee},#{priceScale},#{marketPriceFee},#{marketPriceScale},#{status},#{createTime},#{updateTime})
     </insert>
 
     <!--通过ID删除单个sku表-->

@@ -8,7 +8,7 @@ import online.kyralo.amall.common.base.domain.Base;
  * \* Author: wangchen
  * \* Date: 2020/8/20
  * \* Time: 1:23
- * \* Description:
+ * \* Description: 商品参数
  * \
  */
 @Builder
@@ -18,6 +18,7 @@ import online.kyralo.amall.common.base.domain.Base;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ParameterBO<T> extends Base {
+
     /**
      * 商品参数名
      */
@@ -26,4 +27,5 @@ public class ParameterBO<T> extends Base {
      * 商品参数值
      */
     private T value;
+
 }

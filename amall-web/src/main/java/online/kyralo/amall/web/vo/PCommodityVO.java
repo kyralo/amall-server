@@ -157,10 +157,28 @@ public class PCommodityVO extends Base {
         private String name;
 
         /**
+         * 商品品牌ID
+         */
+        @ApiModelProperty("商品品牌ID")
+        private String brandId;
+
+        /**
          * 商品品牌名称
          */
         @ApiModelProperty("商品品牌名称")
         private String brandName;
+
+        /**
+         * 商品卖点
+         */
+        @ApiModelProperty("商品卖点")
+        private String sellingPoint;
+
+        /**
+         * 商品分类ID
+         */
+        @ApiModelProperty("商品分类ID")
+        private Integer categoryId;
 
         /**
          * 商家商品服务说明

@@ -28,11 +28,6 @@ public class TbCommoditySkuModel {
     private String spuId;
 
     /**
-     * 商家ID
-     */
-    private String merchantId;
-
-    /**
      * sku描述(商家对产品的描述)
      */
     private String skuDesc;

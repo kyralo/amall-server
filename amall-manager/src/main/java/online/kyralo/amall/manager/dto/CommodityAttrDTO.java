@@ -5,9 +5,10 @@ import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
+import java.util.List;
 
 /**
- * 用户
+ * 销售属性表 (产品参数)
  */
 
 @Builder
@@ -16,52 +17,32 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbUserDTO extends Base {
+public class CommodityAttrDTO extends Base {
 
     /**
-     * 用户ID
+     * 销售属性ID
      */
     private String id;
 
     /**
-     * 用户名
+     * 销售属性名称
      */
     private String name;
 
     /**
-     * 用户邮箱
+     * 销售属性描述
      */
-    private String mail;
-
-    /**
-     * 用户密码
-     */
-    private String password;
-
-    /**
-     * 用户电话
-     */
-    private String telephone;
-
-    /**
-     * 0表示男, 1表示女, 2表示未知
-     */
-    private Integer sex;
-
-    /**
-     * 用户头像 (默认路径 “/avatar/boy.jpg”)
-     */
-    private String avatarUrl;
-
-    /**
-     * 是否为vip,0表示是,1表示不是, 默认为0
-     */
-    private boolean vip;
+    private String desc;
 
     /**
      * 状态 1:enable, 0:disable, -1:deleted
      */
     private Integer status;
+
+    /**
+     * 销售属性值 列表
+     */
+    private List<CommodityAttrValueDTO> attrValues;
 
     /**
      * 创建时间

@@ -21,5 +21,11 @@
             <artifactId>amall-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>online.kyralo</groupId>
+            <artifactId>amall-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>

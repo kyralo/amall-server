@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 管理员
+ * 商品spu表
  */
 
 @Builder
@@ -16,47 +16,52 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbAdminDTO extends Base {
+public class CommodityDTO extends Base {
 
     /**
-     * 管理员ID
+     * SPU ID
      */
     private String id;
 
     /**
-     * 管理员用户名
+     * 品牌ID
+     */
+    private String brandId;
+
+    /**
+     * 分类ID
+     */
+    private Integer categoryId;
+
+    /**
+     * spu名称
      */
     private String name;
 
     /**
-     * 管理员邮箱
+     * spu描述
      */
-    private String mail;
+    private String desc;
 
     /**
-     * 管理员密码
+     * 卖点
      */
-    private String password;
+    private String sellingPoint;
 
     /**
-     * 管理员电话
+     * spu单位
      */
-    private String telephone;
+    private String unit;
 
     /**
-     * 0表示男, 1表示女, 2表示未知
+     * banner图片 多个图片逗号分隔
      */
-    private Integer sex;
+    private String bannerUrl;
 
     /**
-     * 管理员头像 (默认路径 “/avatar/boy.jpg”)
+     * 商品介绍主图 多个图片逗号分隔
      */
-    private String avatarUrl;
-
-    /**
-     * 超级管理员标识 (0,普通管理员  1,超级管理员)
-     */
-    private Integer superKey;
+    private String mainUrl;
 
     /**
      * 状态 1:enable, 0:disable, -1:deleted
@@ -64,13 +69,13 @@ public class TbAdminDTO extends Base {
     private Integer status;
 
     /**
-     * 创建时间
+     * SKU创建时间
      */
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**
-     * 更新时间
+     * SKU更新时间
      */
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;

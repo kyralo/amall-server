@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
  * 商品类型
  */
 @RestController
-@RequestMapping("/commodity_categorys")
+@RequestMapping("/commodity_categories")
 @Api(tags = "商品类型")
 @Validated
 public class TbCommodityCategoryController {
@@ -31,7 +31,7 @@ public class TbCommodityCategoryController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个商品类型", response = TbCommodityCategoryVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") Integer id) {
         Res<?> res = tbCommodityCategoryService.findById(id);
         TbCommodityCategoryVO bCommodityCategory = new TbCommodityCategoryVO();
@@ -60,7 +60,7 @@ public class TbCommodityCategoryController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个商品类型", response = TbCommodityCategoryVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") Integer id) {
         return tbCommodityCategoryService.deleteById(id);
     }

@@ -31,7 +31,7 @@ public class TbAccountPlatformController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个第三方用户信息", response = TbAccountPlatformVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
         Res<?> res = tbAccountPlatformService.findById(id);
         TbAccountPlatformVO tbAccountPlatform = new TbAccountPlatformVO();
@@ -60,7 +60,7 @@ public class TbAccountPlatformController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个第三方用户信息", response = TbAccountPlatformVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") String id) {
         return tbAccountPlatformService.deleteById(id);
     }

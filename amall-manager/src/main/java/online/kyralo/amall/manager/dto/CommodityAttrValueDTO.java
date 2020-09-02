@@ -7,7 +7,7 @@ import online.kyralo.amall.common.base.domain.Base;
 import java.util.Date;
 
 /**
- * 商品spu表
+ * 销售属性值
  */
 
 @Builder
@@ -16,52 +16,22 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbCommoditySpuDTO extends Base {
+public class CommodityAttrValueDTO extends Base {
 
     /**
-     * SPU ID
+     * 销售属性值ID
      */
     private String id;
 
     /**
-     * 品牌ID
+     * 销售属性值
      */
-    private String brandId;
+    private String value;
 
     /**
-     * 分类ID
-     */
-    private Integer categoryId;
-
-    /**
-     * spu名称
-     */
-    private String name;
-
-    /**
-     * spu描述
+     * 销售属性值描述
      */
     private String desc;
-
-    /**
-     * 卖点
-     */
-    private String sellingPoint;
-
-    /**
-     * spu单位
-     */
-    private String unit;
-
-    /**
-     * banner图片 多个图片逗号分隔
-     */
-    private String bannerUrl;
-
-    /**
-     * 商品介绍主图 多个图片逗号分隔
-     */
-    private String mainUrl;
 
     /**
      * 状态 1:enable, 0:disable, -1:deleted

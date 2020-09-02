@@ -31,7 +31,7 @@ public class TbCommoditySpuController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个商品spu表", response = TbCommoditySpuVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
         Res<?> res = tbCommoditySpuService.findById(id);
         TbCommoditySpuVO tbCommoditySpu = new TbCommoditySpuVO();
@@ -60,7 +60,7 @@ public class TbCommoditySpuController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个商品spu表", response = TbCommoditySpuVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") String id) {
         return tbCommoditySpuService.deleteById(id);
     }

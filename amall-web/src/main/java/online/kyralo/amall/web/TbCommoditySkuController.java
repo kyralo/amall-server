@@ -31,7 +31,7 @@ public class TbCommoditySkuController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个sku表", response = TbCommoditySkuVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
         Res<?> res = tbCommoditySkuService.findById(id);
         TbCommoditySkuVO tbCommoditySku = new TbCommoditySkuVO();
@@ -60,7 +60,7 @@ public class TbCommoditySkuController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个sku表", response = TbCommoditySkuVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") String id) {
         return tbCommoditySkuService.deleteById(id);
     }

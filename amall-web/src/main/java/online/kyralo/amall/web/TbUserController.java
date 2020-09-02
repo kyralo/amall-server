@@ -31,7 +31,7 @@ public class TbUserController {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "通过ID查询单个用户", response = TbUserVO.class)
-    public Res<?> findById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> findById(@ApiParam("id") @PathVariable("id")
                            @NotNull(message = "id内容不能为空") String id) {
         Res<?> res = tbUserService.findById(id);
         TbUserVO tbUser = new TbUserVO();
@@ -60,7 +60,7 @@ public class TbUserController {
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "通过ID删除单个用户", response = TbUserVO.class)
-    public Res<?> deleteById(@ApiParam("ID") @PathVariable("id")
+    public Res<?> deleteById(@ApiParam("id") @PathVariable("id")
                              @NotNull(message = "id内容不能为空") String id) {
         return tbUserService.deleteById(id);
     }
