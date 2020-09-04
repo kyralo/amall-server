@@ -49,8 +49,8 @@ public class WebLogAspect {
         assert attributes != null;
         HttpServletRequest request = attributes.getRequest();
 
-        // 获取 @ALog 注解的描述信息
-        String methodDescription = AnnotateUtil.getAonnotateParameterMap(point, WebLog.class).description();
+        // 获取 @WebLog 注解的描述信息
+        String methodDescription = AnnotateUtil.getAnnotateParameterMap(point, WebLog.class).description();
 
         // 打印请求相关参数
         log.info("========================================== Start ==========================================");

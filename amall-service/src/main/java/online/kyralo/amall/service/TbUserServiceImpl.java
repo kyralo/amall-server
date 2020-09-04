@@ -5,8 +5,10 @@ import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbUserService;
 import online.kyralo.amall.api.bo.TbUserBO;
 import online.kyralo.amall.api.model.TbUserModel;
+import online.kyralo.amall.common.annotation.NewCache;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
+import online.kyralo.amall.common.constants.CacheEnum;
 import online.kyralo.amall.common.exceptions.business.UserException;
 import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
@@ -36,7 +38,7 @@ public class TbUserServiceImpl implements TbUserService {
     private final BeanCopier copier = BeanCopier.create(TbUserModel.class, TbUserDO.class, false);
 
     @Transactional(readOnly = true)
-    @Cacheable(value = CACHE_TB_KEY_PREFIX + "user", key = "#id")
+    @NewCache(value = CACHE_TB_KEY_PREFIX + "user", key = "id", type = CacheEnum.QUERY)
     @Override
     public Res<?> findById(String id) {
         TbUserDO tbUserDO = tbUserDAO.findById(id);
@@ -71,7 +73,7 @@ public class TbUserServiceImpl implements TbUserService {
         throw new UserException(ResCode.FAILED);
     }
 
-    @CachePut(value = CACHE_TB_KEY_PREFIX + "user", key = "#tbUserModel.id")
+    @NewCache(value = CACHE_TB_KEY_PREFIX + "user", key = "tbUserModel.id", type = CacheEnum.UPDATE)
     @Override
     public Res<?> update(TbUserModel tbUserModel) {
 
@@ -88,7 +90,7 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     @Override
-    @CacheEvict(value = CACHE_TB_KEY_PREFIX + "user", key = "#id")
+    @NewCache(value = CACHE_TB_KEY_PREFIX + "user", key = "id", type = CacheEnum.DELETE)
     public Res<?> deleteById(String id) {
         int i = tbUserDAO.deleteById(id);
 
@@ -100,7 +102,7 @@ public class TbUserServiceImpl implements TbUserService {
     }
 
     @Transactional(readOnly = true)
-    @Cacheable(value = CACHE_TB_KEY_PREFIX + "user", key = "#id")
+    @NewCache(value = CACHE_TB_KEY_PREFIX + "user", key = "id", type = CacheEnum.QUERY)
     @Override
     public Res<?> queryById(String id) {
         TbUserDO tbUserDO = tbUserDAO.findById(id);

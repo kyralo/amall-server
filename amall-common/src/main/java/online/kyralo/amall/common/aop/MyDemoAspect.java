@@ -30,7 +30,6 @@ public class MyDemoAspect {
     public void point() {
     }
 
-
     @Before("point()")
     public void doBefore(JoinPoint point) {
         // 开始打印请求日志
@@ -38,14 +37,14 @@ public class MyDemoAspect {
         // 打印请求相关参数
         log.info("========================================== Start ==========================================");
 
-        // 打印调用 controller 的全路径以及执行方法
+        // 打印调用 注解方法 的全路径以及执行方法
         log.info("Class Method   : {}.{}", point.getSignature().getDeclaringTypeName(), point.getSignature().getName());
 
         // 打印请求入参
         log.info("Request Args   : {}", JSON.toJSON(AnnotateUtil.getParameterMap(point)));
 
         // 获取注解描述
-        log.info("Annotation Description, {}", JSON.toJSON(AnnotateUtil.getAonnotateParameterMap(point, MyDemo.class)));
+        log.info("Annotation Description   : {}", JSON.toJSON(AnnotateUtil.getAnnotateParameterMap(point, MyDemo.class)));
 
     }
 

@@ -63,13 +63,17 @@ public class RedisUtil {
         template.opsForHash().put(key, hashKey, value);
     }
 
-    public static Boolean putExpireHash(String key, Object hashKey, Object value, long timeout, TimeUnit unit) {
+    public static void putExpireHash(String key, Object hashKey, Object value, long timeout, TimeUnit unit) {
         template.opsForHash().put(key, hashKey, value);
-        return template.expire(key, timeout, unit);
+        template.expire(key, timeout, unit);
     }
 
     public static Object getHash(String key, Object hashKey) {
         return template.opsForHash().get(key, hashKey);
+    }
+
+    public static void removeHash(String key, Object hashKey) {
+        template.opsForHash().delete(key, hashKey);
     }
 
     // > Zset

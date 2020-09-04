@@ -5,16 +5,15 @@ import com.github.pagehelper.PageInfo;
 import online.kyralo.amall.api.TbCommoditySpuService;
 import online.kyralo.amall.api.bo.TbCommoditySpuBO;
 import online.kyralo.amall.api.model.TbCommoditySpuModel;
+import online.kyralo.amall.common.annotation.NewCache;
 import online.kyralo.amall.common.api.Res;
 import online.kyralo.amall.common.api.ResCode;
+import online.kyralo.amall.common.constants.CacheEnum;
 import online.kyralo.amall.common.exceptions.business.CommodityException;
 import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.common.utils.ResUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
 import online.kyralo.amall.dao.mapper.TbCommoditySpuDAO;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +35,7 @@ public class TbCommoditySpuServiceImpl implements TbCommoditySpuService {
     private final BeanCopier copier = BeanCopier.create(TbCommoditySpuModel.class, TbCommoditySpuDO.class, false);
 
     @Transactional(readOnly = true)
-    @Cacheable(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "#id")
+    @NewCache(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "id", type = CacheEnum.QUERY)
     @Override
     public Res<?> findById(String id) {
         TbCommoditySpuDO tbCommoditySpuDO = tbCommoditySpuDAO.findById(id);
@@ -71,7 +70,7 @@ public class TbCommoditySpuServiceImpl implements TbCommoditySpuService {
         throw new CommodityException(ResCode.FAILED);
     }
 
-    @CachePut(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "#tbCommoditySpuModel.id")
+    @NewCache(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "tbCommoditySpuModel.id", type = CacheEnum.UPDATE)
     @Override
     public Res<?> update(TbCommoditySpuModel tbCommoditySpuModel) {
 
@@ -87,7 +86,7 @@ public class TbCommoditySpuServiceImpl implements TbCommoditySpuService {
         throw new CommodityException(ResCode.FAILED);
     }
 
-    @CacheEvict(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "#id")
+    @NewCache(value = CACHE_TB_KEY_PREFIX + "commodity_spu", key = "id", type = CacheEnum.DELETE)
     @Override
     public Res<?> deleteById(String id) {
         int i = tbCommoditySpuDAO.deleteById(id);

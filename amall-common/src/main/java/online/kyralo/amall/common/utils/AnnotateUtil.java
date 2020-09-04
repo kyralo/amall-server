@@ -29,7 +29,7 @@ public class AnnotateUtil {
      * @return 参数Map集合
      */
     public static <T extends JoinPoint> Map<String, Object> getParameterMap(T joinPoint) {
-        Map<String, Object> param = new HashMap<>();
+        Map<String, Object> param = new HashMap<>(1);
         Object[] paramValues = joinPoint.getArgs();
         String[] paramNames = ((CodeSignature) joinPoint.getSignature()).getParameterNames();
         for (int i = 0; i < paramNames.length; i++) {
@@ -47,7 +47,7 @@ public class AnnotateUtil {
      * @param <P> 注解泛型
      * @return 当前注释的方法的注解参数
      */
-    public static <T extends JoinPoint, P extends Annotation> P getAonnotateParameterMap(T joinPoint, Class<P> pClass) {
+    public static <T extends JoinPoint, P extends Annotation> P getAnnotateParameterMap(T joinPoint, Class<P> pClass) {
         //此处joinPoint的实现类是MethodInvocationProceedingJoinPoint
         Signature signature = joinPoint.getSignature();
         //获取参数名
