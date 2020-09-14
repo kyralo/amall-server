@@ -8,41 +8,36 @@ import online.kyralo.amall.common.api.Res;
 public interface CartService {
 
     /**
-     * 查询购物车 通过用户ID
-     *
-     * @param userId 用户ID
-     * @return 购物车
-     */
-    Res<?> findById(String userId);
-
-    /**
      * 新增 购物车
      *
      * @param userId      用户ID
-     * @param commodityId 商品 sku id
+     * @param commodityId 商品 SKU ID
+     * @param commodityStockId 商品库存 ID
      * @param addCount    添加数量
      * @return 新增的状态
      */
-    Res<?> insert(String userId, String commodityId, Integer addCount);
+    Res<?> insert(String userId, String commodityId, Integer commodityStockId, Integer addCount);
 
     /**
      * 更新 购物车 商品数量
      *
      * @param userId      用户ID
-     * @param commodityId 商品 sku id
+     * @param commodityId 商品 SKU ID
+     * @param commodityStockId 商品库存 ID
      * @param addCount    添加数量
      * @return 更新的状态
      */
-    Res<?> updateAddCount(String userId, String commodityId, Integer addCount);
+    Res<?> updateAddCount(String userId, String commodityId, Integer commodityStockId, Integer addCount);
 
     /**
      * 删除商品 购物车
      *
      * @param userId      用户ID
-     * @param commodityId 商品 sku id
+     * @param commodityId 商品 SKU ID
+     * @param commodityStockId 商品库存 ID
      * @return 删除的状态
      */
-    Res<?> remove(String userId, String commodityId);
+    Res<?> remove(String userId, String commodityId, Integer commodityStockId);
 
     /**
      * 统计商品
@@ -57,7 +52,9 @@ public interface CartService {
      * 查询用户购物车商品 列表
      *
      * @param userId 用户ID
+     * @param pageNum  页号
+     * @param pageSize 每页大小
      * @return 用户购物车商品
      */
-    Res<?> listCartByUserId(String userId);
+    Res<?> listCartByUserId(String userId, Integer pageNum, Integer pageSize);
 }

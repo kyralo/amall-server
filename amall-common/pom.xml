@@ -98,6 +98,18 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- alipay -->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>fastjson</artifactId>
+                    <groupId>com.alibaba</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>

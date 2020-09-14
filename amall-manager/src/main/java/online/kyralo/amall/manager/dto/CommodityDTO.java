@@ -5,6 +5,7 @@ import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 商品spu表
@@ -19,32 +20,42 @@ import java.util.Date;
 public class CommodityDTO extends Base {
 
     /**
-     * SPU ID
+     * 商品ID [SKU ID]
      */
     private String id;
 
     /**
-     * 品牌ID
+     * 商品预览图 列表
      */
-    private String brandId;
+    private List<String> preImgUrls;
 
     /**
-     * 分类ID
+     * 商品介绍主图 多个图片逗号分隔
      */
-    private Integer categoryId;
+    private List<String> mainUrls;
 
     /**
-     * spu名称
+     * 商品名称
      */
     private String name;
 
     /**
-     * spu描述
+     * 商品品牌 ID
      */
-    private String desc;
+    private String brandId;
 
     /**
-     * 卖点
+     * 商品品牌名称
+     */
+    private String brandName;
+
+    /**
+     * 商品品牌 LOGO
+     */
+    private String brandLogo;
+
+    /**
+     * 商品卖点
      */
     private String sellingPoint;
 
@@ -54,14 +65,59 @@ public class CommodityDTO extends Base {
     private String unit;
 
     /**
-     * banner图片 多个图片逗号分隔
+     * 商品 父级 分类ID
      */
-    private String bannerUrl;
+    private Integer primaryCategoryId;
 
     /**
-     * 商品介绍主图 多个图片逗号分隔
+     * 商品 父级 分类名
      */
-    private String mainUrl;
+    private Integer primaryCategoryName;
+
+    /**
+     * 商品 子级 分类ID
+     */
+    private Integer childCategoryId;
+
+    /**
+     * 商品 子级 分类名
+     */
+    private Integer childCategoryName;
+
+    /**
+     * 商家商品服务说明
+     */
+    private List<String> serviceInfo;
+
+    /**
+     * 商品月销量
+     */
+    private Integer cumulativeSales;
+
+    /**
+     * 产品参数
+     */
+    private List<ParameterDTO<String>> commodityParameters;
+
+    /**
+     * 穿着效果
+     */
+    private List<String> commodityInEffectImages;
+
+    /**
+     * 尺码说明
+     */
+    private List<ParameterDTO<List<ParameterDTO<String>>>> commoditySizeSpec;
+
+    /**
+     * 商品销售属性
+     */
+    private List<ParameterDTO<SalesValueDTO>> sales;
+
+    /**
+     * 商品套餐
+     */
+    private List<ComboDTO> combos;
 
     /**
      * 状态 1:enable, 0:disable, -1:deleted

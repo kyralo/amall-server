@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author wangchen
@@ -98,6 +99,11 @@ public class TbMerchantServiceImpl implements TbMerchantService {
 
     @Override
     public Res<?> getMerchantCommodityKindByCommoditySkuId(String commoditySkuId) {
+        return null;
+    }
+
+    @Override
+    public Res<?> addCommodityServiceInfo(String commoditySkuId, List<String> serviceInfos) {
         return null;
     }
 

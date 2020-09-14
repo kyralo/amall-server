@@ -41,7 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests().antMatchers("/api/v1/user/login/**").permitAll().and().
                 authorizeRequests().antMatchers(HttpMethod.GET,
                 "/api/v1/commodity_spus/**",
-                "/api/v1/home/**"
+                "/api/v1/home/**",
+                "/api/v1/pay/**"
                 ).permitAll().and().
                 authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().and().
                 authorizeRequests().antMatchers("/", "/api", "/docs.html", "/favicon.ico",

@@ -25,7 +25,7 @@ public class ResUtil {
         return new Res<>(ResCode.SUCCESS, data);
     }
 
-    public static <T> Res<T> success(Long code, String msg) {
+    public static <T> Res<T> success(long code, String msg) {
         return new Res<>(code, msg);
     }
 
@@ -37,7 +37,7 @@ public class ResUtil {
         return new Res<>(ResCode.FAILED, data);
     }
 
-    public static <T> Res<T> error(Long code, String msg) {
+    public static <T> Res<T> error(long code, String msg) {
         return new Res<>(code, msg);
     }
 
@@ -45,7 +45,7 @@ public class ResUtil {
         return new Res<>(resCode, data);
     }
 
-    public static <T> Res<T> response(Long resCode, String msg, T data) {
+    public static <T> Res<T> response(long resCode, String msg, T data) {
         return new Res<>(resCode, msg, data);
     }
 }

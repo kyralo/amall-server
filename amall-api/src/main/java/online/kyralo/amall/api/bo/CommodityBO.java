@@ -3,7 +3,6 @@ package online.kyralo.amall.api.bo;
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ import java.util.List;
 public class CommodityBO extends Base {
 
     /**
-     * 商品ID
+     * 商品ID [SKU ID]
      */
     private String id;
 
@@ -34,12 +33,17 @@ public class CommodityBO extends Base {
     private List<String> preImgUrls;
 
     /**
+     * 商品介绍主图 多个图片逗号分隔
+     */
+    private List<String> mainUrls;
+
+    /**
      * 商品名称
      */
     private String name;
 
     /**
-     * 商品品牌ID
+     * 商品品牌 ID
      */
     private String brandId;
 
@@ -49,14 +53,39 @@ public class CommodityBO extends Base {
     private String brandName;
 
     /**
+     * 商品品牌 LOGO
+     */
+    private String brandLogo;
+
+    /**
      * 商品卖点
      */
     private String sellingPoint;
 
     /**
-     * 商品分类ID
+     * spu单位
      */
-    private Integer categoryId;
+    private String unit;
+
+    /**
+     * 商品 父级 分类ID
+     */
+    private Integer primaryCategoryId;
+
+    /**
+     * 商品 父级 分类名
+     */
+    private Integer primaryCategoryName;
+
+    /**
+     * 商品 子级 分类ID
+     */
+    private Integer childCategoryId;
+
+    /**
+     * 商品 子级 分类名
+     */
+    private Integer childCategoryName;
 
     /**
      * 商家商品服务说明
@@ -81,7 +110,7 @@ public class CommodityBO extends Base {
     /**
      * 尺码说明
      */
-    private List<ParameterBO<Array>> commoditySizeSpec;
+    private List<ParameterBO<List<ParameterBO<String>>>> commoditySizeSpec;
 
     /**
      * 商品销售属性

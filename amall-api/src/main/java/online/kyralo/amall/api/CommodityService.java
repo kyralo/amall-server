@@ -1,5 +1,6 @@
 package online.kyralo.amall.api;
 
+import online.kyralo.amall.api.model.ComboModel;
 import online.kyralo.amall.common.api.Res;
 
 /**
@@ -53,4 +54,31 @@ public interface CommodityService {
      * @return 商品页 商家推荐商品
      */
     Res<?> listMerchantRecommondCommodities(String commoditySkuId);
+
+    /**
+     * 新增商品套餐
+     *
+     * @param commoditySkuId 商品skuId
+     * @param comboModel 套餐
+     * @return 是否更改成功
+     */
+    Res<?> insertCommodityCombo(String commoditySkuId, ComboModel comboModel);
+
+    /**
+     * 更改商品套餐
+     *
+     * @param commoditySkuId 商品skuId
+     * @param comboModel 套餐
+     * @return 是否更改成功
+     */
+    Res<?> updateCommodityCombo(String commoditySkuId, ComboModel comboModel);
+
+    /**
+     * 删除商品套餐
+     *
+     * @param commoditySkuId 商品skuId
+     * @param comboId 套餐ID
+     * @return 是否更改成功
+     */
+    Res<?> deleteCommodityCombo(String commoditySkuId, String comboId);
 }

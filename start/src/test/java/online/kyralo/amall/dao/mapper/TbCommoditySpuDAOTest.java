@@ -47,6 +47,19 @@ public class TbCommoditySpuDAOTest {
 
     @Test
     void update() {
+        TbCommoditySpuDO tbCommoditySpuDO = TbCommoditySpuDO.builder()
+                .id("63f6659a097e467eb10483bf56d6a34e")
+                .brandId("3")
+                .bannerUrl("3")
+                .categoryId(3)
+                .mainUrl("3")
+                .spuDesc("3")
+                .status(3)
+                .name("3")
+                .unit("3")
+                .sellingPoint("")
+                .build();
+        System.out.println(dao.updateByPrimaryKey(tbCommoditySpuDO));
     }
 
     @Test

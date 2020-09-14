@@ -1,4 +1,4 @@
-package online.kyralo.amall.api.bo;
+package online.kyralo.amall.api.model;
 
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
@@ -8,18 +8,19 @@ import java.util.List;
 /**
  * \* Created with Intellij IDEA.
  * \* Author: wangchen
- * \* Date: 2020/8/20
- * \* Time: 1:27
+ * \* Date: 2020/9/11
+ * \* Time: 17:35
  * \* Description: 套餐
  * \
  */
+
 @Builder
 @Setter
 @Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ComboBO extends Base {
+public class ComboModel extends Base {
 
     /**
      * 套餐ID
@@ -55,5 +56,4 @@ public class ComboBO extends Base {
      * 套餐存货
      */
     private Integer stock;
-
 }

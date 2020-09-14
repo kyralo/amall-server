@@ -20,7 +20,6 @@ public interface TbCommoditySpuDAO extends BaseDao<TbCommoditySpuDO> {
      * @param id ID
      * @return {@link TbCommoditySpuDO}
      */
-    @NewCache(description = "I Like This !", value = "user", key = "id", type = CacheEnum.QUERY)
     TbCommoditySpuDO findById(String id);
 
     /**

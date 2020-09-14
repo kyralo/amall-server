@@ -52,9 +52,9 @@ public class TbCommoditySkuVO extends Base {
     private String mainUrl;
 
     /**
-     * 商品参数 {attr_value_id} 多个销售属性值逗号分隔 固定加上 颜色, 尺码属性
+     * 商品参数 {attr_id} 多个销售属性值逗号分隔 固定加上 颜色, 尺码属性
      */
-    @ApiModelProperty("商品参数 {attr_value_id} 多个销售属性值逗号分隔 固定加上 颜色, 尺码属性")
+    @ApiModelProperty("商品参数 {attr_id} 多个销售属性值逗号分隔 固定加上 颜色, 尺码属性")
     private String commodityParameters;
 
     /**
@@ -70,9 +70,9 @@ public class TbCommoditySkuVO extends Base {
     private String commodityInEffect;
 
     /**
-     * 尺码说明 {attr_value_id} (map保存尺码名) 多个销售属性值逗号分隔
+     * 尺码说明 {size_id} 多个id逗号分隔
      */
-    @ApiModelProperty("尺码说明 {attr_value_id} (map保存尺码名) 多个销售属性值逗号分隔")
+    @ApiModelProperty("尺码说明 {attr_id} (map保存尺码名) 多个销售属性值逗号分隔")
     private String commoditySizeSpecification;
 
     /**

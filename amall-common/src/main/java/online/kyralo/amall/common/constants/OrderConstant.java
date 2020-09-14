@@ -15,25 +15,25 @@ public class OrderConstant {
     /**
      * 0  已取消
      */
-    public static final Integer OREDER_CANCELLED = 0;
+    public static final Integer ORDER_CANCELLED = 0;
     /**
      * 10 未付款
      */
-    public static final Integer OREDER_NOT_PAID = 10;
+    public static final Integer ORDER_NOT_PAID = 10;
     /**
      * 20 已付款
      */
-    public static final Integer OREDER_PAID = 20;
+    public static final Integer ORDER_PAID = 20;
     /**
      * 40 已发货
      */
-    public static final Integer OREDER_DELIVERED = 40;
+    public static final Integer ORDER_DELIVERED = 40;
     /**
      * 50 交易成功
      */
-    public static final Integer OREDER_TRADE_SUCCESS = 50;
+    public static final Integer ORDER_TRADE_SUCCESS = 50;
     /**
      * 60 交易关闭
      */
-    public static final Integer OREDER_TRADE_CLOSED = 60;
+    public static final Integer ORDER_TRADE_CLOSED = 60;
 }

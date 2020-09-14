@@ -16,7 +16,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -46,17 +46,14 @@ public class NewCacheAspect {
 
     @Before("point()")
     public void doBefore(JoinPoint point) {
-//        // 开始打印请求日志
-//
-//        // 打印请求相关参数
-//        log.info("========================================== Start ==========================================");
-//
-//        // 打印调用 注解方法 的全路径以及执行方法
-//        log.info("Class Method   : {}.{}", point.getSignature().getDeclaringTypeName(), point.getSignature().getName());
-//
+        // 开始打印请求日志
+
+        // 打印请求相关参数
+        log.info("========================================== Start ==========================================");
+
 //        // 打印请求入参
 //        log.info("Request Args   : {}", JSON.toJSON(AnnotateUtil.getParameterMap(point)));
-//
+
 //        // 获取注解描述
 //        log.info("Annotation Description   : {}", JSON.toJSON(AnnotateUtil.getAnnotateParameterMap(point, NewCache.class)));
 
@@ -73,11 +70,15 @@ public class NewCacheAspect {
         long timeout = cacheMap.timeout();
         TimeUnit timeunit = cacheMap.timeunit();
 
+        log.info("===> 缓存名: {}, 缓存键: {}, 缓存时间: {}",cacheName, annotateKey, timeout);
+
         // 获取当前方法参数map
         Map<String, Object> paramsMap = AnnotateUtil.getParameterMap(point);
 
         // 获取cacheKey
         String cacheKey = getCacheKey(annotateKey, paramsMap);
+
+        log.info("===> 缓存类型: {}, 缓存键: {}", cacheType, cacheKey);
 
         // 处理
         Object result;
@@ -143,22 +144,31 @@ public class NewCacheAspect {
         Object result = point.proceed();
         Res<?> res = (Res<?>)result;
 
+        System.out.println(" ---<><><> res1 " + res);
+
         if (ResCodeConstant.SUCCESS != res.getCode()) {
             return result;
         }
 
+        System.out.println(" ---<><><> res2 " + res);
         Object updateObject = getCachePutObject(annotateKey, paramsMap);
+
+        System.out.println(" ---<><><> res3 " + updateObject);
         if (updateObject == null) {
             return result;
         }
 
         Object data = RedisUtil.getHash(cacheName, cacheKey);
+
+        System.out.println(" ---<><><> res4 " + data);
         if (data == null) {
             return result;
         }
 
         CopyUtil.copyBean(updateObject, data);
         RedisUtil.putExpireHash(cacheName, cacheKey, data, timeout, timeunit);
+
+        System.out.println(" ---<><><> res5 " + data);
 
         return result;
     }
@@ -200,7 +210,10 @@ public class NewCacheAspect {
             return null;
         }
 
-        String[] keys = annotateKey.split("/.");
+        String[] keys = annotateKey.split("\\.");
+
+        System.out.println("---->>>> keys" + Arrays.toString(keys));
+        System.out.println("---->>>> paramsMap " + paramsMap);
 
         return paramsMap.get(keys[0]);
     }
@@ -222,34 +235,43 @@ public class NewCacheAspect {
         }
 
         String cacheKey = null;
-        String[] keys = annotateKey.split("/.");
+        String[] keys = annotateKey.split("\\.");
 
-        Map<String, Object> copyParamsMap = new HashMap<>(paramsMap.size());
-        CopyUtil.copyBean(paramsMap, copyParamsMap);
+        System.out.println("-------------------------------");
+
+        Map<String, Object> copyParamsMap = CopyUtil.copyMap(paramsMap);
 
         for (int i = 0; i < keys.length; i++) {
 
             Object keyMap = copyParamsMap.get(keys[i]);
+            System.out.println("copyParamsMap: " + copyParamsMap);
+            System.out.println("keyMap: " + keyMap);
             if ( keyMap == null || "".equals(keyMap)) {
+                System.out.println("-------------------------");
                 break;
             }
 
             if (i >= keys.length - 1) {
                 cacheKey = String.valueOf(keyMap);
+                System.out.println("--------------------------");
                 break;
             }
 
             String keyMapStr = JSON.toJSONString(keyMap);
+            System.out.println("keyMapStr: " + keyMapStr);
             copyParamsMap = JSONObject.parseObject(keyMapStr);
+            System.out.println("copyParamsMap: " + copyParamsMap);
         }
+
+        System.out.println("-----------------------------");
 
         return cacheKey;
     }
 
     @After("point()")
     public void doAfter(JoinPoint point) {
-//        // 接口结束后换行，方便分割查看
-//        log.info("=========================================== End ===========================================");
+        // 接口结束后换行，方便分割查看
+        log.info("=========================================== End ===========================================");
     }
 
     @AfterReturning("point()")

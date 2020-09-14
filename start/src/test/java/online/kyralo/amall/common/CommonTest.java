@@ -4,7 +4,6 @@ import online.kyralo.amall.common.utils.CommonUtil;
 import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.BeanUtils;
 
 import java.util.*;
 

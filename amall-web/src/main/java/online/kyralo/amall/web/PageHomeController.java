@@ -93,7 +93,7 @@ public class PageHomeController {
                     page.setCollectionCount(collectionCountBO);
 
                     // 待付订单 数量
-                    Integer notPayOrderCountBO = (Integer) tbOrderService.countOrdersByUserIdAndStatus(userId, OrderConstant.OREDER_NOT_PAID).getData();
+                    Integer notPayOrderCountBO = (Integer) tbOrderService.countOrdersByUserIdAndStatus(userId, OrderConstant.ORDER_NOT_PAID).getData();
                     page.setOrderCount(notPayOrderCountBO);
                 } else {
                     userId = "";

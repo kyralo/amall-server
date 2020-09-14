@@ -22,6 +22,11 @@ import java.util.List;
 public class ComboDTO extends Base {
 
     /**
+     * 套餐ID
+     */
+    private String comboId;
+
+    /**
      * 套餐名
      */
     private String comboName;

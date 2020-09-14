@@ -4,6 +4,8 @@ package online.kyralo.amall.api;
 import online.kyralo.amall.api.model.TbMerchantModel;
 import online.kyralo.amall.common.api.Res;
 
+import java.util.List;
+
 /**
  * 商家
  */
@@ -66,4 +68,13 @@ public interface TbMerchantService {
      * @return 商家销售商品类型
      */
     Res<?> getMerchantCommodityKindByCommoditySkuId(String commoditySkuId);
+
+    /**
+     * 添加服务说明
+     *
+     * @param commoditySkuId 商品sku ID
+     * @param serviceInfos 服务说明 列表
+     * @return 是否添加成功
+     */
+    Res<?> addCommodityServiceInfo(String commoditySkuId, List<String> serviceInfos);
 }

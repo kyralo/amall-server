@@ -10,7 +10,6 @@ import lombok.*;
  * \* Description:
  * \
  */
-
 @Builder
 @Setter
 @Getter
@@ -18,5 +17,24 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartDTO {
-    private Integer id;
+
+    /**
+     * 购物车 用户 ID
+     */
+    private  String userId;
+
+    /**
+     * 购物车 商品 SKU ID
+     */
+    private String commodityId;
+
+    /**
+     * 购物车 商品库存 ID
+     */
+    private Integer commodityStockId;
+
+    /**
+     * 购物车 商品购物车数量
+     */
+    private Integer addCount;
 }

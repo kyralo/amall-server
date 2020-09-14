@@ -1,4 +1,4 @@
-package online.kyralo.amall.api.bo;
+package online.kyralo.amall.manager.dto;
 
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
@@ -6,18 +6,19 @@ import online.kyralo.amall.common.base.domain.Base;
 /**
  * \* Created with Intellij IDEA.
  * \* Author: wangchen
- * \* Date: 2020/8/20
- * \* Time: 1:25
- * \* Description: 商品参数值
+ * \* Date: 2020/9/10
+ * \* Time: 10:44
+ * \* Description:
  * \
  */
+
 @Builder
 @Setter
 @Getter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class SalesValueBO extends Base {
+public class SalesValueDTO extends Base {
 
     /**
      * 商品颜色名
@@ -32,7 +33,7 @@ public class SalesValueBO extends Base {
     /**
      * 商品尺寸详细信息
      */
-    private TbCommoditySizeBO sizeInfo;
+    private CommoditySizeDTO sizeInfo;
 
     /**
      * 商品价格
@@ -53,5 +54,4 @@ public class SalesValueBO extends Base {
      * 商品存货
      */
     private Integer stock;
-
 }

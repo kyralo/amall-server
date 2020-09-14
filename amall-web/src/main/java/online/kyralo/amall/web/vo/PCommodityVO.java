@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -67,6 +66,12 @@ public class PCommodityVO extends Base {
         private String sizeName;
 
         /**
+         * 商品尺寸详细信息
+         */
+        @ApiModelProperty("商品尺寸详细信息")
+        private TbCommoditySizeVO sizeInfo;
+
+        /**
          * 商品价格
          */
         @ApiModelProperty("价格")
@@ -77,6 +82,12 @@ public class PCommodityVO extends Base {
          */
         @ApiModelProperty("折扣")
         private Float discount;
+
+        /**
+         * 商品库存ID
+         */
+        @ApiModelProperty("商品库存ID")
+        private Integer commodityStockId;
 
         /**
          * 商品存货
@@ -92,6 +103,12 @@ public class PCommodityVO extends Base {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Combo extends Base {
+
+        /**
+         * 套餐ID
+         */
+        @ApiModelProperty("套餐ID")
+        private String comboId;
 
         /**
          * 套餐名
@@ -150,6 +167,13 @@ public class PCommodityVO extends Base {
         @ApiModelProperty("商品预览图 列表")
         private List<String> preImgUrls;
 
+
+        /**
+         * 商品介绍主图 多个图片逗号分隔
+         */
+        @ApiModelProperty("商品介绍主图 多个图片逗号分隔")
+        private List<String> mainUrls;
+
         /**
          * 商品名称
          */
@@ -163,10 +187,22 @@ public class PCommodityVO extends Base {
         private String brandId;
 
         /**
+         * 商品品牌 LOGO
+         */
+        @ApiModelProperty("商品品牌LOGO")
+        private String brandLogo;
+
+        /**
          * 商品品牌名称
          */
         @ApiModelProperty("商品品牌名称")
         private String brandName;
+
+        /**
+         * 商品spu单位
+         */
+        @ApiModelProperty("商品spu单位")
+        private String unit;
 
         /**
          * 商品卖点
@@ -175,10 +211,28 @@ public class PCommodityVO extends Base {
         private String sellingPoint;
 
         /**
-         * 商品分类ID
+         * 商品 父级 分类ID
          */
-        @ApiModelProperty("商品分类ID")
-        private Integer categoryId;
+        @ApiModelProperty("商品 父级 分类ID")
+        private Integer primaryCategoryId;
+
+        /**
+         * 商品 父级 分类名
+         */
+        @ApiModelProperty("商品 父级 分类名")
+        private Integer primaryCategoryName;
+
+        /**
+         * 商品 子级 分类ID
+         */
+        @ApiModelProperty("商品 子级 分类ID")
+        private Integer childCategoryId;
+
+        /**
+         * 商品 子级 分类名
+         */
+        @ApiModelProperty("商品 子级 分类名")
+        private Integer childCategoryName;
 
         /**
          * 商家商品服务说明
@@ -214,7 +268,7 @@ public class PCommodityVO extends Base {
          * 尺码说明
          */
         @ApiModelProperty("尺码说明")
-        private List<Parameter<Array>> commoditySizeSpec;
+        private List<Parameter<List<Parameter<String>>>> commoditySizeSpec;
 
         /**
          * 商品销售属性

@@ -63,19 +63,33 @@ public enum ResCode implements RestCode {
 
     // 订单模块
 
-    ;
 
+
+
+    private long code;
+
+    private String message;
 
     ResCode(long code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
+    public void setCode(long code) {
+        this.code = code;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
     public long getCode() {
-        return 0;
+        return code;
     }
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 }
