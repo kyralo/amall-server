@@ -27,6 +27,13 @@
         WHERE id=#{id}
     </select>
 
+    <!--通过ID查询单个商品类型-->
+    <select id="findByName" resultMap="tbCommodityCategoryMap">
+        SELECT id,parent_category_id,name,info,icon_url,pic_url,is_primary,status,create_time,update_time FROM
+        tb_commodity_category
+        WHERE name=#{name}
+    </select>
+
     <!--分页查询商品类型-->
     <select id="findByPage" resultMap="tbCommodityCategoryMap">
         SELECT id,parent_category_id,name,info,icon_url,pic_url,is_primary,status,create_time,update_time FROM
@@ -59,6 +66,27 @@
         SELECT id,parent_category_id,name,info,icon_url,pic_url,is_primary,status,create_time,update_time
         FROM tb_commodity_category
         WHERE parent_category_id = #{primaryId} AND status = 1
+    </select>
+
+    <!--查询商品一级类型ID-->
+    <select id="listPrimaryCategoryIds" resultType="integer">
+        SELECT id
+        FROM tb_commodity_category
+        WHERE status = 1 AND is_primary = 1
+    </select>
+
+    <!--通过父类型ID查询商品二级类型ID-->
+    <select id="listSecondCategoryIdsByPrimaryId" resultType="integer">
+        SELECT id
+        FROM tb_commodity_category
+        WHERE parent_category_id = #{primaryId} AND status = 1 AND is_primary = 0
+    </select>
+
+    <!--通过父类型名查询商品二级类型ID-->
+    <select id="listSecondCategoryIdsByPrimaryType" resultType="integer">
+        SELECT id
+        FROM tb_commodity_category
+        WHERE name = #{primaryType} AND status = 1 AND is_primary = 0
     </select>
 
 </mapper>

@@ -1,9 +1,11 @@
 package online.kyralo.amall.common;
 
+import lombok.ToString;
 import online.kyralo.amall.common.utils.CommonUtil;
 import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.FactoryBean;
 
 import java.util.*;
 
@@ -41,7 +43,22 @@ public class CommonTest {
         System.out.println(tbCommoditySpuDO2);
     }
 
+    @ToString
+    public static class Demo {
+        public String name;
+    }
+
+    public void demo(Demo demo) {
+        demo.name = "w";
+    }
+
     @Test
     public void queryTest() {
+
+        Demo v = new Demo();
+        v.name = "a";
+        demo(v);
+
+        System.out.println(v);
     }
 }

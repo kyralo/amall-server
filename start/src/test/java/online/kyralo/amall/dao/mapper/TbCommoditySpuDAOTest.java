@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
 
 @SpringBootTest
 public class TbCommoditySpuDAOTest {
@@ -62,7 +63,12 @@ public class TbCommoditySpuDAOTest {
         System.out.println(dao.updateByPrimaryKey(tbCommoditySpuDO));
     }
 
+    @Resource
+    private ExecutorService executorService;
+
     @Test
     void deleteById() {
+
+
     }
 }

@@ -24,4 +24,9 @@ public class CommodityConstant {
      */
     public static final String CACHE_COMMODITY_COMBO_PREFIX = "amall_commodity_combo_";
 
+    /**
+     * 商品折扣缓存前缀
+     */
+    public static final String CACHE_COMMODITY_DISCOUNT_PREFIX = "amall_commodity_discount_";
+
 }

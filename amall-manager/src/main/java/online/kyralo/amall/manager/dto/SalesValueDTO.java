@@ -36,12 +36,12 @@ public class SalesValueDTO extends Base {
     private CommoditySizeDTO sizeInfo;
 
     /**
-     * 商品价格
+     * 商品标准价格
      */
     private Double price;
 
     /**
-     * 商品折扣
+     * 商品折扣 [缓存]
      */
     private Float discount;
 
@@ -51,7 +51,7 @@ public class SalesValueDTO extends Base {
     private Integer commodityStockId;
 
     /**
-     * 商品存货
+     * 商品存货 [缓存]
      */
     private Integer stock;
 }

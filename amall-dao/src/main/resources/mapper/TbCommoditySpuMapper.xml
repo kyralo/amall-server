@@ -5,6 +5,7 @@
     <resultMap id="tbCommoditySpuMap" type="online.kyralo.amall.dao.dataobject.TbCommoditySpuDO">
         <id property="id" column="id"/>
         <result property="brandId" column="brand_id"/>
+        <result property="parentCategoryId" column="parent_category_id"/>
         <result property="categoryId" column="category_id"/>
         <result property="merchantId" column="merchant_id"/>
         <result property="name" column="name"/>
@@ -19,14 +20,14 @@
     </resultMap>
 
     <sql id="columns">
-        id,brand_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
+        id,brand_id,parent_category_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
         tb_commodity_spu
     </sql>
 
     <!--通过ID查询单个商品spu表-->
     <select id="findById" resultMap="tbCommoditySpuMap">
         SELECT
-        id,brand_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
+        id,brand_id,parent_category_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
         tb_commodity_spu
         WHERE id=#{id}
     </select>
@@ -34,16 +35,16 @@
     <!--分页查询商品spu表-->
     <select id="findByPage" resultMap="tbCommoditySpuMap">
         SELECT
-        id,brand_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
+        id,brand_id,parent_category_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time FROM
         tb_commodity_spu
     </select>
 
     <!--新增商品spu表-->
     <insert id="insert">
         INSERT INTO
-        tb_commodity_spu(id,brand_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time)
+        tb_commodity_spu(id,brand_id,parent_category_id,category_id,merchant_id,name,spu_desc,selling_point,unit,banner_url,main_url,status,create_time,update_time)
         VALUES
-        (#{id},#{brandId},#{categoryId},#{merchantId},#{name},#{spuDesc},#{sellingPoint},#{unit},#{bannerUrl},#{mainUrl},#{status},#{createTime},#{updateTime})
+        (#{id},#{brandId},#{parentCategoryId},#{categoryId},#{merchantId},#{name},#{spuDesc},#{sellingPoint},#{unit},#{bannerUrl},#{mainUrl},#{status},#{createTime},#{updateTime})
     </insert>
 
     <!--通过ID删除单个商品spu表-->
@@ -51,5 +52,22 @@
         DELETE FROM tb_commodity_spu
         WHERE id=#{id}
     </delete>
+
+    <!--通过ID查询单个商品spu表-->
+    <select id="findByType" resultType="string">
+        SELECT
+        id
+        FROM
+        tb_commodity_spus
+        WHERE id=#{typeId}
+    </select>
+
+    <select id="listSecondTypeIdByMerchantId" resultType="integer">
+        SELECT
+        DISTINCT category_id
+        FROM
+        tb_commodity_spus
+        WHERE merchant_id=#{merchantId}
+    </select>
 
 </mapper>

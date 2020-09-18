@@ -40,4 +40,32 @@
         WHERE id=#{id}
     </delete>
 
+    <!--通过商品 SKU ID 查询商所有颜名-->
+    <select id="findBySkuId" resultMap="tbCommoditySkuStockMap">
+        SELECT
+        <include refid="columns" />
+        WHERE sku_id=#{skuId}
+    </select>
+
+    <!--通过商品 SKU ID 查询商所有颜名-->
+    <select id="findColorNameBySkuId" resultType="string">
+        SELECT DISTINCT sku_color FROM tb_commodity_sku_stock
+        WHERE sku_id=#{skuId}
+    </select>
+
+    <!--通过商品 SKU ID 颜色 查询商所有颜名-->
+    <select id="findSizeNameBySkuIdAndColorName" resultType="string">
+        SELECT DISTINCT sku_size_name FROM tb_commodity_sku_stock
+        WHERE sku_id=#{skuId}
+        AND sku_color=#{color}
+    </select>
+
+    <!--通过商品 SKU ID 颜色 尺寸 查询商所有颜名-->
+    <select id="findQuantityBySkuIdAndColorAndSize" resultType="integer">
+        SELECT quantity FROM tb_commodity_sku_stock
+        WHERE sku_id=#{skuId}
+        AND sku_color=#{color}
+        AND sku_size_name = #{sizeName}
+    </select>
+
 </mapper>

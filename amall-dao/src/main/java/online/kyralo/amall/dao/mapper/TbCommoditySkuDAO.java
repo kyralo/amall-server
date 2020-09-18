@@ -44,4 +44,12 @@ public interface TbCommoditySkuDAO extends BaseDao<TbCommoditySkuDO> {
      */
     int deleteById(String id);
 
+    /**
+     * 通过 SPU ID查询单个sku表
+     *
+     * @param spuId SPU ID
+     * @return {@link TbCommoditySkuDO}
+     */
+    TbCommoditySkuDO findBySpuId(String spuId);
+
 }

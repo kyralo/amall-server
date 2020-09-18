@@ -7,6 +7,8 @@
         <result property="num" column="num"/>
         <result property="userId" column="user_id"/>
         <result property="skuId" column="sku_id"/>
+        <result property="skuColor" column="sku_color"/>
+        <result property="skuSizeName" column="sku_size_name"/>
         <result property="payFee" column="pay_fee"/>
         <result property="payScale" column="pay_scale"/>
         <result property="paymentType" column="payment_type"/>
@@ -21,14 +23,14 @@
     </resultMap>
 
     <sql id="columns">
-        id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
+        id,num,user_id,sku_id,sku_color,sku_size_name,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
         FROM tb_order
     </sql>
 
     <!--通过ID查询单个订单-->
     <select id="findById" resultMap="tbOrderMap">
         SELECT
-        id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
+        id,num,user_id,sku_id,sku_color,sku_size_name,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
         FROM tb_order
         WHERE id=#{id}
     </select>
@@ -36,16 +38,16 @@
     <!--分页查询订单-->
     <select id="findByPage" resultMap="tbOrderMap">
         SELECT
-        id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
+        id,num,user_id,sku_id,sku_color,sku_size_name,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time
         FROM tb_order
     </select>
 
     <!--新增订单-->
     <insert id="insert">
         INSERT INTO
-        tb_order(id,num,user_id,sku_id,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time)
+        tb_order(id,num,user_id,sku_id,sku_color,sku_size_name,pay_fee,pay_scale,payment_type,postage,status,payment_time,send_time,end_time,close_time,create_time,update_time)
         VALUES
-        (#{id},#{num},#{userId},#{skuId},#{payFee},#{payScale},#{paymentType},#{postage},#{status},#{paymentTime},#{sendTime},#{endTime},#{closeTime},#{createTime},#{updateTime})
+        (#{id},#{num},#{userId},#{skuId},#{skuColor},#{skuSizeName},#{payFee},#{payScale},#{paymentType},#{postage},#{status},#{paymentTime},#{sendTime},#{endTime},#{closeTime},#{createTime},#{updateTime})
     </insert>
 
     <!--通过ID删除单个订单-->
@@ -53,5 +55,10 @@
         DELETE FROM tb_order
         WHERE id=#{id}
     </delete>
+
+    <!-- 统计月销售量 -->
+    <select id="countCurrentMonthOrderBySkuId" resultType="integer">
+        SELECT COUNT(id)  FROM tb_order WHERE DATE_FORMAT( payment_time, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )
+    </select>
 
 </mapper>

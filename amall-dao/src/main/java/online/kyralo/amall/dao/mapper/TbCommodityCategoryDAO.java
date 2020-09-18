@@ -23,6 +23,14 @@ public interface TbCommodityCategoryDAO extends BaseDao<TbCommodityCategoryDO> {
     TbCommodityCategoryDO findById(Integer id);
 
     /**
+     * 通过name查询单个商品类型
+     *
+     * @param name name
+     * @return {@link TbCommodityCategoryDO}
+     */
+    TbCommodityCategoryDO findByName(String name);
+
+    /**
      * 分页查询商品类型
      *
      * @return {@link TbCommodityCategoryDO}
@@ -61,4 +69,26 @@ public interface TbCommodityCategoryDAO extends BaseDao<TbCommodityCategoryDO> {
      */
     List<TbCommodityCategoryDO> listSecondCategories(Integer primaryId);
 
+    /**
+     * 查询所有一级类型ID
+     *
+     * @return {@link TbCommodityCategoryDO}
+     */
+    List<Integer> listPrimaryCategoryIds();
+
+    /**
+     * 查询所有二级类型ID 通过一级类型ID
+     *
+     * @param primaryId 一级类型ID
+     * @return {@link TbCommodityCategoryDO}
+     */
+    List<Integer> listSecondCategoryIdsByPrimaryId(Integer primaryId);
+
+    /**
+     * 查询所有二级类型ID 通过一级类型名
+     *
+     * @param primaryType 一级类型名
+     * @return {@link TbCommodityCategoryDO}
+     */
+    List<Integer> listSecondCategoryIdsByPrimaryType(String primaryType);
 }

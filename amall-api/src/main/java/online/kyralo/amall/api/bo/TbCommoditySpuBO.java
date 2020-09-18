@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
+import javax.persistence.Column;
 import java.util.Date;
 
 /**
@@ -27,6 +28,11 @@ public class TbCommoditySpuBO extends Base {
      * 品牌ID
      */
     private String brandId;
+
+    /**
+     * 一级分类ID
+     */
+    private Integer parentCategoryId;
 
     /**
      * 分类ID

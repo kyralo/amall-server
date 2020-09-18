@@ -44,4 +44,11 @@ public interface TbOrderDAO extends BaseDao<TbOrderDO> {
      */
     int deleteById(Integer id);
 
+    /**
+     * 统计商品月销售量
+     * @param skuId skuId
+     * @return 月销售量
+     */
+    int countCurrentMonthOrderBySkuId(String skuId);
+
 }

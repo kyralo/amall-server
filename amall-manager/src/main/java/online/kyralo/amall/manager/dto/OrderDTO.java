@@ -39,6 +39,16 @@ public class OrderDTO extends Base {
     private String skuId;
 
     /**
+     * SKU color
+     */
+    private String skuColor;
+
+    /**
+     * SKU 商品尺码名
+     */
+    private String skuSizeName;
+
+    /**
      * 付款，整数方式保存
      */
     private Integer payFee;

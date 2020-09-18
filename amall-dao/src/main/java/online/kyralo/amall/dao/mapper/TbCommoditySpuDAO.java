@@ -7,6 +7,8 @@ import online.kyralo.amall.common.constants.CacheEnum;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 商品spu表
  */
@@ -45,5 +47,20 @@ public interface TbCommoditySpuDAO extends BaseDao<TbCommoditySpuDO> {
      * @return 是否删除成功
      */
     int deleteById(String id);
+
+    /**
+     * 通过二级类型ID查询单个商品spu表
+     *
+     * @param typeId ID
+     * @return {@link List<String>}
+     */
+    List<String> findByType(Integer typeId);
+
+    /**
+     * 获取商品二级类型通过商家ID
+     * @param merchantId 商家ID
+     * @return 商品二级类型ID
+     */
+    List<Integer> listSecondTypeIdByMerchantId(String merchantId);
 
 }

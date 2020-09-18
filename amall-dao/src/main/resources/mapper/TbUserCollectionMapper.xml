@@ -25,6 +25,12 @@
         SELECT id,user_id,merchant_id,create_time,update_time FROM tb_user_collection
     </select>
 
+    <select id="listByUserId" resultMap="tbUserCollectionMap">
+        SELECT id,user_id,merchant_id,create_time,update_time
+        FROM tb_user_collection
+        WHERE user_id = #{userId}
+    </select>
+
     <!--新增用户收藏-->
     <insert id="insert">
         INSERT INTO tb_user_collection(id,user_id,merchant_id,create_time,update_time)

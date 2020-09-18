@@ -45,6 +45,18 @@ public class TbOrderDO {
     private String skuId;
 
     /**
+     * SKU color
+     */
+    @Column(name = "sku_color")
+    private String skuColor;
+
+    /**
+     * SKU 商品尺码名
+     */
+    @Column(name = "sku_size_name")
+    private String skuSizeName;
+
+    /**
      * 付款，整数方式保存
      */
     @Column(name = "pay_fee")

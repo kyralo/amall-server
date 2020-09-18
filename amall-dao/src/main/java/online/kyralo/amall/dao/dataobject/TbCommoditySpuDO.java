@@ -33,6 +33,12 @@ public class TbCommoditySpuDO {
     private String brandId;
 
     /**
+     * 一级分类ID
+     */
+    @Column(name = "parent_category_id")
+    private Integer parentCategoryId;
+
+    /**
      * 分类ID
      */
     @Column(name = "category_id")

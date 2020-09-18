@@ -16,27 +16,38 @@
         id,sku_id,size_name,size_desc,status,create_time,update_time FROM tb_commodity_size
     </sql>
 
-    <!--通过ID查询单个sku表-->
+    <!--通过ID查询单个商品尺寸表-->
     <select id="findById" resultMap="tbCommoditySizeMap">
         SELECT id,sku_id,size_name,size_desc,status,create_time,update_time FROM tb_commodity_size
         WHERE id=#{id}
     </select>
 
-    <!--分页查询sku表-->
+    <!--分页查询商品尺寸表-->
     <select id="findByPage" resultMap="tbCommoditySizeMap">
         SELECT id,sku_id,size_name,size_desc,status,create_time,update_time FROM tb_commodity_size
     </select>
 
-    <!--新增sku表-->
+    <!--新增商品尺寸表-->
     <insert id="insert">
         INSERT INTO tb_commodity_size(id,sku_id,size_name,size_desc,status,create_time,update_time)
         VALUES (#{id},#{skuId},#{sizeName},#{sizeDesc},#{status},#{createTime},#{updateTime})
     </insert>
 
-    <!--通过ID删除单个sku表-->
+    <!--通过ID删除单个商品尺寸表-->
     <delete id="deleteById">
         DELETE FROM tb_commodity_size
         WHERE id=#{id}
     </delete>
 
+    <!--通过商品 SKU ID 查询商所有尺寸名-->
+    <select id="findSizeNameBySkuId" resultType="string">
+        SELECT DISTINCT size_name FROM tb_commodity_size
+        WHERE sku_id=#{skuId}
+    </select>
+
+    <!--通过ID查询单个商品尺寸表-->
+    <select id="findBySkuIdAndName" resultMap="tbCommoditySizeMap">
+        SELECT id,sku_id,size_name,status FROM tb_commodity_size
+        WHERE sku_id=#{skuId} AND size_name = #{name}
+    </select>
 </mapper>

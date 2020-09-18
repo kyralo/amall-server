@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import online.kyralo.amall.common.base.domain.Base;
 
+import javax.persistence.Column;
 import java.util.Date;
 
 /**
@@ -37,6 +38,16 @@ public class TbOrderBO extends Base {
      * SKU id
      */
     private String skuId;
+
+    /**
+     * SKU color
+     */
+    private String skuColor;
+
+    /**
+     * SKU 商品尺码名
+     */
+    private String skuSizeName;
 
     /**
      * 付款，整数方式保存

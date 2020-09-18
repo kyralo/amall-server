@@ -40,6 +40,12 @@ public class TbCommoditySpuVO extends Base {
     private String merchantId;
 
     /**
+     * 一级分类ID
+     */
+    @ApiModelProperty("一级分类ID")
+    private Integer parentCategoryId;
+
+    /**
      * 分类ID
      */
     @ApiModelProperty("分类ID")

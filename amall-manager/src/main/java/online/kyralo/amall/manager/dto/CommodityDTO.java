@@ -72,7 +72,7 @@ public class CommodityDTO extends Base {
     /**
      * 商品 父级 分类名
      */
-    private Integer primaryCategoryName;
+    private String primaryCategoryName;
 
     /**
      * 商品 子级 分类ID
@@ -82,17 +82,42 @@ public class CommodityDTO extends Base {
     /**
      * 商品 子级 分类名
      */
-    private Integer childCategoryName;
+    private String childCategoryName;
 
     /**
-     * 商家商品服务说明
+     * 当前选择商品 颜色
      */
-    private List<String> serviceInfo;
+    private String currentColor;
+
+    /**
+     * 当前选择商品 尺寸
+     */
+    private String currentSize;
+
+    /**
+     * 当前选择商品 价格
+     */
+    private Double currentPrice;
+
+    /**
+     * 当前选择商品 库存
+     */
+    private Integer currentStock;
+
+    /**
+     * 当前选择商品 折扣
+     */
+    private Float currentDiscount;
 
     /**
      * 商品月销量
      */
     private Integer cumulativeSales;
+
+    /**
+     * 商家商品服务说明
+     */
+    private List<String> serviceInfo;
 
     /**
      * 产品参数
@@ -112,7 +137,7 @@ public class CommodityDTO extends Base {
     /**
      * 商品销售属性
      */
-    private List<ParameterDTO<SalesValueDTO>> sales;
+    private List<ParameterDTO<List<SalesValueDTO>>> sales;
 
     /**
      * 商品套餐

@@ -5,6 +5,8 @@ import online.kyralo.amall.common.base.BaseDao;
 import online.kyralo.amall.dao.dataobject.TbUserCollectionDO;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * 用户收藏
  */
@@ -43,5 +45,12 @@ public interface TbUserCollectionDAO extends BaseDao<TbUserCollectionDO> {
      * @return 是否删除成功
      */
     int deleteById(Integer id);
+
+    /**
+     * 查询用户收藏 通过用户ID
+     * @param userId 用户ID
+     * @return 用户收藏
+     */
+    List<TbUserCollectionDO> listByUserId(String userId);
 
 }

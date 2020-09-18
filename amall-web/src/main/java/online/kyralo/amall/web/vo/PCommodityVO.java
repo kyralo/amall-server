@@ -220,7 +220,7 @@ public class PCommodityVO extends Base {
          * 商品 父级 分类名
          */
         @ApiModelProperty("商品 父级 分类名")
-        private Integer primaryCategoryName;
+        private String primaryCategoryName;
 
         /**
          * 商品 子级 分类ID
@@ -232,19 +232,49 @@ public class PCommodityVO extends Base {
          * 商品 子级 分类名
          */
         @ApiModelProperty("商品 子级 分类名")
-        private Integer childCategoryName;
+        private String childCategoryName;
 
         /**
-         * 商家商品服务说明
+         * 当前选择商品 颜色
          */
-        @ApiModelProperty("商家商品服务说明")
-        private List<String> serviceInfo;
+        @ApiModelProperty("当前选择商品 颜色")
+        private String currentColor;
+
+        /**
+         * 当前选择商品 尺寸
+         */
+        @ApiModelProperty("当前选择商品 尺寸")
+        private String currentSize;
+
+        /**
+         * 当前选择商品 价格
+         */
+        @ApiModelProperty("当前选择商品 价格")
+        private Double currentPrice;
+
+        /**
+         * 当前选择商品 库存
+         */
+        @ApiModelProperty("当前选择商品 库存")
+        private Integer currentStock;
+
+        /**
+         * 当前选择商品 折扣
+         */
+        @ApiModelProperty("当前选择商品 折扣")
+        private Float currentDiscount;
 
         /**
          * 商品月销量
          */
         @ApiModelProperty("商品月销量")
         private Integer cumulativeSales;
+
+        /**
+         * 商家商品服务说明
+         */
+        @ApiModelProperty("商家商品服务说明")
+        private List<String> serviceInfo;
 
         /**
          * 商品描述

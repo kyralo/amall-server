@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 /**
@@ -39,7 +40,9 @@ public class PageKindController {
     @GetMapping
     @ApiOperation(value = " 查询商品类型 列表 商品类型页 ", response = PKindVO.class)
     public Res<?> getPcKindPageInfo(@ApiParam("一级类型") @RequestParam(required = false, defaultValue = "ALL") String primaryType,
-                                    @ApiParam("二级类型") @RequestParam(required = false, defaultValue = "ALL") String secondType) {
+                                    @ApiParam("二级类型") @RequestParam(required = false, defaultValue = "ALL") String secondType,
+                                    @ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
+                                    @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) throws InterruptedException {
 
         PKindVO kinds = new PKindVO();
 
@@ -48,7 +51,7 @@ public class PageKindController {
                 CopyUtil.copyList(kindsVO, PKindVO.CommodityKind.class);
         kinds.setCategories(commodityKinds);
 
-        Object commoditiesBO = commodityService.listByCategory(primaryType, secondType).getData();
+        Object commoditiesBO = commodityService.listByCategory(primaryType, secondType, pageNum, pageSize).getData();
         List<TbCommodityVO> commodities = CopyUtil.copyList(commoditiesBO, TbCommodityVO.class);
         kinds.setCommodities(commodities);
 

@@ -39,6 +39,7 @@
         SELECT
         id,spu_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
         FROM tb_commodity_sku
+        ORDER BY DESC
     </select>
 
     <!--新增sku表-->
@@ -55,4 +56,11 @@
         WHERE id=#{id}
     </delete>
 
+    <!--通过ID查询单个sku表-->
+    <select id="findBySpuId" resultMap="tbCommoditySkuMap">
+        SELECT
+        id,spu_id,sku_desc,banner_url,main_url,commodity_parameters,commodity_graphic_details,commodity_in_effect,commodity_size_specification,price_fee,price_scale,market_price_fee,market_price_scale,status,create_time,update_time
+        FROM tb_commodity_sku
+        WHERE spu_id=#{spuId}
+    </select>
 </mapper>

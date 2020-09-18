@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 /**
@@ -45,22 +46,22 @@ public class PageCommodityController {
 
     @GetMapping("/pc/user")
     @ApiOperation(value = "查询商品页信息", response = PCommodityVO.class)
-    public Res<?> getPcHomePageInfo(@ApiParam("商品ID") @RequestParam("commodityId") String commoditySkuId) {
+    public Res<?> getPcHomePageInfo(@ApiParam("商品ID") @RequestParam("commodityId") String commoditySkuId,
+                                    @ApiParam("商品一级类型") @RequestParam("primaryType") String primaryType,
+                                    @ApiParam("商品颜色") @RequestParam("currentColor") String currentColor,
+                                    @ApiParam("商品尺寸") @RequestParam("currentSize") String currentSize,
+                                    @ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer merchantPageNum,
+                                    @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer merchantPageSize,
+                                    @ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer recPageNum,
+                                    @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "20", required = false) Integer recPageSize) throws InterruptedException {
 
         PCommodityVO page = new PCommodityVO();
 
         // 商品信息
-        Object commodityBO = commodityService.queryById(commoditySkuId).getData();
+        Object commodityBO = commodityService.queryById(commoditySkuId, currentColor, currentSize).getData();
         PCommodityVO.Commodity commodity = new PCommodityVO.Commodity();
         CopyUtil.copyBean(commodityBO, commodity);
         page.setCommodity(commodity);
-
-        // 商家推荐商品 列表
-        Object merchantRecommondCommoditiesBO =
-                commodityService.listMerchantRecommondCommodities(commoditySkuId).getData();
-        List<TbCommodityVO> merchantRecommendCommodities =
-                CopyUtil.copyList(merchantRecommondCommoditiesBO, TbCommodityVO.class);
-        page.setRecommendCommodities(merchantRecommendCommodities);
 
         // 商家信息
         Object merchantBO = tbMerchantService.getMerchantByCommoditySkuId(commoditySkuId).getData();
@@ -75,6 +76,13 @@ public class PageCommodityController {
                 CopyUtil.copyList(merchantCategoriesBO, TbCommodityCategoryVO.class);
         page.setMerchantCategories(merchantCategories);
 
+        // 商家推荐商品 列表
+        Object merchantRecommondCommoditiesBO =
+                commodityService.listMerchantRecommondCommodities(merchant.getId(), commoditySkuId, merchantPageNum, merchantPageSize).getData();
+        List<TbCommodityVO> merchantRecommendCommodities =
+                CopyUtil.copyList(merchantRecommondCommoditiesBO, TbCommodityVO.class);
+        page.setRecommendCommodities(merchantRecommendCommodities);
+
         // 商品评论
         Object commodityCommentsBO = tbUserCommentService.listCommentsByCommodityId(commoditySkuId).getData();
         PCommodityVO.CommodityComments commodityComments = new PCommodityVO.CommodityComments();
@@ -83,7 +91,7 @@ public class PageCommodityController {
 
         // 其他该类型商品 列表
         Object recommondCommoditiesBO =
-                commodityService.listRecommondCommodities(commoditySkuId).getData();
+                commodityService.listRecommondCommodities(commoditySkuId, recPageNum, recPageSize).getData();
         List<TbCommodityVO> recommendCommodities =
                 CopyUtil.copyList(recommondCommoditiesBO, TbCommodityVO.class);
         page.setOtherCommodities(recommendCommodities);

@@ -1,6 +1,7 @@
 package online.kyralo.amall.common.utils;
 
 import com.google.common.collect.Lists;
+import com.sun.deploy.util.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -29,6 +30,10 @@ public class StringUtil {
 
         String[] strList = str.split(",");
         return Arrays.asList(strList);
+    }
+
+    public static String commaCombine(List<String> strArr){
+        return StringUtils.join(strArr, COMMA);
     }
 
 }

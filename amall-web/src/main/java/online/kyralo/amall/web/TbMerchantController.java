@@ -79,7 +79,8 @@ public class TbMerchantController {
     public Res<?> getPageInfoById(
             @ApiParam("商家ID") @RequestParam("id") @NotNull(message = "id内容不能为空") String id,
             @ApiParam("一级类型") @RequestParam(required = false, defaultValue = "ALL") String primaryType,
-            @ApiParam("二级类型") @RequestParam(required = false, defaultValue = "ALL") String secondType) {
+            @ApiParam("页号") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "1", required = false) Integer pageNum,
+            @ApiParam("每页大小") @Min(value = 1, message = "正数") @RequestParam(defaultValue = "10", required = false) Integer pageSize) throws InterruptedException {
 
         PMerchantVO merchant = new PMerchantVO();
 
@@ -93,7 +94,7 @@ public class TbMerchantController {
                 CopyUtil.copyList(kindsVO, PMerchantVO.CommodityKind.class);
         merchant.setCategories(commodityKinds);
 
-        Object commoditiesBO = commodityService.listByCategory(primaryType, secondType).getData();
+        Object commoditiesBO = commodityService.listMerchantCommodities(id, primaryType, pageNum, pageSize).getData();
         List<TbCommodityVO> commodities =
                 CopyUtil.copyList(commoditiesBO, TbCommodityVO.class);
         merchant.setCommodities(commodities);

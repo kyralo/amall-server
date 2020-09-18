@@ -30,7 +30,6 @@ public class CartManager {
         return commodityId + "_" + commodityStockId;
     }
 
-
     public Integer insert(String userId, String commodityId, Integer commodityStockId, Integer addCount) {
 
         String cacheKey = CACHE_CART_PREFIX + userId;

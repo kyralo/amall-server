@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -70,8 +72,16 @@ public class RedisUtil {
         template.expire(key, timeout, unit);
     }
 
+    public static Set<Object> getHashKeys(String key){
+        return template.opsForHash().keys(key);
+    }
+
     public static Object getHash(String key, Object hashKey) {
         return template.opsForHash().get(key, hashKey);
+    }
+
+    public static List<Object> getHash(String key, Collection<Object> hashKeys){
+        return template.opsForHash().multiGet(key, hashKeys);
     }
 
     public static Long removeHash(String key, Object hashKey) {
