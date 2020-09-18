@@ -31,5 +31,7 @@ build/
 .vscode/
 
 ### CUSTOM ###
+application-dev.yml
+application-prod.yml
 *.sh
 amall-docker-compose/
