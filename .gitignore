@@ -33,5 +33,6 @@ build/
 ### CUSTOM ###
 application-dev.yml
 application-prod.yml
+applicaton-prod.yml
 *.sh
 amall-docker-compose/
