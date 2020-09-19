@@ -225,6 +225,7 @@ DROP TABLE IF EXISTS `tb_commodity_spu`;
 CREATE TABLE `tb_commodity_spu` (
   `id` CHAR(32) NOT NULL COMMENT 'SPU ID',
   `brand_id` CHAR(32) NOT NULL DEFAULT '' COMMENT '品牌ID',
+  `parent_category_id` INT UNSIGNED NOT NULL COMMENT '一级分类ID',
   `category_id` INT UNSIGNED NOT NULL COMMENT '分类ID',
   `merchant_id` CHAR(32) NOT NULL DEFAULT '' COMMENT '商家ID',
   `name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'spu名称',

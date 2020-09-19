@@ -1,6 +1,7 @@
 package online.kyralo.amall.common;
 
 import lombok.ToString;
+import lombok.var;
 import online.kyralo.amall.common.utils.CommonUtil;
 import online.kyralo.amall.common.utils.CopyUtil;
 import online.kyralo.amall.dao.dataobject.TbCommoditySpuDO;
@@ -55,10 +56,19 @@ public class CommonTest {
     @Test
     public void queryTest() {
 
-        Demo v = new Demo();
-        v.name = "a";
-        demo(v);
+//        Demo v = new Demo();
+//        v.name = "a";
+//        demo(v);
+//
+//        System.out.println(v);
 
-        System.out.println(v);
+        Object a = -4 >>> 1;
+
+        Object b = -2 >> 1;
+
+        System.out.println(a);
+        System.out.println(b);
+
+
     }
 }
