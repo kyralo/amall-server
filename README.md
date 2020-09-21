@@ -14,19 +14,19 @@ Amall 项目是一个前后端分离的、基于B2C模式的电商项目.
 [amall-web](https://github.com/kyralo/amall-web)
 
 ## 技术
-- 基本骨架: Springboot + Mybatis
-- 数据库: MySQL (使用阿里Druid数据库连接池技术)
-- 鉴权: Spring Security + jwt (token鉴权)
-- 缓存: Redis (购物车, 热点数据, 秒杀)
-- 消息队列: RabbitMQ (秒杀模块)
-- 支付: Alipay
-- 邮件: Spring Mail (注册账号绑定)
-- 日志记录: Logback
-- web服务器: Tomcat
-- 路由转发: Nginx
-- 文件上传: [Alioss](https://www.alibabacloud.com/help/zh/doc-detail/31884.htm?spm=a2c63.p38356.879954.8.5d66219ffQTiYM#task-njz-hf4-tdb)
-- Api文档: Swagger (样式引用了GitHub上作者caspar-chen写的样式)
-- 项目构建工具: Maven
+- 基本骨架:       Springboot + Mybatis
+- 数据库:         MySQL (使用阿里Druid数据库连接池技术)
+- 鉴权:          Spring Security + jwt (token鉴权)
+- 缓存:          Redis (购物车, 热点数据, 秒杀)
+- 消息队列:       RabbitMQ (秒杀模块)
+- 支付:          Alipay
+- 邮件:          Spring Mail (注册账号绑定)
+- 日志记录:       Logback
+- web服务器:      Tomcat
+- 路由转发:       Nginx
+- 文件上传:       [Alioss](https://www.alibabacloud.com/help/zh/doc-detail/31884.htm?spm=a2c63.p38356.879954.8.5d66219ffQTiYM#task-njz-hf4-tdb)
+- Api文档:       Swagger (样式引用了GitHub上作者caspar-chen写的样式)
+- 项目构建工具:    Maven
 
 ## 项目结构
 
