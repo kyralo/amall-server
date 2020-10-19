@@ -53,16 +53,16 @@
             <artifactId>aliyun-sdk-oss</artifactId>
         </dependency>
 
-        <!--        &lt;!&ndash; RabbitMq &ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-amqp</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.amqp</groupId>-->
-        <!--            <artifactId>spring-rabbit-test</artifactId>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
+<!--        &lt;!&ndash; RabbitMq &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-amqp</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.amqp</groupId>-->
+<!--            <artifactId>spring-rabbit-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!--邮件发送核心包-->
         <dependency>
