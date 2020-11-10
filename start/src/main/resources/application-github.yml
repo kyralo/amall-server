@@ -1,0 +1,143 @@
+server:
+  port: 8889
+
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://www.xxx.com:3306/amall?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username:
+    password:
+
+    # druid 配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-pool-prepared-statement-per-connection-size: 20
+      min-idle: 5
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        profile-enable: true
+      max-active: 20
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      validation-query: show status like '%Service_Status%';
+      filters: stat,wall
+      max-wait: 60000
+      filter:
+        stat:
+          db-type: mysql
+          slow-sql-millis: 1000
+          log-slow-sql: true
+        wall:
+          db-type: mysql
+          config:
+            multi-statement-allow: true
+          enabled: true
+      test-on-borrow: false
+      stat-view-servlet:
+        login-password: admin
+        login-username: admin
+      pool-prepared-statements: true
+      initial-size: 5
+      min-evictable-idle-time-millis: 300000
+      test-on-return: false
+
+  #邮件发送配置
+  mail:
+    default-encoding: UTF-8
+    host: smtp.163.com
+    username:
+    password:
+    port: 465
+    protocol: smtp
+    properties:
+      mail:
+        imap:
+          ssl:
+            socketFactory:
+              fallback: false
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            socketFactory:
+              class: com.fintech.modules.base.util.mail.MailSSLSocketFactory
+          starttls:
+            enable: true
+            required: true
+
+  # rabbitmq 消息队列
+  rabbitmq:
+    host:
+    username:
+    password:
+    port: 5672
+    publisher-confirms: true
+    virtual-host: /
+    # 打开消息确认机制
+    publisher-confirm-type: correlated
+    # 打开消息返回
+    publisher-returns: true
+    template:
+      mandatory: true
+    ## 消费端配置
+    listener:
+      simple:
+        ## manual:手动 ack（确认）
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 10
+        retry:
+          enabled: true
+
+  # redis
+  redis:
+    host: localhost
+    password:
+    port: 6379
+    database: 10
+    lettuce:
+      pool:
+        max-idle: 500
+        min-idle: 50
+        max-active: 1000
+        max-wait: 2000
+    timeout: 3000
+
+#  # data
+#  data:
+#    # redis 配置
+#    redis:
+#      repositories:
+#        enabled: true
+
+# es配置
+#elasticsearch:
+#  ip:
+#  username:
+#  password:
+
+# OSS相关配置信息
+aliyun:
+  oss:
+    # oss对外服务的访问域名
+    endpoint:
+    # 访问身份验证中用到用户标识
+    accessKeyId:
+    # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    accessKeySecret:
+    # oss的存储空间
+    bucketName:
+    policy:
+      # 签名有效期(S)
+      expire: 300
+    # 上传文件大小(M)
+    maxSize: 300
+    # 文件上传成功后的回调地址
+    # callback: http://localhost:9988/aliyun/oss/callback
+    dir:
+      # 上传文件夹路径前缀
+      prefix: amall/
+      # 自定义路径
+      user:
+        avatar: user/avatar/
